@@ -1,17 +1,41 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
-import { buildMetadata } from '@/lib/metadata'
-
-export const metadata: Metadata = buildMetadata({
-  title: 'Client Login',
-  description: 'Access your Rogue Studio client dashboard and project portal.',
-  path: '/client-login',
-})
-
-// TODO: Wire to Supabase Auth in Phase 2
-// import { createClient } from '@/lib/supabase/server'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
 
 export default function ClientLoginPage() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+
+    const form = e.currentTarget
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value
+    const password = (form.elements.namedItem('password') as HTMLInputElement).value
+
+    const supabase = createClient()
+    const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
+
+    if (authError) {
+      setError('Invalid email or password')
+      setLoading(false)
+      return
+    }
+
+    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    if (adminEmail && email === adminEmail) {
+      router.push('/admin')
+    } else {
+      router.push('/portal')
+    }
+  }
+
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <main className="flex-grow flex flex-col items-center justify-center p-6 relative overflow-hidden">
@@ -52,8 +76,7 @@ export default function ClientLoginPage() {
             </p>
           </header>
 
-          {/* TODO: Connect to Supabase Auth — add SUPABASE_URL + SUPABASE_ANON_KEY to .env.local */}
-          <form className="space-y-8" action="#" method="POST">
+          <form className="space-y-8" onSubmit={handleSubmit}>
             {/* Email */}
             <div>
               <label
@@ -103,14 +126,22 @@ export default function ClientLoginPage() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full bg-primary-container text-on-primary-fixed font-black py-5 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group"
+                disabled={loading}
+                className="w-full bg-primary-container text-on-primary-fixed font-black py-5 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
                 style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
               >
-                Login
-                <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
+                {loading ? 'Logging in...' : (
+                  <>
+                    Login
+                    <span className="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">
+                      arrow_forward
+                    </span>
+                  </>
+                )}
               </button>
+              {error && (
+                <p className="mt-3 text-red-500 text-xs text-center font-medium">{error}</p>
+              )}
             </div>
           </form>
 

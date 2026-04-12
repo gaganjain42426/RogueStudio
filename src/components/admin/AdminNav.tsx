@@ -1,0 +1,69 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import {
+  LayoutDashboard,
+  Users,
+  Kanban,
+  Calendar,
+  CreditCard,
+  Receipt,
+} from 'lucide-react'
+
+const NAV = [
+  { href: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/admin/clients', icon: Users, label: 'Clients' },
+  { href: '/admin/workboard', icon: Kanban, label: 'Work Board' },
+  { href: '/admin/calendar', icon: Calendar, label: 'Calendar' },
+  { href: '/admin/payments', icon: CreditCard, label: 'Payments' },
+  { href: '/admin/expenses', icon: Receipt, label: 'Expenses' },
+]
+
+export default function AdminNav({ mrr }: { mrr: number }) {
+  const pathname = usePathname()
+
+  const isActive = (href: string) =>
+    href === '/admin' ? pathname === '/admin' : pathname.startsWith(href)
+
+  return (
+    <aside className="w-[220px] flex-shrink-0 bg-[#131313] flex flex-col h-full border-r border-white/5">
+      {/* Branding */}
+      <div className="px-5 pt-7 pb-8">
+        <p className="text-white font-bold text-lg leading-tight">Rogue Studio</p>
+        <p className="text-[#fa5c1b] text-[11px] font-semibold tracking-[0.15em] mt-0.5 uppercase">
+          Admin
+        </p>
+      </div>
+
+      {/* Navigation */}
+      <nav className="flex-1 px-2 space-y-px">
+        {NAV.map(({ href, icon: Icon, label }) => {
+          const active = isActive(href)
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 py-2.5 rounded-lg text-sm transition-all duration-150 ${
+                active
+                  ? 'bg-white/5 text-white border-l-[3px] border-[#fa5c1b] pl-[9px] pr-3'
+                  : 'text-gray-400 hover:text-white hover:bg-white/[0.04] border-l-[3px] border-transparent pl-3 pr-3'
+              }`}
+            >
+              <Icon size={15} className="flex-shrink-0" />
+              <span>{label}</span>
+            </Link>
+          )
+        })}
+      </nav>
+
+      {/* MRR */}
+      <div className="m-3 mb-5 p-4 rounded-xl bg-[#0e0e0e] border border-white/5">
+        <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Monthly MRR</p>
+        <p className="text-white font-bold text-xl tabular-nums">
+          ₹{mrr.toLocaleString('en-IN')}
+        </p>
+      </div>
+    </aside>
+  )
+}

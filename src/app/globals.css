@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand color tokens ── */
+  --color-primary:                   #ffb59c;
+  --color-primary-container:         #fa5c1b;
+  --color-primary-fixed:             #ffdbcf;
+  --color-primary-fixed-dim:         #ffb59c;
+  --color-on-primary:                #5c1900;
+  --color-on-primary-container:      #511500;
+  --color-on-primary-fixed:          #390c00;
+  --color-on-primary-fixed-variant:  #822800;
+  --color-inverse-primary:           #aa3600;
+
+  --color-secondary:                 #9dd1c2;
+  --color-secondary-container:       #1e5146;
+  --color-secondary-fixed:           #b8edde;
+  --color-secondary-fixed-dim:       #9dd1c2;
+  --color-on-secondary:              #00382e;
+  --color-on-secondary-container:    #8fc3b4;
+  --color-on-secondary-fixed:        #00201a;
+  --color-on-secondary-fixed-variant:#1b4f44;
+
+  --color-tertiary:                  #cac6be;
+  --color-tertiary-container:        #94908a;
+  --color-tertiary-fixed:            #e7e2da;
+  --color-tertiary-fixed-dim:        #cac6be;
+  --color-on-tertiary:               #32302b;
+  --color-on-tertiary-container:     #2b2a25;
+  --color-on-tertiary-fixed:         #1d1c17;
+  --color-on-tertiary-fixed-variant: #494741;
+
+  --color-surface:                   #131313;
+  --color-surface-dim:               #131313;
+  --color-surface-bright:            #3a3939;
+  --color-surface-container-lowest:  #0e0e0e;
+  --color-surface-container-low:     #1c1b1b;
+  --color-surface-container:         #201f1f;
+  --color-surface-container-high:    #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-surface-variant:           #353534;
+  --color-surface-tint:              #ffb59c;
+  --color-on-surface:                #e5e2e1;
+  --color-on-surface-variant:        #e3bfb3;
+  --color-inverse-surface:           #e5e2e1;
+  --color-inverse-on-surface:        #313030;
+
+  --color-background:                #131313;
+  --color-on-background:             #e5e2e1;
+
+  --color-outline:                   #aa897f;
+  --color-outline-variant:           #5b4138;
+
+  --color-error:                     #ffb4ab;
+  --color-error-container:           #93000a;
+  --color-on-error:                  #690005;
+  --color-on-error-container:        #ffdad6;
+
+  /* ── Typography ── */
+  --font-headline:      "Epilogue", sans-serif;
+  --font-body:          "Inter", sans-serif;
+  --font-label:         "Inter", sans-serif;
+  --font-serif-accent:  "Playfair Display", serif;
+
+  /* ── Border radius ── */
+  --radius:     1rem;
+  --radius-lg:  2rem;
+  --radius-xl:  3rem;
+  --radius-full: 9999px;
+}
+
+/* ── Wire Next.js font variables into the theme ── */
+@layer base {
+  :root {
+    --font-headline:     var(--loaded-epilogue, "Epilogue", sans-serif);
+    --font-body:         var(--loaded-inter, "Inter", sans-serif);
+    --font-label:        var(--loaded-inter, "Inter", sans-serif);
+    --font-serif-accent: var(--loaded-playfair, "Playfair Display", serif);
+  }
+}
+
+/* ── Marquee animation ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+/* ── Material Symbols fill variant ── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Scroll behaviour ── */
+html {
+  scroll-behavior: smooth;
+}
+
+

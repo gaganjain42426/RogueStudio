@@ -62,6 +62,13 @@ export default function Navbar() {
           {/* Right side */}
           <div className="flex items-center gap-4">
             <Link
+              href="/client-login"
+              className="hidden md:inline-flex border border-white/30 text-white/80 px-4 py-2 rounded-full text-sm font-headline hover:border-white hover:text-white transition-all duration-200"
+              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            >
+              Client Login
+            </Link>
+            <Link
               href="/contact"
               className="hidden md:inline-flex bg-primary-container text-on-primary-fixed px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform duration-300 active:scale-95"
               style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
@@ -117,6 +124,13 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/client-login"
+              className="text-xl font-black tracking-tight text-white/70 hover:text-white transition-colors"
+              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            >
+              Client Login
+            </Link>
             <Link
               href="/contact"
               className="mt-4 w-full text-center bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold text-base"

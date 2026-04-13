@@ -89,7 +89,17 @@ export default function PaymentsClient({
   const allTimeTotal = payments
     .filter(p => p.status === 'received')
     .reduce((s, p) => s + p.amount, 0)
+  const todayStr = new Date().toISOString().split('T')[0]
+  const overdueIds = payments
+    .filter(p => p.status === 'pending' && p.date && p.date < todayStr)
+    .map(p => p.id)
 
+  async function markAllOverdue() {
+    if (overdueIds.length === 0) return
+    const supabase = createSupabaseClient()
+    await supabase.from('payments').update({ status: 'overdue' }).in('id', overdueIds)
+    setPayments(prev => prev.map(p => overdueIds.includes(p.id) ? { ...p, status: 'overdue' } : p))
+  }
   // ── Derived ────────────────────────────────────────────────────────────────
   const months = Array.from(new Set(payments.map(p => p.month))).sort()
   const filtered = payments
@@ -208,6 +218,21 @@ export default function PaymentsClient({
           <Download size={14} /> Export CSV
         </button>
       </div>
+
+      {/* Overdue banner */}
+      {overdueIds.length > 0 && (
+        <div className="flex items-center justify-between bg-orange-500/10 border border-orange-500/30 rounded-xl px-5 py-3 mb-6">
+          <p className="text-sm text-orange-400">
+            <span className="font-semibold">{overdueIds.length}</span> payment{overdueIds.length > 1 ? 's are' : ' is'} past due and still marked as pending.
+          </p>
+          <button
+            onClick={markAllOverdue}
+            className="text-xs bg-orange-500/20 hover:bg-orange-500/30 text-orange-300 px-3 py-1.5 rounded-lg transition-colors font-medium"
+          >
+            Mark All Overdue
+          </button>
+        </div>
+      )}
 
       {/* Stat Cards */}
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8">

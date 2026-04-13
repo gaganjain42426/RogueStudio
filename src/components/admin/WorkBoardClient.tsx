@@ -180,6 +180,7 @@ export default function WorkBoardClient({
   const [editForm, setEditForm] = useState(defaultForm)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
+  const [filterClient, setFilterClient] = useState('')
 
   function openAdd() {
     setForm(defaultForm)
@@ -290,10 +291,38 @@ export default function WorkBoardClient({
         </button>
       </div>
 
+      {/* Client Filter Pills */}
+      <div className="flex items-center gap-2 flex-wrap mb-6">
+        <button
+          onClick={() => setFilterClient('')}
+          className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+            filterClient === ''
+              ? 'bg-[#fa5c1b] text-white'
+              : 'bg-[#1c1b1b] text-gray-400 border border-gray-700 hover:text-white'
+          }`}
+        >
+          All Clients
+        </button>
+        {clients.map((c) => (
+          <button
+            key={c.id}
+            onClick={() => setFilterClient(c.id === filterClient ? '' : c.id)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              filterClient === c.id
+                ? 'bg-[#fa5c1b] text-white'
+                : 'bg-[#1c1b1b] text-gray-400 border border-gray-700 hover:text-white'
+            }`}
+          >
+            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: c.color_tag }} />
+            {c.name}
+          </button>
+        ))}
+      </div>
+
       {/* Kanban */}
       <div className="grid grid-cols-3 gap-5">
         {COLUMNS.map((col) => {
-          const colTasks = tasks.filter((t) => t.status === col.key)
+          const colTasks = tasks.filter((t) => t.status === col.key && (!filterClient || t.client_id === filterClient))
           return (
             <div key={col.key} className="bg-[#1c1b1b] rounded-xl p-4 min-h-[400px]">
               <div className="flex items-center justify-between mb-4">

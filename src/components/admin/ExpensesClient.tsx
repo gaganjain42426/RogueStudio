@@ -193,7 +193,14 @@ export default function ExpensesClient({
     URL.revokeObjectURL(url)
   }
 
-  // ── Render ─────────────────────────────────────────────────────────────────
+  // ── Category breakdown ───────────────────────────────────────────────
+  const catTotals = CATEGORIES
+    .map(cat => ({ cat, total: filtered.filter(e => e.category === cat).reduce((s, e) => s + e.amount, 0) }))
+    .filter(c => c.total > 0)
+    .sort((a, b) => b.total - a.total)
+  const catMax = Math.max(...catTotals.map(c => c.total), 1)
+
+  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <div className="p-8 max-w-[1600px]">
       {/* Header */}
@@ -224,6 +231,27 @@ export default function ExpensesClient({
           </p>
         </div>
       </div>
+
+      {/* Category Breakdown */}
+      {catTotals.length > 0 && (
+        <div className="bg-[#1c1b1b] rounded-xl p-5 mb-6">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">Spend by Category</p>
+          <div className="space-y-2.5">
+            {catTotals.map(({ cat, total }) => (
+              <div key={cat} className="flex items-center gap-3">
+                <span className={`text-xs w-24 flex-shrink-0 font-medium ${CATEGORY_STYLE[cat]}`}>{cat}</span>
+                <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-[#fa5c1b]/60 transition-all"
+                    style={{ width: `${(total / catMax) * 100}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-400 tabular-nums w-24 text-right">₹{total.toLocaleString('en-IN')}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex items-center gap-3 mb-4 flex-wrap">

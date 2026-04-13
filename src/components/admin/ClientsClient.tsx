@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient as createSupabaseClient } from '@/lib/supabase/client'
-import { Plus, X, Pencil, ChevronRight, Copy, Check } from 'lucide-react'
+import { Plus, X, Pencil, ChevronRight, Copy, Check, Trash2, Search } from 'lucide-react'
 
 type Client = {
   id: string
@@ -165,7 +165,22 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
 
   const [clients, setClients] = useState<Client[]>(initialClients)
 
-  // Add modal
+  // Search + filter
+  const [search, setSearch] = useState('')
+  const [statusFilter, setStatusFilter] = useState('')
+
+  const filteredClients = clients.filter((c) => {
+    if (statusFilter && c.status !== statusFilter) return false
+    if (search) {
+      const q = search.toLowerCase()
+      return (
+        c.name.toLowerCase().includes(q) ||
+        (c.contact_email ?? '').toLowerCase().includes(q) ||
+        (c.industry ?? '').toLowerCase().includes(q)
+      )
+    }
+    return true
+  })
   const [showAddModal, setShowAddModal] = useState(false)
   const [addForm, setAddForm] = useState<ClientFormState>(defaultForm)
   const [addSaving, setAddSaving] = useState(false)
@@ -241,6 +256,18 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
     router.refresh()
   }
 
+  // ── Delete client ────────────────────────────────────────────────────────────
+
+  async function handleDeleteClient(id: string) {
+    if (!confirm('Delete this client? This cannot be undone.')) return
+    const supabase = createSupabaseClient()
+    await supabase.from('clients').delete().eq('id', id)
+    setClients((prev) => prev.filter((c) => c.id !== id))
+    setEditClient(null)
+    if (detailClient?.id === id) setDetailClient(null)
+    router.refresh()
+  }
+
   // ── Detail slide-over ───────────────────────────────────────────────────────
 
   const fetchTab = useCallback(async (clientId: string, tab: DetailTab) => {
@@ -308,10 +335,10 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
   return (
     <div className="p-8 max-w-[1400px]">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-white">Clients</h1>
-          <p className="text-sm text-gray-500 mt-1">{clients.length} total</p>
+          <p className="text-sm text-gray-500 mt-1">{filteredClients.length} of {clients.length}</p>
         </div>
         <button onClick={openAdd}
           className="flex items-center gap-2 bg-[#fa5c1b] text-white rounded-lg px-4 py-2 text-sm font-medium hover:opacity-90 transition-opacity">
@@ -319,12 +346,46 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
         </button>
       </div>
 
+      {/* Search + Filter */}
+      <div className="flex items-center gap-3 mb-6 flex-wrap">
+        <div className="relative flex-1 min-w-[200px] max-w-xs">
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search name, email, industry…"
+            className="w-full bg-[#1c1b1b] text-white text-sm pl-9 pr-3 py-2 rounded-lg border border-white/10 focus:outline-none focus:border-[#fa5c1b] placeholder:text-gray-600"
+          />
+        </div>
+        <select
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="bg-[#1c1b1b] text-white text-sm px-3 py-2 rounded-lg border border-white/10 focus:outline-none focus:border-[#fa5c1b] cursor-pointer"
+        >
+          <option value="">All Statuses</option>
+          <option value="active">Active</option>
+          <option value="paused">Paused</option>
+          <option value="contractor">Contractor</option>
+          <option value="inactive">Inactive</option>
+        </select>
+        {(search || statusFilter) && (
+          <button
+            onClick={() => { setSearch(''); setStatusFilter('') }}
+            className="text-xs text-gray-500 hover:text-white transition-colors"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
       {/* Client Grid */}
-      {clients.length === 0 ? (
-        <div className="text-center py-24 text-gray-600">No clients yet. Add your first client to get started.</div>
+      {filteredClients.length === 0 ? (
+        <div className="text-center py-24 text-gray-600">
+          {search || statusFilter ? 'No clients match your search.' : 'No clients yet. Add your first client to get started.'}
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {clients.map((client) => (
+          {filteredClients.map((client) => (
             <div key={client.id} onClick={() => openDetail(client)}
               className="bg-[#1c1b1b] rounded-xl p-5 border-l-4 cursor-pointer hover:bg-[#232222] transition-colors group"
               style={{ borderColor: client.color_tag || '#fa5c1b' }}>
@@ -381,7 +442,17 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
           <div className="bg-[#1c1b1b] rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-white font-bold text-lg">Edit Client</h2>
-              <button onClick={() => setEditClient(null)} className="text-gray-400 hover:text-white"><X size={20} /></button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleDeleteClient(editClient.id)}
+                  className="text-red-400 hover:text-red-300 p-1.5 rounded-lg hover:bg-red-500/10 transition-colors"
+                  title="Delete client"
+                >
+                  <Trash2 size={15} />
+                </button>
+                <button onClick={() => setEditClient(null)} className="text-gray-400 hover:text-white"><X size={20} /></button>
+              </div>
             </div>
             <ClientForm form={editForm} setForm={setEditForm} onSubmit={handleEdit}
               onClose={() => setEditClient(null)} saving={editSaving} error={editError} submitLabel="Save Changes" />

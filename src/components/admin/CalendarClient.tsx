@@ -390,6 +390,18 @@ export default function CalendarClient({
 
   const activeClientData = selectedClient ? clients.find((c) => c.id === selectedClient) : null
 
+  // This-week strip
+  const thisWeekDays = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date()
+    d.setDate(d.getDate() + i)
+    return {
+      dateStr: d.toISOString().split('T')[0],
+      label: i === 0 ? 'Today' : d.toLocaleDateString('en-IN', { weekday: 'short' }),
+      dayNum: d.getDate(),
+    }
+  })
+  const thisWeekHasEvents = thisWeekDays.some((d) => visibleEvents.some((e) => e.scheduled_date === d.dateStr))
+
   return (
     <div className="p-8 max-w-[1400px]">
       {/* Header */}
@@ -512,7 +524,52 @@ export default function CalendarClient({
           />
         )
       )}
-
+      {/* This Week strip */}
+      {thisWeekHasEvents && (
+        <div className="mb-6">
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">This Week</p>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {thisWeekDays.map(({ dateStr, label, dayNum }) => {
+              const dayEvs = visibleEvents.filter((e) => e.scheduled_date === dateStr)
+              return (
+                <div
+                  key={dateStr}
+                  className={`flex-shrink-0 w-[130px] bg-[#1c1b1b] rounded-xl p-3 border ${
+                    label === 'Today' ? 'border-[#fa5c1b]/40' : 'border-white/5'
+                  }`}
+                >
+                  <p className={`text-xs font-medium mb-0.5 ${
+                    label === 'Today' ? 'text-[#fa5c1b]' : 'text-gray-500'
+                  }`}>{label}</p>
+                  <p className="text-white font-bold text-xl leading-none mb-2">{dayNum}</p>
+                  {dayEvs.length === 0 ? (
+                    <p className="text-[10px] text-gray-700">No events</p>
+                  ) : (
+                    <div className="space-y-1">
+                      {dayEvs.slice(0, 2).map((ev) => (
+                        <button
+                          key={ev.id}
+                          onClick={(e) => handleEventClick(e, ev)}
+                          className="w-full text-left text-[10px] px-1.5 py-0.5 rounded truncate block"
+                          style={{
+                            backgroundColor: (ev.clients?.color_tag ?? '#fa5c1b') + '28',
+                            color: ev.clients?.color_tag ?? '#fa5c1b',
+                          }}
+                        >
+                          {ev.title}
+                        </button>
+                      ))}
+                      {dayEvs.length > 2 && (
+                        <p className="text-[10px] text-gray-600">+{dayEvs.length - 2} more</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
       {/* ── MONTH VIEW ── */}
       {view === 'month' && (
         <div className="bg-[#1c1b1b] rounded-xl overflow-hidden">

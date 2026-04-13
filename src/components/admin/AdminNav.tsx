@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import {
   LayoutDashboard,
   Users,
@@ -9,7 +9,9 @@ import {
   Calendar,
   CreditCard,
   Receipt,
+  LogOut,
 } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 
 const NAV = [
   { href: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
@@ -22,6 +24,13 @@ const NAV = [
 
 export default function AdminNav({ mrr }: { mrr: number }) {
   const pathname = usePathname()
+  const router = useRouter()
+
+  async function handleLogout() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/client-login')
+  }
 
   const isActive = (href: string) =>
     href === '/admin' ? pathname === '/admin' : pathname.startsWith(href)
@@ -58,12 +67,21 @@ export default function AdminNav({ mrr }: { mrr: number }) {
       </nav>
 
       {/* MRR */}
-      <div className="m-3 mb-5 p-4 rounded-xl bg-[#0e0e0e] border border-white/5">
+      <div className="m-3 p-4 rounded-xl bg-[#0e0e0e] border border-white/5">
         <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Monthly MRR</p>
         <p className="text-white font-bold text-xl tabular-nums">
           ₹{mrr.toLocaleString('en-IN')}
         </p>
       </div>
+
+      {/* Logout */}
+      <button
+        onClick={handleLogout}
+        className="mx-3 mb-5 w-[calc(100%-24px)] flex items-center gap-2 text-gray-500 hover:text-white text-sm py-2 px-3 rounded-lg hover:bg-white/5 transition-colors"
+      >
+        <LogOut size={14} />
+        <span>Logout</span>
+      </button>
     </aside>
   )
 }

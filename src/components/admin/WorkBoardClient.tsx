@@ -51,6 +51,120 @@ const defaultForm = {
   due_date: '',
 }
 
+function TaskForm({
+  f,
+  setF,
+  clients,
+  saving,
+  onSubmit,
+  onClose,
+  onDelete,
+  submitLabel,
+}: {
+  f: typeof defaultForm
+  setF: (v: typeof defaultForm) => void
+  clients: ClientOption[]
+  saving: boolean
+  onSubmit: (e: React.FormEvent) => void
+  onClose: () => void
+  onDelete?: () => void
+  submitLabel: string
+}) {
+  return (
+    <form onSubmit={onSubmit} className="space-y-4">
+      <Field label="Title *">
+        <input
+          required
+          value={f.title}
+          onChange={(e) => setF({ ...f, title: e.target.value })}
+          className={inputCls}
+          placeholder="Task title"
+        />
+      </Field>
+      <Field label="Description">
+        <textarea
+          value={f.description}
+          onChange={(e) => setF({ ...f, description: e.target.value })}
+          className={`${inputCls} resize-none`}
+          rows={3}
+          placeholder="Details…"
+        />
+      </Field>
+      <Field label="Client">
+        <select
+          value={f.client_id}
+          onChange={(e) => setF({ ...f, client_id: e.target.value })}
+          className={inputCls}
+        >
+          <option value="">— No client —</option>
+          {clients.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+      </Field>
+      <div className="grid grid-cols-2 gap-4">
+        <Field label="Status">
+          <select
+            value={f.status}
+            onChange={(e) => setF({ ...f, status: e.target.value })}
+            className={inputCls}
+          >
+            <option value="todo">To Do</option>
+            <option value="inprogress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </Field>
+        <Field label="Priority">
+          <select
+            value={f.priority}
+            onChange={(e) => setF({ ...f, priority: e.target.value })}
+            className={inputCls}
+          >
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </Field>
+      </div>
+      <Field label="Due Date">
+        <input
+          type="date"
+          value={f.due_date}
+          onChange={(e) => setF({ ...f, due_date: e.target.value })}
+          className={inputCls}
+        />
+      </Field>
+      <div className="flex gap-3 pt-2">
+        {onDelete && (
+          <button
+            type="button"
+            onClick={onDelete}
+            className="p-2.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors"
+          >
+            <Trash2 size={15} />
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex-1 py-2.5 rounded-lg border border-white/10 text-gray-400 hover:text-white text-sm transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={saving}
+          className="flex-1 py-2.5 rounded-lg bg-[#fa5c1b] text-white font-medium text-sm hover:opacity-90 disabled:opacity-60 transition-opacity"
+        >
+          {saving ? 'Saving…' : submitLabel}
+        </button>
+      </div>
+    </form>
+  )
+}
+
 export default function WorkBoardClient({
   initialTasks,
   clients,
@@ -162,114 +276,6 @@ export default function WorkBoardClient({
     setEditTask(null)
   }
 
-  const TaskForm = ({
-    f,
-    setF,
-    onSubmit,
-    onClose,
-    onDelete,
-    submitLabel,
-  }: {
-    f: typeof defaultForm
-    setF: (v: typeof defaultForm) => void
-    onSubmit: (e: React.FormEvent) => void
-    onClose: () => void
-    onDelete?: () => void
-    submitLabel: string
-  }) => (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <Field label="Title *">
-        <input
-          required
-          value={f.title}
-          onChange={(e) => setF({ ...f, title: e.target.value })}
-          className={inputCls}
-          placeholder="Task title"
-        />
-      </Field>
-      <Field label="Description">
-        <textarea
-          value={f.description}
-          onChange={(e) => setF({ ...f, description: e.target.value })}
-          className={`${inputCls} resize-none`}
-          rows={3}
-          placeholder="Details…"
-        />
-      </Field>
-      <Field label="Client">
-        <select
-          value={f.client_id}
-          onChange={(e) => setF({ ...f, client_id: e.target.value })}
-          className={inputCls}
-        >
-          <option value="">— No client —</option>
-          {clients.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </Field>
-      <div className="grid grid-cols-2 gap-4">
-        <Field label="Status">
-          <select
-            value={f.status}
-            onChange={(e) => setF({ ...f, status: e.target.value })}
-            className={inputCls}
-          >
-            <option value="todo">To Do</option>
-            <option value="inprogress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-        </Field>
-        <Field label="Priority">
-          <select
-            value={f.priority}
-            onChange={(e) => setF({ ...f, priority: e.target.value })}
-            className={inputCls}
-          >
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </Field>
-      </div>
-      <Field label="Due Date">
-        <input
-          type="date"
-          value={f.due_date}
-          onChange={(e) => setF({ ...f, due_date: e.target.value })}
-          className={inputCls}
-        />
-      </Field>
-      <div className="flex gap-3 pt-2">
-        {onDelete && (
-          <button
-            type="button"
-            onClick={onDelete}
-            className="p-2.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 transition-colors"
-          >
-            <Trash2 size={15} />
-          </button>
-        )}
-        <button
-          type="button"
-          onClick={onClose}
-          className="flex-1 py-2.5 rounded-lg border border-white/10 text-gray-400 hover:text-white text-sm transition-colors"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          disabled={saving}
-          className="flex-1 py-2.5 rounded-lg bg-[#fa5c1b] text-white font-medium text-sm hover:opacity-90 disabled:opacity-60 transition-opacity"
-        >
-          {saving ? 'Saving…' : submitLabel}
-        </button>
-      </div>
-    </form>
-  )
-
   return (
     <div className="p-8 max-w-[1400px]">
       {/* Header */}
@@ -355,6 +361,8 @@ export default function WorkBoardClient({
             <TaskForm
               f={form}
               setF={setForm}
+              clients={clients}
+              saving={saving}
               onSubmit={handleAdd}
               onClose={() => setShowAddModal(false)}
               submitLabel="Add Task"
@@ -379,6 +387,8 @@ export default function WorkBoardClient({
             <TaskForm
               f={editForm}
               setF={setEditForm}
+              clients={clients}
+              saving={saving}
               onSubmit={handleEdit}
               onClose={() => setEditTask(null)}
               onDelete={handleDelete}

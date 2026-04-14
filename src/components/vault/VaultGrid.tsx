@@ -15,7 +15,7 @@ export default function VaultGrid() {
     filter === 'all' ? VAULT_CLIENTS : VAULT_CLIENTS.filter((c) => c.category === filter)
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-[72px]">
       {/* Marquee */}
       <VaultMarquee />
 

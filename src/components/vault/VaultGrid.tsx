@@ -16,44 +16,37 @@ export default function VaultGrid() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Filter bar — sits below the global Navbar */}
-      <div className="sticky top-[69px] z-40 backdrop-blur-md bg-surface/80 border-b border-outline-variant/20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <span
-            className="text-sm tracking-[0.25em] text-primary font-medium"
-            style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-          >
-            THE VAULT
-          </span>
+      {/* Marquee */}
+      <VaultMarquee />
 
-          {/* Filters */}
-          <div className="flex items-center gap-1 overflow-x-auto">
+      {/* Section header + inline filters */}
+      <section className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-12">
+          <h1
+            className="text-xs tracking-[0.35em] uppercase text-on-surface-variant"
+          >
+            The Vault — Our Work
+          </h1>
+          <div className="flex flex-wrap items-center gap-2">
             {VAULT_FILTERS.map((f) => (
               <button
                 key={f.value}
                 onClick={() => setFilter(f.value)}
-                className={`flex-shrink-0 px-4 py-2 text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-xs tracking-[0.12em] uppercase font-bold transition-all duration-300 ${
                   filter === f.value
-                    ? 'text-primary border-b-2 border-primary'
-                    : 'text-on-surface-variant hover:text-on-background'
+                    ? 'bg-primary-container text-on-primary-fixed'
+                    : 'border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-on-background'
                 }`}
               >
                 {f.label}
               </button>
             ))}
           </div>
-
-          <span className="text-xs tracking-[0.2em] text-on-surface-variant hidden lg:block">
-            Issue N°001
-          </span>
         </div>
-      </div>
-
-      {/* Marquee */}
-      <VaultMarquee />
+      </section>
 
       {/* Grid */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="max-w-7xl mx-auto px-6 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
           {filtered.map((client, i) => (
             <motion.div

@@ -55,6 +55,11 @@ export const metadata: Metadata = {
     images: ['/og/default-og.jpg'],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({

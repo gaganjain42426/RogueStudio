@@ -23,11 +23,14 @@ export default function Navbar() {
     setMenuOpen(false)
   }, [pathname])
 
+  // Always show solid bg on /work so vault marquee doesn't bleed through
+  const alwaysSolid = pathname.startsWith('/work')
+
   return (
     <>
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled || menuOpen
+          scrolled || menuOpen || alwaysSolid
             ? 'bg-surface/80 backdrop-blur-[24px] shadow-lg'
             : 'bg-transparent'
         }`}

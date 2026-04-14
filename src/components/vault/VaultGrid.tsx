@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { VAULT_CLIENTS, VAULT_FILTERS, type VaultClient, type VaultFilter } from '@/data/vault-clients'
 import VaultMarquee from './VaultMarquee'
@@ -17,29 +16,23 @@ export default function VaultGrid() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-surface/80 border-b border-outline-variant/20">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="text-xl font-black tracking-tighter text-on-background"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}>
-              RS
-            </Link>
-            <span
-              className="text-sm tracking-[0.2em] text-primary font-medium"
-              style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-            >
-              THE VAULT
-            </span>
-          </div>
+      {/* Filter bar — sits below the global Navbar */}
+      <div className="sticky top-[69px] z-40 backdrop-blur-md bg-surface/80 border-b border-outline-variant/20">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+          <span
+            className="text-sm tracking-[0.25em] text-primary font-medium"
+            style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+          >
+            THE VAULT
+          </span>
 
-          {/* Filters desktop */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Filters */}
+          <div className="flex items-center gap-1 overflow-x-auto">
             {VAULT_FILTERS.map((f) => (
               <button
                 key={f.value}
                 onClick={() => setFilter(f.value)}
-                className={`px-4 py-2 text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
+                className={`flex-shrink-0 px-4 py-2 text-xs tracking-[0.15em] uppercase transition-all duration-300 ${
                   filter === f.value
                     ? 'text-primary border-b-2 border-primary'
                     : 'text-on-surface-variant hover:text-on-background'
@@ -48,38 +41,13 @@ export default function VaultGrid() {
                 {f.label}
               </button>
             ))}
-          </nav>
-
-          <div className="flex items-center gap-6">
-            <Link
-              href="/about"
-              className="text-xs tracking-[0.15em] uppercase text-on-surface-variant hover:text-on-background transition-colors duration-300"
-            >
-              About
-            </Link>
-            <span className="text-xs tracking-[0.2em] text-on-surface-variant hidden lg:block">
-              Issue N°001
-            </span>
           </div>
-        </div>
 
-        {/* Mobile filters */}
-        <div className="md:hidden flex items-center gap-1 px-6 pb-3 overflow-x-auto">
-          {VAULT_FILTERS.map((f) => (
-            <button
-              key={f.value}
-              onClick={() => setFilter(f.value)}
-              className={`flex-shrink-0 px-3 py-1.5 text-xs tracking-[0.12em] uppercase transition-all duration-300 ${
-                filter === f.value
-                  ? 'text-primary border-b-2 border-primary'
-                  : 'text-on-surface-variant hover:text-on-background'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+          <span className="text-xs tracking-[0.2em] text-on-surface-variant hidden lg:block">
+            Issue N°001
+          </span>
         </div>
-      </header>
+      </div>
 
       {/* Marquee */}
       <VaultMarquee />

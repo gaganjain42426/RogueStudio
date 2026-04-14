@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_LINKS } from '@/lib/constants'
@@ -33,12 +34,16 @@ export default function Navbar() {
       >
         <div className="flex justify-between items-center w-full px-6 md:px-8 py-5 max-w-[1440px] mx-auto">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-black tracking-tighter text-white"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
-          >
-            Rogue Studio
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Rogue Studio"
+              width={160}
+              height={52}
+              className="h-10 w-auto object-contain"
+              style={{ mixBlendMode: 'screen' }}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}

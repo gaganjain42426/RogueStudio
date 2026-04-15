@@ -4,6 +4,8 @@ import Script from 'next/script'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
+import SmoothScroll from '@/components/SmoothScroll'
+import MotionMain from '@/components/MotionMain'
 
 const epilogue = Epilogue({
   subsets: ['latin'],
@@ -116,9 +118,11 @@ export default function RootLayout({
       <body
         className={`${epilogue.variable} ${inter.variable} ${playfairDisplay.variable} bg-background text-on-surface font-body overflow-x-hidden antialiased selection:bg-primary-container selection:text-on-primary-fixed`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <MotionMain>{children}</MotionMain>
+          <Footer />
+        </SmoothScroll>
 
         {/* TODO: Add GA4 measurement ID — replace G-XXXXXXXXXX */}
         {ga4Id && ga4Id !== 'G-XXXXXXXXXX' && (

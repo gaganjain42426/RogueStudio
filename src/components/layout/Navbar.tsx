@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -31,7 +31,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled || menuOpen || alwaysSolid
-            ? 'bg-surface/80 backdrop-blur-[24px] shadow-lg'
+            ? 'bg-surface/80 backdrop-blur-[24px] shadow-lg border-b border-white/5'
             : 'bg-transparent'
         }`}
       >
@@ -55,14 +55,21 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-bold tracking-tight transition-colors duration-200 text-sm lg:text-base ${
+                className={`group relative font-bold tracking-tight transition-colors duration-200 text-sm lg:text-base ${
                   pathname === link.href
-                    ? 'text-primary-container underline underline-offset-4'
+                    ? 'text-primary-container'
                     : 'text-white/80 hover:text-white'
                 }`}
                 style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
               >
                 {link.label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px bg-primary-container transition-transform duration-300 origin-left ${
+                    pathname === link.href
+                      ? 'w-full scale-x-100'
+                      : 'w-full scale-x-0 group-hover:scale-x-100'
+                  }`}
+                />
               </Link>
             ))}
           </div>

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { AnimatedSection, AnimatedItem } from '@/components/ui/AnimatedSection'
+import FadeInLeft from '@/components/animations/FadeInLeft'
+import FadeInRight from '@/components/animations/FadeInRight'
 
 function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0)
@@ -58,94 +59,92 @@ export default function About() {
   return (
     <section className="bg-tertiary-fixed text-on-tertiary-fixed py-32 px-6 md:px-8 overflow-hidden">
       <div className="max-w-[1440px] mx-auto">
-        <AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20 items-center">
-            {/* Left — text */}
-            <AnimatedItem>
-              <h2
-                className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20 items-center">
+          {/* Left — text */}
+          <FadeInLeft>
+            <h2
+              className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            >
+              World-class creative{' '}
+              <span
+                className="italic font-normal text-primary-container"
+                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
               >
-                World-class creative{' '}
-                <span
-                  className="italic font-normal text-primary-container"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-                >
-                  setting a higher standard.
+                setting a higher standard.
+              </span>
+            </h2>
+            <p className="mt-8 text-lg text-on-tertiary-fixed-variant leading-relaxed max-w-md">
+              We aren&apos;t just an agency in Jaipur. We are a global output machine powered by
+              local culture and international ambition. Our team is a mix of obsessed designers,
+              data junkies, and visual storytellers.
+            </p>
+            <div className="mt-12 flex gap-12">
+              <div className="flex flex-col">
+                <CountUp target={12} suffix="+" />
+                <span className="text-xs font-bold uppercase tracking-widest mt-2 text-on-tertiary-fixed-variant">
+                  Visionaries
                 </span>
-              </h2>
-              <p className="mt-8 text-lg text-on-tertiary-fixed-variant leading-relaxed max-w-md">
-                We aren&apos;t just an agency in Jaipur. We are a global output machine powered by
-                local culture and international ambition. Our team is a mix of obsessed designers,
-                data junkies, and visual storytellers.
-              </p>
-              <div className="mt-12 flex gap-12">
-                <div className="flex flex-col">
-                  <CountUp target={12} suffix="+" />
-                  <span className="text-xs font-bold uppercase tracking-widest mt-2 text-on-tertiary-fixed-variant">
-                    Visionaries
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <CountUp target={150} suffix="+" />
-                  <span className="text-xs font-bold uppercase tracking-widest mt-2 text-on-tertiary-fixed-variant">
-                    Projects
-                  </span>
-                </div>
               </div>
-            </AnimatedItem>
+              <div className="flex flex-col">
+                <CountUp target={150} suffix="+" />
+                <span className="text-xs font-bold uppercase tracking-widest mt-2 text-on-tertiary-fixed-variant">
+                  Projects
+                </span>
+              </div>
+            </div>
+          </FadeInLeft>
 
-            {/* Right — asymmetric photo collage */}
-            <AnimatedItem className="grid grid-cols-2 gap-4">
-              {/* Col 1 — offset down */}
-              <div className="space-y-4 pt-12">
-                <div className={`${photos[0].aspect} rounded-lg overflow-hidden bg-surface`}>
-                  <Image
-                    src={photos[0].src}
-                    alt={photos[0].alt}
-                    width={400}
-                    height={500}
-                    className="w-full h-full object-cover"
-                    sizes="25vw"
-                  />
-                </div>
-                <div className={`${photos[1].aspect} rounded-lg overflow-hidden bg-surface`}>
-                  <Image
-                    src={photos[1].src}
-                    alt={photos[1].alt}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    sizes="25vw"
-                  />
-                </div>
+          {/* Right — asymmetric photo collage */}
+          <FadeInRight className="grid grid-cols-2 gap-4" delay={0.2}>
+            {/* Col 1 — offset down */}
+            <div className="space-y-4 pt-12">
+              <div className={`${photos[0].aspect} rounded-lg overflow-hidden bg-surface`}>
+                <Image
+                  src={photos[0].src}
+                  alt={photos[0].alt}
+                  width={400}
+                  height={500}
+                  className="w-full h-full object-cover"
+                  sizes="25vw"
+                />
               </div>
-              {/* Col 2 — normal */}
-              <div className="space-y-4">
-                <div className={`${photos[2].aspect} rounded-lg overflow-hidden bg-surface`}>
-                  <Image
-                    src={photos[2].src}
-                    alt={photos[2].alt}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover"
-                    sizes="25vw"
-                  />
-                </div>
-                <div className={`${photos[3].aspect} rounded-lg overflow-hidden bg-surface`}>
-                  <Image
-                    src={photos[3].src}
-                    alt={photos[3].alt}
-                    width={400}
-                    height={500}
-                    className="w-full h-full object-cover"
-                    sizes="25vw"
-                  />
-                </div>
+              <div className={`${photos[1].aspect} rounded-lg overflow-hidden bg-surface`}>
+                <Image
+                  src={photos[1].src}
+                  alt={photos[1].alt}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  sizes="25vw"
+                />
               </div>
-            </AnimatedItem>
-          </div>
-        </AnimatedSection>
+            </div>
+            {/* Col 2 — normal */}
+            <div className="space-y-4">
+              <div className={`${photos[2].aspect} rounded-lg overflow-hidden bg-surface`}>
+                <Image
+                  src={photos[2].src}
+                  alt={photos[2].alt}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                  sizes="25vw"
+                />
+              </div>
+              <div className={`${photos[3].aspect} rounded-lg overflow-hidden bg-surface`}>
+                <Image
+                  src={photos[3].src}
+                  alt={photos[3].alt}
+                  width={400}
+                  height={500}
+                  className="w-full h-full object-cover"
+                  sizes="25vw"
+                />
+              </div>
+            </div>
+          </FadeInRight>
+        </div>
       </div>
     </section>
   )

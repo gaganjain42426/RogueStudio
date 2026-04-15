@@ -5,6 +5,30 @@ import { useRouter } from 'next/navigation'
 import { createClient as createSupabaseClient } from '@/lib/supabase/client'
 import { Plus, X, Pencil, ChevronRight, Copy, Check, Trash2, Search } from 'lucide-react'
 
+const SHORT_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+
+function ordinal(n: number): string {
+  const s = ['th', 'st', 'nd', 'rd']
+  const v = n % 100
+  return `${n}${s[(v - 20) % 10] ?? s[v] ?? s[0]}`
+}
+
+function fmtDate(d: string): string {
+  const dt = new Date(d + 'T00:00:00')
+  return `${dt.getDate()} ${SHORT_MONTHS[dt.getMonth()]} ${dt.getFullYear()}`
+}
+
+function fmtMonthYear(d: string): string {
+  const dt = new Date(d + 'T00:00:00')
+  return `${SHORT_MONTHS[dt.getMonth()]} ${dt.getFullYear()}`
+}
+
+function monthsSince(d: string): number {
+  const dt = new Date(d + 'T00:00:00')
+  const now = new Date()
+  return (now.getFullYear() - dt.getFullYear()) * 12 + (now.getMonth() - dt.getMonth())
+}
+
 type Client = {
   id: string
   name: string
@@ -17,6 +41,8 @@ type Client = {
   color_tag: string
   notes: string
   portal_email: string | null
+  onboarded_date: string | null
+  billing_cycle_date: number | null
 }
 
 type Task = { id: string; title: string; status: string; priority: string; due_date: string | null }
@@ -52,11 +78,13 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 type ClientFormState = {
   name: string; industry: string; contact_name: string; contact_phone: string
   contact_email: string; retainer_amount: string; status: string; color_tag: string; notes: string
+  onboarded_date: string; billing_cycle_date: string
 }
 
 const defaultForm: ClientFormState = {
   name: '', industry: '', contact_name: '', contact_phone: '',
   contact_email: '', retainer_amount: '', status: 'active', color_tag: '#fa5c1b', notes: '',
+  onboarded_date: '', billing_cycle_date: '',
 }
 
 function clientToForm(c: Client): ClientFormState {
@@ -65,6 +93,8 @@ function clientToForm(c: Client): ClientFormState {
     contact_phone: c.contact_phone ?? '', contact_email: c.contact_email ?? '',
     retainer_amount: String(c.retainer_amount ?? ''), status: c.status,
     color_tag: c.color_tag || '#fa5c1b', notes: c.notes ?? '',
+    onboarded_date: c.onboarded_date ?? '',
+    billing_cycle_date: c.billing_cycle_date != null ? String(c.billing_cycle_date) : '',
   }
 }
 
@@ -145,6 +175,17 @@ function ClientForm({
             className={`${inputCls} resize-none`} rows={3}
             placeholder="Internal notes about this client…" />
         </Field>
+        <Field label="Onboarded On">
+          <input type="date" value={form.onboarded_date}
+            onChange={(e) => setForm(f => ({ ...f, onboarded_date: e.target.value }))}
+            className={inputCls} />
+        </Field>
+        <Field label="Billing Cycle Date">
+          <input type="number" min="1" max="31" value={form.billing_cycle_date}
+            onChange={(e) => setForm(f => ({ ...f, billing_cycle_date: e.target.value }))}
+            className={inputCls} placeholder="e.g. 15 (day of month)" />
+          <p className="text-xs text-gray-600 mt-1">Day of month when invoice is generated</p>
+        </Field>
         <div className="flex gap-3 pt-2">
           <button type="button" onClick={onClose}
             className="flex-1 py-2.5 rounded-lg border border-white/10 text-gray-400 hover:text-white text-sm transition-colors">
@@ -222,6 +263,8 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
       contact_email: addForm.contact_email,
       retainer_amount: parseFloat(addForm.retainer_amount) || 0,
       status: addForm.status, color_tag: addForm.color_tag, notes: addForm.notes,
+      onboarded_date: addForm.onboarded_date || null,
+      billing_cycle_date: addForm.billing_cycle_date ? parseInt(addForm.billing_cycle_date) : null,
     }).select().single()
     if (err) { setAddError(err.message); setAddSaving(false); return }
     setClients(prev => [data as Client, ...prev])
@@ -247,6 +290,8 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
       contact_email: editForm.contact_email,
       retainer_amount: parseFloat(editForm.retainer_amount) || 0,
       status: editForm.status, color_tag: editForm.color_tag, notes: editForm.notes,
+      onboarded_date: editForm.onboarded_date || null,
+      billing_cycle_date: editForm.billing_cycle_date ? parseInt(editForm.billing_cycle_date) : null,
     }).eq('id', editClient.id).select().single()
     if (err) { setEditError(err.message); setEditSaving(false); return }
     const updated = data as Client
@@ -416,6 +461,16 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
                   ₹{client.retainer_amount.toLocaleString('en-IN')}
                   <span className="text-gray-500 text-xs font-normal ml-1">/mo</span>
                 </p>
+                {(client.billing_cycle_date || client.onboarded_date) && (
+                  <div className="flex items-center gap-3 mt-1 flex-wrap">
+                    {client.billing_cycle_date && (
+                      <p className="text-gray-500 text-xs">Billing: {ordinal(client.billing_cycle_date)}</p>
+                    )}
+                    {client.onboarded_date && (
+                      <p className="text-gray-500 text-xs">Since {fmtMonthYear(client.onboarded_date)}</p>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -503,6 +558,20 @@ export default function ClientsClient({ initialClients }: { initialClients: Clie
                     <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Phone</p>
                     <p className="text-white text-sm">{detailClient.contact_phone || '—'}</p>
                   </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Onboarded</p>
+                    <p className="text-white text-sm">{detailClient.onboarded_date ? fmtDate(detailClient.onboarded_date) : '—'}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Billing Cycle</p>
+                    <p className="text-white text-sm">{detailClient.billing_cycle_date ? `${ordinal(detailClient.billing_cycle_date)} of every month` : 'Not set'}</p>
+                  </div>
+                  {detailClient.onboarded_date && (
+                    <div className="col-span-2">
+                      <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Time with Agency</p>
+                      <p className="text-green-400 text-sm font-medium">{monthsSince(detailClient.onboarded_date)} months</p>
+                    </div>
+                  )}
                 </div>
                 {detailClient.contact_email && (
                   <div>

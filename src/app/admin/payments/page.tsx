@@ -18,7 +18,7 @@ export default async function PaymentsPage() {
       .order('date', { ascending: false }),
     supabase
       .from('clients')
-      .select('id, name, color_tag, retainer_amount, status')
+      .select('id, name, color_tag, retainer_amount, status, billing_cycle_date')
       .order('name'),
   ])
 

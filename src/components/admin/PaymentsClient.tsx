@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { createClient as createSupabaseClient } from '@/lib/supabase/client'
 import { Plus, Trash2, Download } from 'lucide-react'
 
-type ClientOption = { id: string; name: string; color_tag: string; retainer_amount: number; status: string }
+type ClientOption = { id: string; name: string; color_tag: string; retainer_amount: number; status: string; billing_cycle_date: number | null }
 
 type Payment = {
   id: string
@@ -32,6 +32,12 @@ const editSelectCls =
   'w-full bg-[#111] text-white text-sm px-2 py-0.5 rounded border border-[#fa5c1b] focus:outline-none cursor-pointer'
 const filterSelectCls =
   'bg-[#1c1b1b] text-white text-sm px-3 py-2 rounded-lg border border-white/10 focus:outline-none focus:border-[#fa5c1b] cursor-pointer'
+
+function ordinal(n: number): string {
+  const s = ['th', 'st', 'nd', 'rd']
+  const v = n % 100
+  return `${n}${s[(v - 20) % 10] ?? s[v] ?? s[0]}`
+}
 
 function StatCard({ label, value, accent }: { label: string; value: string; accent?: string }) {
   return (
@@ -437,6 +443,12 @@ export default function PaymentsClient({
                     <option value="">— Client —</option>
                     {clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                   </select>
+                  {(() => {
+                    if (!newRow.client_id) return null
+                    const sel = clients.find(c => c.id === newRow.client_id)
+                    if (!sel?.billing_cycle_date) return null
+                    return <p className="text-[10px] text-blue-400 mt-1 whitespace-nowrap">Billing cycle: {ordinal(sel.billing_cycle_date)} of month</p>
+                  })()}
                 </td>
                 <td className="px-3 py-2">
                   <input value={newRow.month} onChange={e => setNewRow(r => ({ ...r, month: e.target.value }))} className={editInputCls} placeholder="April 2026" />

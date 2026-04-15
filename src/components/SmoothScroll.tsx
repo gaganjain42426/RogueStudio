@@ -1,40 +1,38 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import Lenis from 'lenis'
-import { useAnimationFrame } from 'framer-motion'
-
-// ease-in-out-cubic
-function easeInOutCubic(t: number): number {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-}
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null)
-
   useEffect(() => {
-    // Disable on touch devices
     if (typeof window === 'undefined') return
+    // Native touch devices get native scroll
     if ('ontouchstart' in window) return
     // Respect prefers-reduced-motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: easeInOutCubic,
+      duration: 0.6,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.2,
+      touchMultiplier: 1.5,
+      infinite: false,
     })
 
-    lenisRef.current = lenis
+    let rafId: number
+    function raf(time: number) {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+    rafId = requestAnimationFrame(raf)
 
     return () => {
+      cancelAnimationFrame(rafId)
       lenis.destroy()
-      lenisRef.current = null
     }
   }, [])
 
-  useAnimationFrame((time) => {
-    lenisRef.current?.raf(time)
-  })
-
-  return <div>{children}</div>
+  return <>{children}</>
 }

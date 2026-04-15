@@ -16,6 +16,7 @@ type Task = {
   due_date: string | null
   client_id: string | null
   clients: { name: string; color_tag: string } | null
+  requested_by: string | null
 }
 
 const PRIORITY_COLORS: Record<string, string> = {
@@ -360,6 +361,11 @@ export default function WorkBoardClient({
                       >
                         {task.priority}
                       </span>
+                      {task.requested_by === 'client' && (
+                        <span className="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full">
+                          Client Request
+                        </span>
+                      )}
                       {task.due_date && (
                         <span className="text-[10px] text-gray-600 ml-auto">
                           {task.due_date.split('-').reverse().join('/')}

@@ -96,6 +96,7 @@ export default async function AdminDashboard() {
     { data: recentPaymentsRaw },
     { data: overdueTasksRaw },
     { data: revenueRaw },
+    { count: clientRequestCount },
   ] = await Promise.all([
     supabase.from('clients').select('retainer_amount').eq('status', 'active'),
     supabase.from('payments').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
@@ -118,6 +119,11 @@ export default async function AdminDashboard() {
       .order('due_date', { ascending: true })
       .limit(5),
     supabase.from('payments').select('amount, month').eq('status', 'received'),
+    supabase
+      .from('tasks')
+      .select('*', { count: 'exact', head: true })
+      .eq('requested_by', 'client')
+      .eq('status', 'todo'),
   ])
 
   const mrr = activeClientsData?.reduce((s, c) => s + (c.retainer_amount ?? 0), 0) ?? 0
@@ -145,7 +151,7 @@ export default async function AdminDashboard() {
       <h1 className="text-2xl font-bold text-white mb-8">Dashboard</h1>
 
       {/* Stat Cards — clickable */}
-      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 xl:grid-cols-5 gap-4 mb-8">
         <Link
           href="/admin/clients"
           className="bg-[#1c1b1b] rounded-xl p-5 border-t-2 border-[#fa5c1b] hover:bg-[#222] transition-colors group block"
@@ -181,6 +187,16 @@ export default async function AdminDashboard() {
           <p className="text-sm text-gray-400 mb-2">Active Clients</p>
           <p className="text-3xl font-bold text-white tabular-nums">{activeClientsCount ?? 0}</p>
           <p className="text-xs text-gray-700 mt-2 group-hover:text-gray-400 transition-colors">View clients →</p>
+        </Link>
+        <Link
+          href="/admin/workboard"
+          className="bg-[#1c1b1b] rounded-xl p-5 border-t-2 border-blue-500 hover:bg-[#222] transition-colors group block"
+        >
+          <p className="text-sm text-gray-400 mb-2">New Client Requests</p>
+          <p className={`text-3xl font-bold tabular-nums ${(clientRequestCount ?? 0) > 0 ? 'text-blue-400' : 'text-white'}`}>
+            {clientRequestCount ?? 0}
+          </p>
+          <p className="text-xs text-gray-700 mt-2 group-hover:text-gray-400 transition-colors">View board →</p>
         </Link>
       </div>
 

@@ -1,4 +1,5 @@
 import { getPortalClient } from '@/lib/portal'
+import PortalTaskRequestButton from '@/components/portal/PortalTaskRequestButton'
 
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Tasks — Client Portal' }
@@ -49,7 +50,10 @@ export default async function PortalTasksPage() {
 
   return (
     <div className="p-6 md:p-8 max-w-[900px]">
-      <h1 className="text-2xl font-bold text-white mb-8">Tasks</h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-2xl font-bold text-white">Tasks</h1>
+        <PortalTaskRequestButton clientId={client.id} />
+      </div>
 
       <div className="space-y-10">
         {GROUPS.map(({ key, label }) => {

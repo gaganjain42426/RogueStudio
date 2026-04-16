@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import VaultEntrance from '@/components/vault/VaultEntrance'
 import VaultGrid from '@/components/vault/VaultGrid'
+import type { PortfolioProject } from '@/types'
 
-export default function VaultClient() {
+interface Props {
+  projects: PortfolioProject[]
+}
+
+export default function VaultClient({ projects }: Props) {
   const [entered, setEntered] = useState(false)
 
   return (
@@ -14,7 +19,7 @@ export default function VaultClient() {
         {!entered && <VaultEntrance onEnter={() => setEntered(true)} />}
       </AnimatePresence>
 
-      {entered && <VaultGrid />}
+      {entered && <VaultGrid projects={projects} />}
     </>
   )
 }

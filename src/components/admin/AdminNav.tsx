@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import {
   LayoutDashboard,
   Users,
+  FolderOpen,
   Kanban,
   Calendar,
   CreditCard,
@@ -16,6 +17,7 @@ import { createClient } from '@/lib/supabase/client'
 const NAV = [
   { href: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/admin/clients', icon: Users, label: 'Clients' },
+  { href: '/admin/portfolio', icon: FolderOpen, label: 'Portfolio' },
   { href: '/admin/workboard', icon: Kanban, label: 'Work Board' },
   { href: '/admin/calendar', icon: Calendar, label: 'Calendar' },
   { href: '/admin/payments', icon: CreditCard, label: 'Payments' },

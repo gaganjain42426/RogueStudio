@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Camera, Palette, Settings, TrendingUp } from 'lucide-react'
@@ -20,17 +19,6 @@ const protocolIcons = [
 ]
 
 export default function VaultProjectPanel({ project, onClose }: VaultProjectPanelProps) {
-  useEffect(() => {
-    if (project) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [project])
-
   return (
     <AnimatePresence>
       {project && (
@@ -42,11 +30,13 @@ export default function VaultProjectPanel({ project, onClose }: VaultProjectPane
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
+            data-lenis-prevent
           />
 
           {/* Panel */}
           <motion.div
             className="fixed right-0 top-0 bottom-0 z-50 w-full md:w-[80%] bg-surface-container-low overflow-y-auto"
+            data-lenis-prevent
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}

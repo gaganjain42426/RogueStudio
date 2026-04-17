@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     // Fixed overlay covers the public Navbar/Footer from root layout
     <div className="fixed inset-0 z-[200] flex bg-[#0e0e0e] overflow-hidden">
       <AdminNav mrr={mrr} />
-      <main className="flex-1 overflow-y-auto bg-[#0e0e0e]">
+      <main className="flex-1 overflow-y-auto bg-[#0e0e0e]" data-lenis-prevent>
         {children}
       </main>
     </div>

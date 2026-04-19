@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef, useState, useCallback, useEffect } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useRef, useEffect } from 'react'
 import FadeInUp from '@/components/animations/FadeInUp'
 
 const reels = [
@@ -17,66 +16,68 @@ const reels = [
   { id: '10', src: '/reels/reel-10.mp4', client: 'Rogue Studio', category: 'Social Media' },
 ]
 
+// Duplicate for seamless infinite loop
+const infiniteReels = [...reels, ...reels]
+
 const CARD_WIDTH = 260
 const CARD_GAP   = 16
-const SCROLL_STEP = CARD_WIDTH + CARD_GAP
+const SCROLL_SPEED = 0.8
 
 export default function ReelsCarousel() {
-  const trackRef    = useRef<HTMLDivElement>(null)
-  const videoRefs   = useRef<(HTMLVideoElement | null)[]>([])
-  const [playing,   setPlaying]   = useState<Record<string, boolean>>({})
-  const [activeIdx, setActiveIdx] = useState(0)
-  const touchStartX = useRef(0)
-
-  // Update active dot on scroll
-  const handleScroll = useCallback(() => {
-    const el = trackRef.current
-    if (!el) return
-    const paddingLeft = (window.innerWidth - CARD_WIDTH) / 2
-    const scrolled    = el.scrollLeft
-    const idx         = Math.round((scrolled) / SCROLL_STEP)
-    setActiveIdx(Math.max(0, Math.min(idx, reels.length - 1)))
-  }, [])
+  const trackRef   = useRef<HTMLDivElement>(null)
+  const rafRef     = useRef<number>(0)
+  const scrollX    = useRef(0)
+  const isPaused   = useRef(false)
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const el = trackRef.current
     if (!el) return
-    el.addEventListener('scroll', handleScroll, { passive: true })
-    return () => el.removeEventListener('scroll', handleScroll)
-  }, [handleScroll])
 
-  const scrollBy = useCallback((dir: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: dir * SCROLL_STEP, behavior: 'smooth' })
-  }, [])
+    // Half the total scroll width = width of one set of reels
+    const halfWidth = (CARD_WIDTH + CARD_GAP) * reels.length
 
-  const scrollToIdx = useCallback((idx: number) => {
-    trackRef.current?.scrollTo({ left: idx * SCROLL_STEP, behavior: 'smooth' })
-  }, [])
-
-  const onMouseEnter = useCallback((idx: number, id: string) => {
-    const v = videoRefs.current[idx]
-    if (!v) return
-    v.play().then(() => setPlaying(p => ({ ...p, [id]: true }))).catch(() => {})
-  }, [])
-
-  const onMouseLeave = useCallback((idx: number, id: string) => {
-    const v = videoRefs.current[idx]
-    if (!v) return
-    v.pause()
-    v.currentTime = 0
-    setPlaying(p => ({ ...p, [id]: false }))
-  }, [])
-
-  const onTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX
-  }, [])
-
-  const onTouchEnd = useCallback((e: React.TouchEvent) => {
-    const delta = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(delta) > 50) {
-      scrollBy(delta > 0 ? 1 : -1)
+    function tick() {
+      if (!isPaused.current) {
+        scrollX.current += SCROLL_SPEED
+        if (scrollX.current >= halfWidth) {
+          scrollX.current = 0
+        }
+        if (trackRef.current) {
+          trackRef.current.scrollLeft = scrollX.current
+        }
+      }
+      rafRef.current = requestAnimationFrame(tick)
     }
-  }, [scrollBy])
+
+    rafRef.current = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(rafRef.current)
+      if (resumeTimer.current) clearTimeout(resumeTimer.current)
+    }
+  }, [])
+
+  const handleMouseEnter = () => {
+    isPaused.current = true
+    if (resumeTimer.current) clearTimeout(resumeTimer.current)
+  }
+
+  const handleMouseLeave = () => {
+    isPaused.current = false
+  }
+
+  const handleTouchStart = () => {
+    isPaused.current = true
+    if (resumeTimer.current) clearTimeout(resumeTimer.current)
+  }
+
+  const handleTouchEnd = () => {
+    if (resumeTimer.current) clearTimeout(resumeTimer.current)
+    resumeTimer.current = setTimeout(() => {
+      isPaused.current = false
+    }, 2000)
+  }
 
   return (
     <section
@@ -112,122 +113,59 @@ export default function ReelsCarousel() {
         </FadeInUp>
       </div>
 
-      {/* Carousel wrapper — relative for arrow positioning */}
-      <div className="relative">
-        {/* Left Arrow */}
-        <button
-          onClick={() => scrollBy(-1)}
-          aria-label="Scroll left"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm hover:bg-[#fa5c1b] hover:border-[#fa5c1b] transition-all duration-200"
-        >
-          <ChevronLeft size={20} className="text-white" />
-        </button>
-
-        {/* Right Arrow */}
-        <button
-          onClick={() => scrollBy(1)}
-          aria-label="Scroll right"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center border border-white/10 bg-white/10 backdrop-blur-sm hover:bg-[#fa5c1b] hover:border-[#fa5c1b] transition-all duration-200"
-        >
-          <ChevronRight size={20} className="text-white" />
-        </button>
-
-        {/* Scrollable track */}
-        <div
-          ref={trackRef}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-          className="flex overflow-x-auto"
-          style={{
-            gap: `${CARD_GAP}px`,
-            scrollSnapType: 'x mandatory',
-            paddingLeft:  `calc((100vw - ${CARD_WIDTH}px) / 2)`,
-            paddingRight: `calc((100vw - ${CARD_WIDTH}px) / 2)`,
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          } as React.CSSProperties}
-        >
-          {reels.map((reel, i) => (
-            <FadeInUp key={reel.id} delay={i * 0.05}>
-              <div
-                className="flex-shrink-0 cursor-pointer relative overflow-hidden transition-transform duration-300 hover:scale-[1.03]"
-                style={{
-                  width: `${CARD_WIDTH}px`,
-                  aspectRatio: '9/16',
-                  borderRadius: '16px',
-                  background: '#1c1b1b',
-                  scrollSnapAlign: 'center',
-                }}
-                onMouseEnter={() => onMouseEnter(i, reel.id)}
-                onMouseLeave={() => onMouseLeave(i, reel.id)}
-              >
-                {/* Video */}
-                <video
-                  ref={el => { videoRefs.current[i] = el }}
-                  src={reel.src}
-                  muted
-                  playsInline
-                  loop
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Play icon overlay */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300"
-                  style={{ opacity: playing[reel.id] ? 0 : 1 }}
-                >
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm">
-                    {/* Play triangle */}
-                    <div
-                      className="ml-1"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderTop:    '10px solid transparent',
-                        borderBottom: '10px solid transparent',
-                        borderLeft:   '18px solid white',
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* Bottom info overlay */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 flex flex-col justify-end px-4 pb-4"
-                  style={{
-                    height: '80px',
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-                  }}
-                >
-                  <p className="text-white font-bold text-sm leading-tight">{reel.client}</p>
-                  <p
-                    className="text-xs uppercase tracking-wider"
-                    style={{ color: '#fa5c1b' }}
-                  >
-                    {reel.category}
-                  </p>
-                </div>
-              </div>
-            </FadeInUp>
-          ))}
-        </div>
-      </div>
-
-      {/* Dot indicators */}
-      <div className="flex items-center justify-center gap-2 mt-8">
-        {reels.map((reel, i) => (
-          <button
-            key={reel.id}
-            onClick={() => scrollToIdx(i)}
-            aria-label={`Go to reel ${i + 1}`}
-            className="rounded-full transition-all duration-300"
+      {/* Carousel track */}
+      <div
+        ref={trackRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="flex overflow-x-hidden"
+        style={{
+          gap: `${CARD_GAP}px`,
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        } as React.CSSProperties}
+      >
+        {infiniteReels.map((reel, i) => (
+          <div
+            key={`${reel.id}-${i}`}
+            className="flex-shrink-0 relative overflow-hidden"
             style={{
-              width:      i === activeIdx ? '32px' : '6px',
-              height:     '6px',
-              background: i === activeIdx ? '#fa5c1b' : 'rgba(255,255,255,0.2)',
+              width: `${CARD_WIDTH}px`,
+              aspectRatio: '9/16',
+              borderRadius: '16px',
+              background: '#1c1b1b',
             }}
-          />
+          >
+            {/* Video — autoplay all */}
+            <video
+              src={reel.src}
+              muted
+              autoPlay
+              playsInline
+              loop
+              preload="auto"
+              className="w-full h-full object-cover"
+            />
+
+            {/* Bottom info overlay */}
+            <div
+              className="absolute bottom-0 left-0 right-0 flex flex-col justify-end px-4 pb-4"
+              style={{
+                height: '80px',
+                background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+              }}
+            >
+              <p className="text-white font-bold text-sm leading-tight">{reel.client}</p>
+              <p
+                className="text-xs uppercase tracking-wider"
+                style={{ color: '#fa5c1b' }}
+              >
+                {reel.category}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
 

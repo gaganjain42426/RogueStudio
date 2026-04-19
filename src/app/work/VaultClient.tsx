@@ -4,10 +4,10 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import VaultEntrance from '@/components/vault/VaultEntrance'
 import VaultGrid from '@/components/vault/VaultGrid'
-import type { PortfolioProject } from '@/types'
+import type { VaultClient as VaultClientType } from '@/data/vault-clients'
 
 interface Props {
-  projects: PortfolioProject[]
+  projects: VaultClientType[]
 }
 
 export default function VaultClient({ projects }: Props) {

@@ -1,10 +1,9 @@
 'use client'
 
-interface Props {
-  names: string[]
-}
+import { VAULT_CLIENTS } from '@/data/vault-clients'
 
-export default function VaultMarquee({ names }: Props) {
+export default function VaultMarquee() {
+  const names = VAULT_CLIENTS.map((c) => c.name)
   const doubled = [...names, ...names]
 
   return (

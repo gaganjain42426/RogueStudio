@@ -12,24 +12,6 @@ export interface Project {
   tags: string[]
 }
 
-export interface PortfolioProject {
-  id: string
-  title: string
-  client: string
-  category: string
-  ref_code: string | null
-  cover_image: string | null
-  images: string[] | null
-  tagline: string | null
-  description: string | null
-  services: string[] | null
-  stats: { value: string; label: string }[] | null
-  live_url: string | null
-  published: boolean
-  sort_order: number
-  created_at: string
-}
-
 export interface Testimonial {
   id: string
   quote: string

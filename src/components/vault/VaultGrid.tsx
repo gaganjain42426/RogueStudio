@@ -1,39 +1,28 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import type { PortfolioProject } from '@/types'
+import type { VaultClient } from '@/data/vault-clients'
+import { VAULT_FILTERS } from '@/data/vault-clients'
 import VaultMarquee from './VaultMarquee'
 import VaultProjectPanel from './VaultProjectPanel'
 
-type GridSpan = 'tall' | 'wide' | 'normal'
-const SPAN_PATTERN: GridSpan[] = ['tall', 'wide', 'normal', 'normal', 'tall', 'wide']
-
-function deriveFilters(projects: PortfolioProject[]) {
-  const cats = Array.from(new Set(projects.map((p) => p.category.toLowerCase())))
-  return [
-    { label: 'All Projects', value: 'all' },
-    ...cats.map((c) => ({ label: c.charAt(0).toUpperCase() + c.slice(1), value: c })),
-  ]
-}
-
 interface Props {
-  projects: PortfolioProject[]
+  projects: VaultClient[]
 }
 
 export default function VaultGrid({ projects }: Props) {
   const [filter, setFilter] = useState('all')
-  const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null)
+  const [selectedProject, setSelectedProject] = useState<VaultClient | null>(null)
 
-  const filters = deriveFilters(projects)
   const filtered =
-    filter === 'all' ? projects : projects.filter((p) => p.category.toLowerCase() === filter)
+    filter === 'all' ? projects : projects.filter((p) => p.category === filter)
 
   return (
     <div className="min-h-screen bg-background pt-[72px]">
       {/* Marquee */}
-      <VaultMarquee names={projects.map((p) => p.title)} />
+      <VaultMarquee />
 
       {/* Section header + inline filters */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-8">
@@ -42,7 +31,7 @@ export default function VaultGrid({ projects }: Props) {
             The Vault — Our Work
           </h1>
           <div className="flex flex-wrap items-center gap-2">
-            {filters.map((f) => (
+            {VAULT_FILTERS.map((f) => (
               <button
                 key={f.value}
                 onClick={() => setFilter(f.value)}
@@ -68,16 +57,13 @@ export default function VaultGrid({ projects }: Props) {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
             {filtered.map((project, i) => {
-              const gridSpan = SPAN_PATTERN[i % SPAN_PATTERN.length]
               return (
                 <motion.div
                   key={project.id}
-                  className={`group relative overflow-hidden cursor-pointer rounded-sm ${
-                    project.cover_image ? '' : 'bg-[#1c1b1b]'
-                  } ${
-                    gridSpan === 'tall'
+                  className={`group relative overflow-hidden cursor-pointer rounded-sm bg-[#1c1b1b] ${
+                    project.gridSpan === 'tall'
                       ? 'md:row-span-2'
-                      : gridSpan === 'wide'
+                      : project.gridSpan === 'wide'
                       ? 'md:col-span-2'
                       : ''
                   }`}
@@ -88,10 +74,10 @@ export default function VaultGrid({ projects }: Props) {
                   onClick={() => setSelectedProject(project)}
                 >
                   {/* Thumbnail */}
-                  {project.cover_image && (
+                  {project.thumbnail && (
                     <Image
-                      src={project.cover_image}
-                      alt={project.title}
+                      src={project.thumbnail}
+                      alt={project.name}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -107,10 +93,10 @@ export default function VaultGrid({ projects }: Props) {
                           fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)',
                         }}
                       >
-                        {project.title}
+                        {project.name}
                       </h3>
                       <p className="text-xs tracking-[0.2em] uppercase text-white/60 mb-4">
-                        {project.client}
+                        {project.industry}
                       </p>
                       <span className="inline-block px-5 py-2 bg-primary-container text-on-primary-fixed text-xs tracking-[0.15em] uppercase">
                         View Process →
@@ -126,10 +112,10 @@ export default function VaultGrid({ projects }: Props) {
                         fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)',
                       }}
                     >
-                      {project.title}
+                      {project.name}
                     </span>
                     <span className="text-[10px] tracking-[0.15em] text-white/60">
-                      {project.ref_code?.split('-').pop() ?? ''}
+                      {project.ref.split('-').pop() ?? ''}
                     </span>
                   </div>
                 </motion.div>

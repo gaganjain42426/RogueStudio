@@ -1,13 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Camera, Palette, Settings, TrendingUp } from 'lucide-react'
-import type { PortfolioProject } from '@/types'
+import type { VaultClient } from '@/data/vault-clients'
 import BeforeAfterSlider from './BeforeAfterSlider'
 
 interface VaultProjectPanelProps {
-  project: PortfolioProject | null
+  project: VaultClient | null
   onClose: () => void
 }
 
@@ -54,35 +53,23 @@ export default function VaultProjectPanel({ project, onClose }: VaultProjectPane
             <div className="max-w-4xl mx-auto px-8 py-16">
               {/* Header */}
               <div className="mb-12">
-                {project.ref_code && (
-                  <p className="text-xs tracking-[0.3em] uppercase text-secondary mb-3">
-                    {project.ref_code}
-                  </p>
-                )}
+                <p className="text-xs tracking-[0.3em] uppercase text-secondary mb-3">
+                  {project.ref}
+                </p>
                 <h2
                   className="text-4xl md:text-6xl font-bold text-on-background mb-3"
                   style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
                 >
-                  {project.title}
+                  {project.name}
                 </h2>
                 <div className="flex flex-wrap items-center gap-3 mt-2">
                   <span className="inline-block px-3 py-1 text-xs tracking-[0.15em] uppercase border border-outline-variant/30 text-on-surface-variant">
-                    {project.client}
+                    {project.industry}
                   </span>
                   <span className="inline-block px-3 py-1 text-xs tracking-[0.15em] uppercase bg-primary-container/20 text-secondary">
                     {project.category}
                   </span>
                 </div>
-                {project.live_url && (
-                  <a
-                    href={project.live_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-4 text-xs tracking-[0.15em] uppercase text-primary hover:underline"
-                  >
-                    View Live →
-                  </a>
-                )}
               </div>
 
               {/* Protocol */}
@@ -124,61 +111,31 @@ export default function VaultProjectPanel({ project, onClose }: VaultProjectPane
                   <p className="text-xs tracking-[0.3em] uppercase text-on-surface-variant mb-4">
                     Strategy &amp; Story
                   </p>
-                  {project.tagline && (
-                    <h3
-                      className="text-2xl text-primary italic mb-4"
-                      style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-                    >
-                      &ldquo;{project.tagline}&rdquo;
-                    </h3>
-                  )}
-                  {project.description && (
-                    <p className="text-sm leading-relaxed text-on-surface-variant">
-                      {project.description}
-                    </p>
-                  )}
+                  <h3
+                    className="text-2xl text-primary italic mb-4"
+                    style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  >
+                    &ldquo;{project.tagline}&rdquo;
+                  </h3>
+                  <p className="text-sm leading-relaxed text-on-surface-variant">
+                    {project.caseStudy}
+                  </p>
                 </div>
                 {/* Stats column */}
-                {project.stats && project.stats.length > 0 && (
-                  <div className="flex flex-col gap-3 justify-center">
-                    {project.stats.map((stat, i) => (
-                      <div
-                        key={i}
-                        className="w-full p-5 border border-secondary/30 text-center"
-                      >
-                        <p
-                          className="text-3xl font-bold text-secondary"
-                          style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-                        >
-                          {stat.value}
-                        </p>
-                        <p className="text-xs tracking-[0.2em] uppercase text-on-surface-variant mt-1">
-                          {stat.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Services */}
-              {project.services && project.services.length > 0 && (
-                <div className="mb-16">
-                  <p className="text-xs tracking-[0.3em] uppercase text-on-surface-variant mb-4">
-                    Services Delivered
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.services.map((service) => (
-                      <span
-                        key={service}
-                        className="px-4 py-1.5 text-xs tracking-[0.12em] uppercase border border-outline-variant/30 text-on-surface-variant"
-                      >
-                        {service}
-                      </span>
-                    ))}
+                <div className="flex flex-col gap-3 justify-center">
+                  <div className="w-full p-5 border border-secondary/30 text-center">
+                    <p
+                      className="text-3xl font-bold text-secondary"
+                      style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                    >
+                      {project.stat.value}
+                    </p>
+                    <p className="text-xs tracking-[0.2em] uppercase text-on-surface-variant mt-1">
+                      {project.stat.label}
+                    </p>
                   </div>
                 </div>
-              )}
+              </div>
 
               {/* The Work grid */}
               <div className="mb-16">
@@ -197,28 +154,15 @@ export default function VaultProjectPanel({ project, onClose }: VaultProjectPane
                       </p>
                     </div>
                   </div>
-                  {/* Gallery thumbnails */}
-                  {(project.images && project.images.length > 0
-                    ? project.images.slice(0, 6)
-                    : Array.from({ length: 6 }).map(() => null)
-                  ).map((img, i) => (
+                  {/* Gallery placeholders */}
+                  {Array.from({ length: 6 }).map((_, i) => (
                     <div
                       key={i}
                       className="relative bg-surface-container rounded-sm aspect-square overflow-hidden flex items-center justify-center"
                     >
-                      {img ? (
-                        <Image
-                          src={img}
-                          alt={`${project.title} — ${i + 1}`}
-                          fill
-                          className="object-cover"
-                          sizes="120px"
-                        />
-                      ) : (
-                        <span className="text-[10px] text-on-surface-variant/30">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                      )}
+                      <span className="text-[10px] text-on-surface-variant/30">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
                     </div>
                   ))}
                 </div>

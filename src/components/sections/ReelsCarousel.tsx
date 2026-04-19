@@ -81,33 +81,36 @@ export default function ReelsCarousel() {
 
   return (
     <section
-      className="py-24 overflow-hidden"
+      className="py-20 md:py-24 overflow-hidden"
       style={{ background: '#0D0D0D' }}
     >
       {/* Header */}
-      <div className="max-w-[1440px] mx-auto px-8 mb-16">
+      <div className="max-w-[1440px] mx-auto px-8 mb-14">
         <FadeInUp>
-          <p
-            className="text-xs tracking-[0.3em] uppercase mb-4"
-            style={{ color: '#fa5c1b', fontFamily: 'var(--font-label, sans-serif)' }}
-          >
-            The Work in Motion
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="inline-block w-8 h-px" style={{ background: '#fa5c1b' }} />
+            <p
+              className="text-xs tracking-[0.3em] uppercase"
+              style={{ color: '#fa5c1b', fontFamily: 'var(--font-label, sans-serif)' }}
+            >
+              The Full Reel · Gallery
+            </p>
+          </div>
           <div>
             <h2
-              className="text-6xl md:text-8xl font-black text-white leading-none"
-              style={{ fontFamily: 'var(--loaded-bebas, "Bebas Neue", sans-serif)' }}
+              className="text-5xl md:text-7xl font-black text-white leading-[0.95]"
+              style={{ fontFamily: 'var(--font-headline, "Epilogue", sans-serif)' }}
             >
-              Reels that
+              Keep scrolling —
             </h2>
             <h2
-              className="text-6xl md:text-8xl leading-none italic"
+              className="text-5xl md:text-7xl leading-[0.95] italic"
               style={{
                 color: '#fa5c1b',
-                fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)',
+                fontFamily: 'var(--font-serif-accent, "Playfair Display", serif)',
               }}
             >
-              Stop the Scroll
+              there&apos;s more where that came from.
             </h2>
           </div>
         </FadeInUp>

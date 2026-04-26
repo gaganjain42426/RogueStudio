@@ -1,42 +1,17 @@
-'use client'
-
-import Image from 'next/image'
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import ScaleIn from '@/components/animations/ScaleIn'
 import FadeInUp from '@/components/animations/FadeInUp'
+import { ResultsParallaxImage } from '@/components/sections/ResultsParallaxImage'
 
+/**
+ * Results — Server Component.
+ * H2 and body copy are server-rendered.
+ * Parallax image (useScroll/useTransform) is in ResultsParallaxImage (client island).
+ */
 export default function Results() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  const laptopY = useTransform(scrollYProgress, [0, 1], [0, -40])
-
   return (
-    <section
-      ref={sectionRef}
-      className="bg-primary-container py-40 px-6 md:px-8 relative overflow-hidden"
-    >
+    <section className="bg-primary-container py-40 px-6 md:px-8 relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto flex flex-col items-center relative z-10">
         {/* Laptop mockup with parallax */}
-        <ScaleIn className="w-full max-w-5xl" delay={0.2}>
-          <motion.div
-            className="w-full bg-surface-container-lowest rounded-lg p-4 shadow-2xl"
-            style={{ y: laptopY }}
-          >
-            <Image
-              src="https://picsum.photos/seed/dashboard/1200/700"
-              alt="Rogue Studio dashboard showing social media growth analytics"
-              width={1200}
-              height={700}
-              className="w-full rounded shadow-inner"
-              sizes="(max-width: 1280px) 100vw, 1000px"
-              quality={85}
-            />
-          </motion.div>
-        </ScaleIn>
+        <ResultsParallaxImage />
 
         {/* Headline */}
         <FadeInUp className="mt-20 text-center max-w-3xl" delay={0.4}>

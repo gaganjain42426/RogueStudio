@@ -1,17 +1,12 @@
-'use client'
-
-import { motion } from 'framer-motion'
 import FadeInUp from '@/components/animations/FadeInUp'
 import StaggerContainer from '@/components/animations/StaggerContainer'
+import { ServiceCardClient } from '@/components/sections/ServiceCardClient'
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
-  },
-}
+/**
+ * Services — Server Component.
+ * H2 heading and section structure are server-rendered.
+ * Animated service cards are isolated in ServiceCardClient (client island).
+ */
 
 const services = [
   {
@@ -60,26 +55,12 @@ export default function Services() {
           staggerChildren={0.1}
         >
           {services.map((svc) => (
-            <motion.div key={svc.icon} variants={cardVariants}>
-              <motion.div
-                className="p-10 bg-surface-container-highest rounded-lg hover:bg-primary-container group transition-colors duration-500 h-full"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="material-symbols-outlined text-primary-container group-hover:text-white text-5xl transition-colors">
-                  {svc.icon}
-                </span>
-                <h3
-                  className="mt-8 text-2xl font-bold text-white"
-                  style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
-                >
-                  {svc.title}
-                </h3>
-                <p className="mt-4 text-on-surface-variant group-hover:text-white/80 transition-colors leading-relaxed">
-                  {svc.description}
-                </p>
-              </motion.div>
-            </motion.div>
+            <ServiceCardClient
+              key={svc.icon}
+              icon={svc.icon}
+              title={svc.title}
+              description={svc.description}
+            />
           ))}
         </StaggerContainer>
       </div>

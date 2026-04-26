@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/constants'
 import Hero from '@/components/sections/Hero'
 import Marquee from '@/components/sections/Marquee'
 import ReelsCarousel from '@/components/sections/ReelsCarousel'
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rogue Studio — Creative Agency Jaipur',
     description: 'Cinematic brands, scroll-stopping content, and strategies that grow business.',
-    url: 'https://roguestudio.in',
+    url: SITE_URL,
     images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
-  alternates: { canonical: 'https://roguestudio.in' },
+  alternates: { canonical: SITE_URL },
 }
 
 export default function HomePage() {

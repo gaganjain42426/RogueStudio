@@ -79,7 +79,7 @@ function ReelCard({
         autoPlay
         playsInline
         loop
-        preload="auto"
+        preload="none"
         className="w-full h-full object-cover"
       />
       {/* Corner tag */}

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { PRICING_PLANS } from '@/lib/constants'
 import FadeInUp from '@/components/animations/FadeInUp'
@@ -99,19 +100,21 @@ export default function Pricing() {
                   ))}
                 </ul>
                 {plan.featured ? (
-                  <button
-                    className="w-full bg-white text-primary-container py-4 rounded-full font-bold hover:bg-surface transition-colors"
+                  <Link
+                    href={`/contact?plan=${plan.name.toLowerCase()}`}
+                    className="w-full bg-white text-primary-container py-4 rounded-full font-bold hover:bg-surface transition-colors text-center block"
                     style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
                   >
                     {plan.ctaLabel}
-                  </button>
+                  </Link>
                 ) : (
-                  <button
-                    className="w-full border-2 border-primary-container text-primary-container py-4 rounded-full font-bold hover:bg-primary-container hover:text-white transition-all"
+                  <Link
+                    href={`/contact?plan=${plan.name.toLowerCase()}`}
+                    className="w-full border-2 border-primary-container text-primary-container py-4 rounded-full font-bold hover:bg-primary-container hover:text-white transition-all text-center block"
                     style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
                   >
                     {plan.ctaLabel}
-                  </button>
+                  </Link>
                 )}
               </div>
             </motion.div>

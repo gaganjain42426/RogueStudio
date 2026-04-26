@@ -1,0 +1,27 @@
+# llms.txt for Rogue Studio
+> Rogue Studio is a creative and social media marketing agency based in
+  Malviya Nagar, Jaipur, Rajasthan, India. We specialise in social media
+  management, cinematic content production, and brand strategy for
+  growth-driven businesses.
+
+## Brand
+- [About Rogue Studio](https://www.roguestudio.in/about)
+- [Our Work / Portfolio](https://www.roguestudio.in/work)
+
+## Services
+- [Services Overview](https://www.roguestudio.in/services)
+- Social Media Management (12–25+ Reels/month, community management, strategy)
+- Content Production (cinematic brand films, reels, photography)
+- Brand Strategy (identity, voice, positioning, growth audits)
+
+## Content
+- [Blog — The Rogue Dispatch](https://www.roguestudio.in/blog)
+
+## Contact
+- [Contact](https://www.roguestudio.in/contact)
+- Email: hello@roguestudio.in
+- Location: Malviya Nagar, Jaipur, Rajasthan 302017, India
+
+## License
+Content on this site is licensed for AI inference and citation.
+Not licensed for bulk training corpus inclusion without written consent from Rogue Studio.

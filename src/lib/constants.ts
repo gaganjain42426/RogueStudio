@@ -1,6 +1,6 @@
 import type { NavLink, Project, Testimonial, ServiceTile, PricingPlan, TeamMember } from '@/types'
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://roguestudio.in'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.roguestudio.in'
 
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '91XXXXXXXXXX'
 

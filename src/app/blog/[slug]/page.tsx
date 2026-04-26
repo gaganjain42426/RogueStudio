@@ -39,7 +39,9 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Rogue Studio Blog`,
     description: `${post.category} insight from Rogue Studio — ${post.title}`,
-    alternates: { canonical: `https://roguestudio.in/blog/${slug}` },
+    alternates: { canonical: `https://www.roguestudio.in/blog/${slug}` },
+    // TODO: Remove noindex once real article content replaces the placeholder
+    robots: { index: false, follow: false },
   }
 }
 

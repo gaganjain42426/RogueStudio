@@ -148,7 +148,7 @@ export default function ReelsCarousel() {
               autoPlay
               playsInline
               loop
-              preload="auto"
+              preload="none"
               className="w-full h-full object-cover"
             />
 

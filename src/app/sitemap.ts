@@ -12,6 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services', priority: 0.9 },
     { path: '/contact', priority: 0.8 },
     { path: '/blog', priority: 0.7 },
+    // Keyword-targeted SEO landing pages
+    { path: '/social-media-agency-jaipur', priority: 0.85 },
+    { path: '/reels-production-jaipur', priority: 0.85 },
+    { path: '/digital-marketing-jaipur', priority: 0.85 },
+    { path: '/instagram-marketing-jaipur', priority: 0.85 },
   ]
 
   return routes.map(({ path, priority }) => ({

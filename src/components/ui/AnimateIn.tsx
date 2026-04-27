@@ -1,11 +1,12 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+import type { Variants } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 export type AnimateVariant = 'fadeUp' | 'fadeLeft' | 'fadeRight' | 'scaleIn' | 'heroSlide'
 
-const variantMap: Record<AnimateVariant, { hidden: object; visible: object }> = {
+const variantMap: Record<AnimateVariant, Variants> = {
   fadeUp: {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0 },

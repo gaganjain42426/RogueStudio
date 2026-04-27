@@ -66,8 +66,6 @@ export default function FeaturedWork() {
     </section>
   )
 }
-
-const cardVariants = {
   hidden: { opacity: 0, scale: 0.92 },
   visible: {
     opacity: 1,

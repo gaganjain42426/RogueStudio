@@ -110,7 +110,6 @@ export default function About() {
     </section>
   )
 }
-  { src: 'https://picsum.photos/seed/team1/400/500', alt: 'Rogue Studio creative team', aspect: 'aspect-[4/5]' },
   { src: 'https://picsum.photos/seed/team2/400/400', alt: 'Team brainstorming session', aspect: 'aspect-square' },
   { src: 'https://picsum.photos/seed/team3/400/400', alt: 'Photographer adjusting studio equipment', aspect: 'aspect-square' },
   { src: 'https://picsum.photos/seed/team4/400/500', alt: 'Designer sketching on tablet', aspect: 'aspect-[4/5]' },

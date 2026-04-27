@@ -158,10 +158,6 @@ export default function Hero() {
     </header>
   )
 }
-
-
-/* ─────────────────────────────────────────────────────────────
-   Reel source list — reused from /public/reels
    Two offset columns scroll in opposite directions to create
    a film-strip feel anchored to the right side of the hero.
    ───────────────────────────────────────────────────────────── */

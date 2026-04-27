@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Social Media Agency in Jaipur | Rogue Studio',
     description:
-      'Scroll-stopping social media strategy and content production for Jaipur businesses. Let's make your brand impossible to ignore.',
+      'Scroll-stopping social media strategy and content production for Jaipur businesses. We make your brand impossible to ignore.',
     url: CANONICAL,
     images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',

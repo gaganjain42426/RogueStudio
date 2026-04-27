@@ -47,7 +47,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Which platforms do you manage?',
-    a: 'We specialise in Instagram and YouTube, but also manage LinkedIn, Facebook, and X (Twitter) depending on where your audience lives. We won't waste your budget on platforms your customers don't use.',
+    a: "We specialise in Instagram and YouTube, but also manage LinkedIn, Facebook, and X (Twitter) depending on where your audience lives. We won't waste your budget on platforms your customers don't use.",
   },
   {
     q: 'How long until we see results?',

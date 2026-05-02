@@ -28,9 +28,14 @@ export default function ClientLoginPage() {
       return
     }
 
-    // Use server-side API to bypass RLS on user_roles
-    const res = await fetch('/api/auth/get-role')
-    const { role } = await res.json()
+    const { data: { user } } = await supabase.auth.getUser()
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user?.id)
+      .single()
+
+    const role = roleData?.role
 
     if (role === 'admin') {
       router.push('/admin')

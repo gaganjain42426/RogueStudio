@@ -28,15 +28,9 @@ export default function ClientLoginPage() {
       return
     }
 
-    const { data: roleData, error: roleError } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('email', email)
-      .single()
-
-    console.log(roleData, roleError)
-
-    const role = roleData?.role
+    // Use server-side API to bypass RLS on user_roles
+    const res = await fetch('/api/auth/get-role')
+    const { role } = await res.json()
 
     if (role === 'admin') {
       router.push('/admin')

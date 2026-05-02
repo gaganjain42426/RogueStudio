@@ -29,13 +29,13 @@ export default function ClientLoginPage() {
     }
 
     const { data: { user } } = await supabase.auth.getUser()
-    const { data: roleData } = await supabase
+    const { data: roleRows } = await supabase
       .from('user_roles')
       .select('role')
       .eq('user_id', user?.id)
-      .single()
+      .limit(1)
 
-    const role = roleData?.role
+    const role = roleRows?.[0]?.role
 
     if (role === 'admin') {
       router.push('/admin')

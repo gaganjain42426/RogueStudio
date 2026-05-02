@@ -28,18 +28,13 @@ export default function ClientLoginPage() {
       return
     }
 
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
-      setError('Authentication failed. Please try again.')
-      setLoading(false)
-      return
-    }
-
-    const { data: roleData } = await supabase
+    const { data: roleData, error: roleError } = await supabase
       .from('user_roles')
       .select('role')
-      .eq('user_id', user.id)
+      .eq('email', email)
       .single()
+
+    console.log(roleData, roleError)
 
     const role = roleData?.role
 

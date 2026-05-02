@@ -1,7 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { NextResponse, type NextRequest } from 'next/server'
-
-const PROTECTED_ROUTES = ['/admin', '/portal']
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
@@ -35,15 +34,67 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  const isProtected = PROTECTED_ROUTES.some(
-    (route) => pathname === route || pathname.startsWith(route + '/')
-  )
+  const isAdminRoute = pathname === '/admin' || pathname.startsWith('/admin/')
+  const isPortalRoute = pathname === '/portal' || pathname.startsWith('/portal/')
+  const isProtected = isAdminRoute || isPortalRoute
 
-  if (isProtected && !user) {
+  if (!isProtected) return supabaseResponse
+
+  // No session → redirect to login
+  if (!user) {
     const loginUrl = request.nextUrl.clone()
     loginUrl.pathname = '/client-login'
     loginUrl.searchParams.set('redirectTo', pathname)
     return NextResponse.redirect(loginUrl)
+  }
+
+  // Role lookup via service role key (bypasses RLS)
+  const adminClient = createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  )
+
+  const { data: roleData } = await adminClient
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', user.id)
+    .single()
+
+  const role = roleData?.role as string | undefined
+
+  if (isAdminRoute) {
+    if (role === 'admin') return supabaseResponse
+
+    if (role === 'editor') {
+      if (pathname === '/admin/calendar' || pathname.startsWith('/admin/calendar/')) {
+        return supabaseResponse
+      }
+      const url = request.nextUrl.clone()
+      url.pathname = '/admin/calendar'
+      return NextResponse.redirect(url)
+    }
+
+    if (role === 'client') {
+      const url = request.nextUrl.clone()
+      url.pathname = '/portal/overview'
+      return NextResponse.redirect(url)
+    }
+
+    // No role found
+    const url = request.nextUrl.clone()
+    url.pathname = '/client-login'
+    return NextResponse.redirect(url)
+  }
+
+  if (isPortalRoute) {
+    if (role === 'client' || role === 'admin' || role === 'editor') {
+      return supabaseResponse
+    }
+    // No role found
+    const url = request.nextUrl.clone()
+    url.pathname = '/client-login'
+    return NextResponse.redirect(url)
   }
 
   return supabaseResponse

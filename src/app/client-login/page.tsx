@@ -28,11 +28,30 @@ export default function ClientLoginPage() {
       return
     }
 
-    const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
-    if (adminEmail && email === adminEmail) {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      setError('Authentication failed. Please try again.')
+      setLoading(false)
+      return
+    }
+
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .single()
+
+    const role = roleData?.role
+
+    if (role === 'admin') {
       router.push('/admin')
+    } else if (role === 'editor') {
+      router.push('/admin/calendar')
+    } else if (role === 'client') {
+      router.push('/portal/overview')
     } else {
-      router.push('/portal')
+      setError('Access not configured. Contact your account manager.')
+      setLoading(false)
     }
   }
 

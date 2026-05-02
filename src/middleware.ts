@@ -1,5 +1,4 @@
 import { createServerClient } from '@supabase/ssr'
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { NextResponse, type NextRequest } from 'next/server'
 
 export async function middleware(request: NextRequest) {
@@ -48,20 +47,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
-  // Role lookup via service role key (bypasses RLS)
-  const adminClient = createSupabaseClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { auth: { autoRefreshToken: false, persistSession: false } }
-  )
-
-  const { data: roleData } = await adminClient
+  // Role lookup — uses session client, RLS policy allows users to read own role
+  const { data: roleData } = await supabase
     .from('user_roles')
     .select('role')
     .eq('user_id', user.id)
-    .single()
+    .limit(1)
 
-  const role = roleData?.role as string | undefined
+  const role = roleData?.[0]?.role as string | undefined
 
   if (isAdminRoute) {
     if (role === 'admin') return supabaseResponse

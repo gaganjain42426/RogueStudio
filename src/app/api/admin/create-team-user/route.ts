@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
   try {
-    // Verify the calling user is an admin
+    // Verify the calling user is an admin using session client (RLS-safe)
     const supabase = await createClient()
     const {
       data: { user },
@@ -14,15 +14,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const adminClient = createAdminClient()
-
-    const { data: callerRole } = await adminClient
+    const { data: callerRoleRows } = await supabase
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id)
-      .single()
+      .limit(1)
 
-    if (callerRole?.role !== 'admin') {
+    if (callerRoleRows?.[0]?.role !== 'admin') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
@@ -42,7 +40,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid role' }, { status: 400 })
     }
 
-    // Create the auth user
+    // Create the auth user (requires service role key)
+    const adminClient = createAdminClient()
     const { data: userData, error: createError } = await adminClient.auth.admin.createUser({
       email,
       password,

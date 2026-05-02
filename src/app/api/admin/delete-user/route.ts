@@ -14,15 +14,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const adminClient = createAdminClient()
-
-    const { data: callerRole } = await adminClient
+    const { data: callerRoleRows } = await supabase
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id)
-      .single()
+      .limit(1)
 
-    if (callerRole?.role !== 'admin') {
+    if (callerRoleRows?.[0]?.role !== 'admin') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 
@@ -36,6 +34,8 @@ export async function POST(request: Request) {
     if (userId === user.id) {
       return NextResponse.json({ error: 'Cannot delete your own account' }, { status: 400 })
     }
+
+    const adminClient = createAdminClient()
 
     // Delete the role record first, then the auth user
     await adminClient.from('user_roles').delete().eq('user_id', userId)

@@ -6,11 +6,17 @@ export interface Industry {
   heroDescription: string
 }
 
+export interface Reel {
+  src: string
+  label: string
+}
+
 export interface IndustryClient {
   name: string
   services: string[]
   deliverables: string[]
   outcomes: string[]
+  reels: Reel[]
 }
 
 export const industries: Industry[] = [
@@ -125,6 +131,12 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Multi-Platform Identity Established',
         'Content System Launched',
       ],
+      reels: [
+        { src: '/reels/naman1.mp4', label: 'Project Reveal' },
+        { src: '/reels/naman2.mp4', label: 'Brand Reel' },
+        { src: '/reels/naman3.mp4', label: 'Behind the Scenes' },
+        { src: '/reels/naman4.MP4', label: 'Space Showcase' },
+      ],
     },
   ],
   architecture: [
@@ -145,6 +157,12 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Premium Brand Presence Built',
         'Multi-Platform Identity Established',
         'Content System Launched',
+      ],
+      reels: [
+        { src: '/reels/naman1.mp4', label: 'Project Reveal' },
+        { src: '/reels/naman2.mp4', label: 'Brand Reel' },
+        { src: '/reels/naman3.mp4', label: 'Behind the Scenes' },
+        { src: '/reels/naman4.MP4', label: 'Space Showcase' },
       ],
     },
   ],
@@ -167,6 +185,11 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Organic Growth Strategy Launched',
         'B2B & B2C Audience Reached',
       ],
+      reels: [
+        { src: '/reels/sarvatra1.mp4', label: 'Installation Reel' },
+        { src: '/reels/sarvatra2.mp4', label: 'Brand Story' },
+        { src: '/reels/sarvatra3.mp4', label: 'Team Spotlight' },
+      ],
     },
   ],
   'wellness-clinic': [
@@ -184,6 +207,10 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Patient Education Content Live',
         'Consistent Brand Voice Established',
       ],
+      reels: [
+        { src: '/reels/noblevibes1.mp4', label: 'Clinic Reel' },
+        { src: '/reels/noblevibes2.mp4', label: 'Patient Education' },
+      ],
     },
   ],
   'yoga-fitness': [
@@ -196,6 +223,7 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Brand Identity Sharpened',
         'Consistent Posting Live',
       ],
+      reels: [],
     },
   ],
   coaching: [],
@@ -218,6 +246,10 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Heritage Narrative Built',
         'Tourism Market Targeted',
         'Cultural Brand Positioning Done',
+      ],
+      reels: [
+        { src: '/reels/vimla1.mp4', label: 'Collection Reel' },
+        { src: '/reels/vimla2.mp4', label: 'Heritage Story' },
       ],
     },
   ],

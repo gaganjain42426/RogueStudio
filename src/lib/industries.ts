@@ -132,6 +132,8 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Content System Launched',
       ],
       reels: [
+        { src: '/reels/interior1.mp4', label: 'Interior Showcase' },
+        { src: '/reels/interior2.mp4', label: 'Space Reveal' },
         { src: '/reels/naman1.mp4', label: 'Project Reveal' },
         { src: '/reels/naman2.mp4', label: 'Brand Reel' },
         { src: '/reels/naman3.mp4', label: 'Behind the Scenes' },
@@ -159,6 +161,8 @@ export const industryClients: Record<string, IndustryClient[]> = {
         'Content System Launched',
       ],
       reels: [
+        { src: '/reels/interior1.mp4', label: 'Interior Showcase' },
+        { src: '/reels/interior2.mp4', label: 'Space Reveal' },
         { src: '/reels/naman1.mp4', label: 'Project Reveal' },
         { src: '/reels/naman2.mp4', label: 'Brand Reel' },
         { src: '/reels/naman3.mp4', label: 'Behind the Scenes' },

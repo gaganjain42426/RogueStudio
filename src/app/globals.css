@@ -129,4 +129,45 @@ html.lenis {
   overscroll-behavior: contain;
 }
 
+@media print {
+  /* Force dark backgrounds and colors to print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide elements that should not appear in PDF */
+  nav,
+  footer,
+  [data-print-hide="true"] {
+    display: none !important;
+  }
+
+  /* Remove page margins */
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  /* Prevent section breaks inside cards */
+  section {
+    break-inside: avoid;
+  }
+
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-full {
+    border-radius: 8px !important;
+  }
+
+  /* Hide video grid section entirely in print */
+  [data-section="video-reels"] {
+    display: none !important;
+  }
+
+  /* Make sure page background is dark */
+  body {
+    background: #0a0a0a !important;
+  }
+}
 

@@ -15,6 +15,7 @@ import type { PainPoint } from '@/lib/industry-page-data'
 import { AnimatedSection, AnimatedItem, AnimatedCard } from '@/components/ui/AnimatedSection'
 import { VideoReelGrid } from '@/components/industries/VideoReelGrid'
 import { FAQAccordion } from '@/components/industries/FAQAccordion'
+import { DownloadPDFButton } from '@/components/industries/DownloadPDFButton'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -174,6 +175,10 @@ export default async function IndustryPage({ params }: Props) {
                 </div>
               </div>
 
+              <div className="mt-6">
+                <DownloadPDFButton />
+              </div>
+
               {/* Scroll indicator */}
               <div className="mt-16 flex items-center gap-3 text-[#9CA3AF]">
                 <span className="text-xs tracking-widest uppercase">Scroll to explore</span>
@@ -328,7 +333,9 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* ── SECTION 5 — VIDEO REELS ── */}
-      <VideoReelGrid reels={allReels} />
+      <div data-section="video-reels">
+        <VideoReelGrid reels={allReels} />
+      </div>
 
       {/* ── SECTION 6 — PROCESS ── */}
       <section className="bg-[#111827] py-24 px-6 md:px-8">

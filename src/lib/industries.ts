@@ -134,6 +134,8 @@ export const industryClients: Record<string, IndustryClient[]> = {
       reels: [
         { src: '/reels/interior1.mp4', label: 'Interior Showcase' },
         { src: '/reels/interior2.mp4', label: 'Space Reveal' },
+        { src: '/reels/interior3.MP4', label: 'Design Details' },
+        { src: '/reels/interior4.MP4', label: 'Project Walkthrough' },
         { src: '/reels/naman1.mp4', label: 'Talking Head' },
         { src: '/reels/naman2.mp4', label: 'Talking Head' },
         { src: '/reels/naman3.mp4', label: 'Talking Head' },
@@ -163,6 +165,8 @@ export const industryClients: Record<string, IndustryClient[]> = {
       reels: [
         { src: '/reels/interior1.mp4', label: 'Interior Showcase' },
         { src: '/reels/interior2.mp4', label: 'Space Reveal' },
+        { src: '/reels/interior3.MP4', label: 'Design Details' },
+        { src: '/reels/interior4.MP4', label: 'Project Walkthrough' },
         { src: '/reels/naman1.mp4', label: 'Talking Head' },
         { src: '/reels/naman2.mp4', label: 'Talking Head' },
         { src: '/reels/naman3.mp4', label: 'Talking Head' },

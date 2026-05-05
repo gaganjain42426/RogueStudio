@@ -90,16 +90,6 @@ function VideoCard({ reel }: VideoCardProps) {
         </div>
       </div>
 
-      {/* Below-video meta */}
-      <div>
-        <p
-          className="text-white text-sm font-bold leading-tight"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
-        >
-          {reel.clientName}
-        </p>
-        <p className="text-[#C8A96E] text-xs mt-0.5">{reel.label}</p>
-      </div>
     </div>
   )
 }

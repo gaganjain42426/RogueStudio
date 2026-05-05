@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
@@ -14,8 +15,11 @@ export type PortalClient = {
  * Verifies the logged-in user's session and looks up their client record
  * by matching session email to clients.portal_email.
  * Redirects to /client-login if not authenticated or no client match.
+ *
+ * Wrapped in React cache() so it executes only once per request even when
+ * called from both the layout and the page component.
  */
-export async function getPortalClient() {
+export const getPortalClient = cache(async function () {
   const supabase = await createClient()
 
   const {
@@ -33,4 +37,4 @@ export async function getPortalClient() {
   if (!client) redirect('/client-login')
 
   return { supabase, user, client: client as PortalClient }
-}
+})

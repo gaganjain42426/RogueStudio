@@ -4,16 +4,16 @@ import { useRef, useEffect } from 'react'
 import FadeInUp from '@/components/animations/FadeInUp'
 
 const reels = [
-  { id: '1',  src: '/reels/reel-1.mp4',  client: 'Rogue Studio', category: 'Social Media' },
-  { id: '2',  src: '/reels/reel-2.mp4',  client: 'Rogue Studio', category: 'Reels' },
-  { id: '3',  src: '/reels/reel-3.mp4',  client: 'Rogue Studio', category: 'Content' },
-  { id: '4',  src: '/reels/reel-4.mp4',  client: 'Rogue Studio', category: 'Social Media' },
-  { id: '5',  src: '/reels/reel-5.mp4',  client: 'Rogue Studio', category: 'Reels' },
-  { id: '6',  src: '/reels/reel-6.mp4',  client: 'Rogue Studio', category: 'Content' },
-  { id: '7',  src: '/reels/reel-7.mp4',  client: 'Rogue Studio', category: 'Social Media' },
-  { id: '8',  src: '/reels/reel-8.mp4',  client: 'Rogue Studio', category: 'Reels' },
-  { id: '9',  src: '/reels/reel-9.mp4',  client: 'Rogue Studio', category: 'Content' },
-  { id: '10', src: '/reels/reel-10.mp4', client: 'Rogue Studio', category: 'Social Media' },
+  { id: '1',  src: '/reels/sarvatra1.mp4',   client: 'Sarvatra Energy',      category: 'Social Media' },
+  { id: '2',  src: '/reels/noblevibes1.mp4',  client: 'Noble Vibes Clinic',   category: 'Reels' },
+  { id: '3',  src: '/reels/vimla1.mp4',       client: 'Vimla LoomCraft',      category: 'Content' },
+  { id: '4',  src: '/reels/naman1.mp4',       client: 'Naman Vaastu',         category: 'Social Media' },
+  { id: '5',  src: '/reels/vimla2.mp4',       client: 'Vimla LoomCraft',      category: 'Reels' },
+  { id: '6',  src: '/reels/noblevibes2.mp4',  client: 'Noble Vibes Clinic',   category: 'Content' },
+  { id: '7',  src: '/reels/naman2.mp4',       client: 'Naman Vaastu',         category: 'Social Media' },
+  { id: '8',  src: '/reels/naman3.mp4',       client: 'Naman Vaastu',         category: 'Reels' },
+  { id: '9',  src: '/reels/sarvatra2.mp4',    client: 'Sarvatra Energy',      category: 'Content' },
+  { id: '10', src: '/reels/sarvatra3.mp4',    client: 'Sarvatra Energy',      category: 'Social Media' },
 ]
 
 // Duplicate for seamless infinite loop

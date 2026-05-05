@@ -3,16 +3,16 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
 const REELS = [
-  { id: '1',  src: '/reels/reel-1.mp4',  client: 'Signature Film',  category: 'Brand Film' },
-  { id: '2',  src: '/reels/reel-2.mp4',  client: 'Launch Reel',     category: 'Social' },
-  { id: '3',  src: '/reels/reel-3.mp4',  client: 'Hook Reel',       category: 'Performance' },
-  { id: '4',  src: '/reels/reel-4.mp4',  client: 'Studio Cut',      category: 'Cinematic' },
-  { id: '5',  src: '/reels/reel-5.mp4',  client: 'Product Story',   category: 'Ecommerce' },
-  { id: '6',  src: '/reels/reel-6.mp4',  client: 'Founder Spot',    category: 'Personal Brand' },
-  { id: '7',  src: '/reels/reel-7.mp4',  client: 'Drop Day',        category: 'Campaign' },
-  { id: '8',  src: '/reels/reel-8.mp4',  client: 'Hero Frame',      category: 'Brand Film' },
-  { id: '9',  src: '/reels/reel-9.mp4',  client: 'Snack Reel',      category: 'Social' },
-  { id: '10', src: '/reels/reel-10.mp4', client: 'Closer',          category: 'Performance' },
+  { id: '1',  src: '/reels/sarvatra1.mp4',   client: 'Sarvatra Energy',    category: 'Brand Film' },
+  { id: '2',  src: '/reels/noblevibes1.mp4',  client: 'Noble Vibes Clinic', category: 'Social' },
+  { id: '3',  src: '/reels/vimla1.mp4',       client: 'Vimla LoomCraft',    category: 'Performance' },
+  { id: '4',  src: '/reels/naman1.mp4',       client: 'Naman Vaastu',       category: 'Cinematic' },
+  { id: '5',  src: '/reels/vimla2.mp4',       client: 'Vimla LoomCraft',    category: 'Ecommerce' },
+  { id: '6',  src: '/reels/noblevibes2.mp4',  client: 'Noble Vibes Clinic', category: 'Personal Brand' },
+  { id: '7',  src: '/reels/naman2.mp4',       client: 'Naman Vaastu',       category: 'Campaign' },
+  { id: '8',  src: '/reels/naman3.mp4',       client: 'Naman Vaastu',       category: 'Brand Film' },
+  { id: '9',  src: '/reels/sarvatra2.mp4',    client: 'Sarvatra Energy',    category: 'Social' },
+  { id: '10', src: '/reels/sarvatra3.mp4',    client: 'Sarvatra Energy',    category: 'Performance' },
 ]
 
 const COL_A = REELS.slice(0, 5)

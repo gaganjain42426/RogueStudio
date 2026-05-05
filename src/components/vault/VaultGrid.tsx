@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { VaultClient } from '@/data/vault-clients'
 import { VAULT_FILTERS } from '@/data/vault-clients'
@@ -27,9 +28,17 @@ export default function VaultGrid({ projects }: Props) {
       {/* Section header + inline filters */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-8">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-12">
-          <h1 className="text-xs tracking-[0.35em] uppercase text-on-surface-variant">
-            The Vault — Our Work
-          </h1>
+          <div className="flex flex-wrap items-center gap-4">
+            <h1 className="text-xs tracking-[0.35em] uppercase text-on-surface-variant">
+              The Vault — Our Work
+            </h1>
+            <Link
+              href="/industries"
+              className="text-xs tracking-[0.12em] uppercase font-bold text-[#C8A96E] hover:text-[#d4b87a] transition-colors duration-200"
+            >
+              Browse by Industry →
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             {VAULT_FILTERS.map((f) => (
               <button

@@ -16,6 +16,7 @@ export const STUDIO_ADDRESS = {
 export const NAV_LINKS: NavLink[] = [
   { label: 'Services', href: '/services' },
   { label: 'Work', href: '/work' },
+  { label: 'Industries', href: '/industries' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },

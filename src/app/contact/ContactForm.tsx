@@ -38,18 +38,20 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     setSubmitting(true)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-      if (res.ok) setSubmitted(true)
-    } catch {
-      // silent fail — form data still logged server-side
-    } finally {
-      setSubmitting(false)
-    }
+
+    const text = encodeURIComponent(
+      `*New Inquiry — Rogue Studio Website*\n\n` +
+      `*Name:* ${data.name}\n` +
+      `*Business:* ${data.company}\n` +
+      `*Email:* ${data.email}\n` +
+      `*WhatsApp:* ${data.whatsapp}\n` +
+      `*Service:* ${data.service}\n\n` +
+      `*Message:*\n${data.message}`
+    )
+
+    window.open(`https://wa.me/918003225164?text=${text}`, '_blank')
+    setSubmitted(true)
+    setSubmitting(false)
   }
 
   if (submitted) {
@@ -67,10 +69,10 @@ export default function ContactForm() {
           className="text-3xl font-black text-on-tertiary-fixed"
           style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
         >
-          Message Received!
+          Opening WhatsApp…
         </h3>
         <p className="mt-3 text-on-tertiary-fixed-variant">
-          We&apos;ll be in touch within 24 hours.
+          Your inquiry is pre-filled. Just hit send on WhatsApp!
         </p>
       </div>
     )

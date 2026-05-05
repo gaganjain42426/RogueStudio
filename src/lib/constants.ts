@@ -2,15 +2,15 @@ import type { NavLink, Project, Testimonial, ServiceTile, PricingPlan, TeamMembe
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.roguestudio.in'
 
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '91XXXXXXXXXX'
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918003225164'
 
 export const STUDIO_ADDRESS = {
-  street: 'Malviya Nagar',
+  street: 'Sanganer',
   city: 'Jaipur',
   state: 'Rajasthan',
   country: 'India',
-  pin: '302017',
-  full: 'Malviya Nagar, Jaipur, Rajasthan, India – 302017',
+  pin: '302029',
+  full: 'Sanganer, Jaipur, Rajasthan, India – 302029',
 }
 
 export const NAV_LINKS: NavLink[] = [
@@ -150,28 +150,28 @@ export const PRICING_PLANS: PricingPlan[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Rohan Mehta',
-    role: 'Creative Director',
-    bio: 'Cinematic storyteller with 8+ years shaping brand narratives.',
-    imageUrl: 'https://picsum.photos/seed/rohan/400/400',
+    name: 'Gagan Jain',
+    role: 'Operations',
+    bio: 'Keeps the studio running — from client onboarding to delivery, nothing falls through the cracks.',
+    imageUrl: 'https://picsum.photos/seed/gagan/400/400',
   },
   {
-    name: 'Priya Sharma',
+    name: 'Shruti Sharma',
     role: 'Head of Strategy',
-    bio: 'Data-driven growth architect who turns analytics into action.',
-    imageUrl: 'https://picsum.photos/seed/priya/400/400',
+    bio: 'The brain behind every content plan — she turns brand goals into strategies that actually convert.',
+    imageUrl: 'https://picsum.photos/seed/shruti/400/400',
   },
   {
-    name: 'Arjun Kapoor',
+    name: 'Nikhil Singh',
     role: 'Lead Cinematographer',
-    bio: 'Visual maverick capturing brand essence frame by frame.',
-    imageUrl: 'https://picsum.photos/seed/arjun/400/400',
+    bio: 'Frames every shoot with intention — reels, brand films, and campaigns that stop the scroll.',
+    imageUrl: 'https://picsum.photos/seed/nikhil/400/400',
   },
   {
-    name: 'Nisha Rathore',
-    role: 'Social Media Lead',
-    bio: 'Community builder and content alchemist obsessed with engagement.',
-    imageUrl: 'https://picsum.photos/seed/nisha/400/400',
+    name: 'Bhuvanesh Jaiswal',
+    role: 'Tech & Development',
+    bio: 'Builds the digital backbone — websites, dashboards, and every line of code that powers the brand.',
+    imageUrl: 'https://picsum.photos/seed/bhuvanesh/400/400',
   },
 ]
 

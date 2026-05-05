@@ -81,51 +81,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="bg-surface-container-low py-32 px-6 md:px-8">
-        <div className="max-w-[1440px] mx-auto">
-          <AnimatedSection>
-            <AnimatedItem>
-              <h2
-                className="text-4xl md:text-5xl font-black text-white mb-16"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
-              >
-                The{' '}
-                <span
-                  className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
-                >
-                  Journey
-                </span>
-              </h2>
-            </AnimatedItem>
-            <div className="space-y-12">
-              {timeline.map((item, i) => (
-                <AnimatedItem key={item.year}>
-                  <div className="flex gap-8 items-start">
-                    <div
-                      className="text-primary-container font-black text-3xl md:text-4xl shrink-0 w-24"
-                      style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
-                    >
-                      {item.year}
-                    </div>
-                    <div>
-                      <div className="w-2 h-2 bg-primary-container rounded-full mt-3 mr-8 hidden md:block" />
-                      <p className="text-lg text-on-surface-variant leading-relaxed">
-                        {item.event}
-                      </p>
-                    </div>
-                  </div>
-                  {i < timeline.length - 1 && (
-                    <div className="ml-[7.5rem] w-0.5 h-12 bg-outline-variant/20 mt-2" />
-                  )}
-                </AnimatedItem>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* Team */}
       <section className="bg-tertiary-fixed text-on-tertiary-fixed py-32 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">

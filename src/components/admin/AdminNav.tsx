@@ -11,6 +11,7 @@ import {
   Receipt,
   Users2,
   LogOut,
+  FileText,
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
@@ -20,6 +21,7 @@ const ALL_NAV = [
   { href: '/admin/workboard', icon: Kanban, label: 'Work Board' },
   { href: '/admin/calendar', icon: Calendar, label: 'Calendar' },
   { href: '/admin/payments', icon: CreditCard, label: 'Payments' },
+  { href: '/admin/invoices', icon: FileText, label: 'Invoices' },
   { href: '/admin/expenses', icon: Receipt, label: 'Expenses' },
 ]
 

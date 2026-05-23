@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: '/portal/tasks', label: 'Tasks' },
   { href: '/portal/calendar', label: 'Calendar' },
   { href: '/portal/payments', label: 'Payments' },
+  { href: '/portal/invoices', label: 'Invoices' },
 ]
 
 export default function PortalNav({ clientName }: { clientName: string }) {

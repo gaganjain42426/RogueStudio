@@ -50,13 +50,18 @@ export default function InvoiceDocument({ invoice }: { invoice: InvoiceData }) {
       {/* ── Header strip ─────────────────────────────────────────────────── */}
       <div className="bg-[#131313] px-10 py-8 flex items-start justify-between gap-6">
         <div>
-          <p className="text-white font-black text-2xl tracking-tight leading-none">ROGUE STUDIO</p>
+          {/* Logo PNG — brightness invert makes it white on the dark header */}
+          <img
+            src="/logo.png"
+            alt="Rogue Studio"
+            style={{ height: 44, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+          />
           <p className="text-[#9DD1C2] text-[10px] tracking-[0.22em] uppercase mt-2 font-medium">
             Creative Digital Agency
           </p>
           <p className="text-gray-500 text-xs mt-3 leading-relaxed">
             Jaipur, Rajasthan 302001<br />
-            hello@roguestudio.in
+            info@roguestudio.in
           </p>
         </div>
         <div className="text-right flex-shrink-0">
@@ -83,7 +88,7 @@ export default function InvoiceDocument({ invoice }: { invoice: InvoiceData }) {
             <p className="font-semibold text-gray-900">Rogue Studio</p>
             <p className="text-gray-500 text-sm">Creative Digital Agency</p>
             <p className="text-gray-500 text-sm">Jaipur, Rajasthan 302001</p>
-            <p className="text-gray-500 text-sm">hello@roguestudio.in</p>
+            <p className="text-gray-500 text-sm">info@roguestudio.in</p>
           </div>
           <div>
             <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-3">Bill To</p>
@@ -200,7 +205,7 @@ export default function InvoiceDocument({ invoice }: { invoice: InvoiceData }) {
             <p className="text-[9px] font-bold text-gray-300 uppercase tracking-[0.22em]">
               Rogue Studio — Creative Digital Agency
             </p>
-            <p className="text-[9px] text-gray-300 tracking-wider mt-0.5">hello@roguestudio.in · Jaipur, Rajasthan</p>
+            <p className="text-[9px] text-gray-300 tracking-wider mt-0.5">info@roguestudio.in · Jaipur, Rajasthan</p>
           </div>
           <p className="text-[10px] text-gray-400 tracking-widest uppercase font-medium">
             Thank you for your business

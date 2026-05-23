@@ -36,12 +36,25 @@ export default async function InvoiceDetailPage({ params }: Props) {
 
   return (
     <>
-      {/* Print-only: white body, hide chrome */}
+      {/* Fix print: undo Next.js admin layout fixed/overflow-hidden, hide sidebar */}
       <style>{`
         @media print {
-          .no-print { display: none !important; }
-          body { background: white !important; }
-          @page { margin: 15mm; }
+          /* Undo the fixed full-screen admin layout wrapper */
+          .fixed   { position: static !important; }
+          .inset-0 { inset: auto !important; }
+          .overflow-hidden, .overflow-y-auto { overflow: visible !important; }
+
+          /* Hide sidebar and action bar */
+          aside          { display: none !important; }
+          .no-print      { display: none !important; }
+
+          /* White background everywhere */
+          body, html, main { background: white !important; }
+
+          /* Remove dark page padding wrapper */
+          .min-h-screen { min-height: 0 !important; padding: 0 !important; background: white !important; }
+
+          @page { margin: 15mm; size: A4 portrait; }
         }
       `}</style>
 

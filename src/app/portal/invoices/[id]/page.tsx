@@ -30,19 +30,18 @@ export default async function PortalInvoiceDetailPage({ params }: Props) {
     <>
       <style>{`
         @media print {
-          /* Undo any fixed/overflow layout wrappers */
-          .fixed   { position: static !important; }
-          .inset-0 { inset: auto !important; }
-          .overflow-hidden, .overflow-y-auto { overflow: visible !important; }
-
-          /* Hide portal top nav and action bar */
-          nav            { display: none !important; }
+          /* Hide portal top nav, public site Navbar, public Footer */
+          nav, footer    { display: none !important; }
           .no-print      { display: none !important; }
 
-          /* White background everywhere */
-          body, html, main { background: white !important; }
+          /* Undo any fixed layout wrappers */
+          .fixed            { position: static !important; }
+          .inset-0          { inset: auto !important; }
+          .overflow-hidden  { overflow: visible !important; }
+          .overflow-y-auto  { overflow: visible !important; }
 
-          .min-h-screen { min-height: 0 !important; padding: 0 !important; background: white !important; }
+          body, html, main  { background: white !important; }
+          .min-h-screen     { min-height: 0 !important; padding: 0 !important; background: white !important; }
 
           @page { margin: 15mm; size: A4 portrait; }
         }

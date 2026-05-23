@@ -36,23 +36,25 @@ export default async function InvoiceDetailPage({ params }: Props) {
 
   return (
     <>
-      {/* Fix print: undo Next.js admin layout fixed/overflow-hidden, hide sidebar */}
+      {/* Fix print: isolate invoice from all surrounding layout chrome */}
       <style>{`
         @media print {
-          /* Undo the fixed full-screen admin layout wrapper */
-          .fixed   { position: static !important; }
-          .inset-0 { inset: auto !important; }
-          .overflow-hidden, .overflow-y-auto { overflow: visible !important; }
+          /* 1. Hide the public website Navbar and Footer that sit behind the admin panel */
+          nav, footer { display: none !important; }
 
-          /* Hide sidebar and action bar */
-          aside          { display: none !important; }
-          .no-print      { display: none !important; }
+          /* 2. Hide the admin sidebar and the Back/Print action bar */
+          aside      { display: none !important; }
+          .no-print  { display: none !important; }
 
-          /* White background everywhere */
-          body, html, main { background: white !important; }
+          /* 3. Undo the fixed inset-0 overflow-hidden admin layout wrapper */
+          .fixed            { position: static !important; }
+          .inset-0          { inset: auto !important; }
+          .overflow-hidden  { overflow: visible !important; }
+          .overflow-y-auto  { overflow: visible !important; }
 
-          /* Remove dark page padding wrapper */
-          .min-h-screen { min-height: 0 !important; padding: 0 !important; background: white !important; }
+          /* 4. White background for everything */
+          body, html, main  { background: white !important; }
+          .min-h-screen     { min-height: 0 !important; padding: 0 !important; background: white !important; }
 
           @page { margin: 15mm; size: A4 portrait; }
         }

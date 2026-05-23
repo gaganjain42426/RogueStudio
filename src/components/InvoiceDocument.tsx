@@ -54,7 +54,7 @@ export default function InvoiceDocument({ invoice }: { invoice: InvoiceData }) {
           <img
             src="/logo.png"
             alt="Rogue Studio"
-            style={{ height: 44, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+            style={{ height: 44, width: 'auto', objectFit: 'contain' }}
           />
           <p className="text-[#9DD1C2] text-[10px] tracking-[0.22em] uppercase mt-2 font-medium">
             Creative Digital Agency

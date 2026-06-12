@@ -8,7 +8,7 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Instagram Marketing Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is Jaipur\'s Instagram marketing agency — account strategy, Reels production, paid ads, and growth management that builds real audiences and drives sales.',
+    'Rogue Studio is Jaipur\'s Instagram marketing agency â€” account strategy, Reels production, paid ads, and growth management that builds real audiences and drives sales.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Instagram Marketing Agency Jaipur | Rogue Studio',
@@ -43,23 +43,23 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How do you grow Instagram followers for Jaipur businesses?',
-    a: "We focus on content quality, hook engineering, and strategic hashtag use — not follow/unfollow tricks. Sustainable Instagram growth comes from Reels that get pushed by the algorithm, collabs with relevant local accounts, and consistent posting that signals reliability to the platform.",
+    a: "We focus on content quality, hook engineering, and strategic hashtag use â€” not follow/unfollow tricks. Sustainable Instagram growth comes from Reels that get pushed by the algorithm, collabs with relevant local accounts, and consistent posting that signals reliability to the platform.",
   },
   {
     q: 'Do you run Instagram ads?',
-    a: 'Yes. We manage Meta Ads Manager for Instagram campaigns — from awareness Reels to conversion-focused stories and DM campaigns. We handle creative, targeting, A/B testing, and budget optimisation.',
+    a: 'Yes. We manage Meta Ads Manager for Instagram campaigns â€” from awareness Reels to conversion-focused stories and DM campaigns. We handle creative, targeting, A/B testing, and budget optimisation.',
   },
   {
     q: 'How many posts per month is standard?',
-    a: "Our standard Instagram retainer includes 12–16 posts per month (a mix of Reels, carousels, and statics) plus Stories. We've found this cadence optimal for Jaipur-scale brands — enough volume to stay relevant without sacrificing quality.",
+    a: "Our standard Instagram retainer includes 12â€“16 posts per month (a mix of Reels, carousels, and statics) plus Stories. We've found this cadence optimal for Jaipur-scale brands â€” enough volume to stay relevant without sacrificing quality.",
   },
   {
     q: 'Can you help with influencer partnerships in Jaipur?',
-    a: 'Yes — we have relationships with Jaipur-based micro and mid-tier creators across fashion, food, lifestyle, and business niches. We handle outreach, briefs, and performance tracking for influencer campaigns.',
+    a: 'Yes â€” we have relationships with Jaipur-based micro and mid-tier creators across fashion, food, lifestyle, and business niches. We handle outreach, briefs, and performance tracking for influencer campaigns.',
   },
   {
     q: 'What results can I realistically expect from Instagram marketing?',
-    a: 'For a well-run account with consistent Reels, expect 2–5x reach growth within 90 days. Direct business outcomes (DMs, link clicks, sales) depend heavily on your offer and funnel. We set baseline KPIs in month one so you can track real progress.',
+    a: 'For a well-run account with consistent Reels, expect 2â€“5x reach growth within 90 days. Direct business outcomes (DMs, link clicks, sales) depend heavily on your offer and funnel. We set baseline KPIs in month one so you can track real progress.',
   },
 ]
 
@@ -85,26 +85,26 @@ export default function InstagramMarketingJaipurPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background min-h-[80vh] flex items-center py-32 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto w-full">
           <AnimateIn variant="fadeUp">
             <p
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary-container mb-6"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Instagram Marketing · Jaipur
+              Instagram Marketing Â· Jaipur
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.1}>
             <h1
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Instagram marketing agency Jaipur —{' '}
+              Instagram marketing agency Jaipur â€”{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 your feed should be doing sales.
               </span>
@@ -122,14 +122,14 @@ export default function InstagramMarketingJaipurPage() {
               <Link
                 href="/contact"
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit →
+                Get a Free Audit â†’
               </Link>
               <Link
-                href="/work"
+                href="/portfolio"
                 className="border border-white/20 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 View Our Work
               </Link>
@@ -138,18 +138,18 @@ export default function InstagramMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── WHY ROGUE ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ WHY ROGUE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-16"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Why Jaipur brands choose{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Rogue Studio
               </span>{' '}
@@ -168,7 +168,7 @@ export default function InstagramMarketingJaipurPage() {
               },
               {
                 title: 'Full-funnel approach',
-                body: 'Instagram is not just top-of-funnel. We build strategies that move followers from discovery through to DM inquiries, link clicks, and purchases — with Reels, Stories, and paid ads working in tandem.',
+                body: 'Instagram is not just top-of-funnel. We build strategies that move followers from discovery through to DM inquiries, link clicks, and purchases â€” with Reels, Stories, and paid ads working in tandem.',
               },
               {
                 title: 'Partners, not post-and-ghost vendors',
@@ -179,7 +179,7 @@ export default function InstagramMarketingJaipurPage() {
                 <div className="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10 h-full">
                   <h3
                     className="text-xl font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {title}
                   </h3>
@@ -191,13 +191,13 @@ export default function InstagramMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeLeft">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-4"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               What's included
             </h2>
@@ -221,7 +221,7 @@ export default function InstagramMarketingJaipurPage() {
                   key={item}
                   className="flex items-start gap-3 bg-surface-container p-5 rounded-lg border border-outline-variant/10"
                 >
-                  <span className="text-primary-container font-black mt-0.5 shrink-0">✓</span>
+                  <span className="text-primary-container font-black mt-0.5 shrink-0">âœ“</span>
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -230,13 +230,13 @@ export default function InstagramMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[900px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-12"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Frequently asked questions
             </h2>
@@ -247,7 +247,7 @@ export default function InstagramMarketingJaipurPage() {
                 <div className="border border-outline-variant/20 rounded-xl p-7">
                   <h3
                     className="text-lg font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {q}
                   </h3>
@@ -259,20 +259,20 @@ export default function InstagramMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ FINAL CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-gradient-to-br from-primary-container to-background py-32 px-6 md:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-6xl font-black text-white leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Ready to grow your brand in Jaipur?
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Free Instagram audit — we&apos;ll tell you exactly what&apos;s holding your account
+              Free Instagram audit â€” we&apos;ll tell you exactly what&apos;s holding your account
               back.
             </p>
           </AnimateIn>
@@ -280,20 +280,20 @@ export default function InstagramMarketingJaipurPage() {
             <Link
               href="/contact"
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk →
+              Let&apos;s Talk â†’
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ── INTERNAL LINKS ──────────────────────────────────────────────── */}
+      {/* â”€â”€ INTERNAL LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-16 px-6 md:px-8 border-t border-outline-variant/10">
         <div className="max-w-[1440px] mx-auto">
           <p
             className="text-sm text-on-surface-variant mb-4 uppercase tracking-widest font-bold"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Also explore
           </p>

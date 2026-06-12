@@ -17,12 +17,12 @@ export default function Results() {
         <FadeInUp className="mt-20 text-center max-w-3xl" delay={0.4}>
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-black text-on-primary-fixed leading-tight"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             From scroll-stopping content to{' '}
             <span
               className="italic font-normal underline decoration-white/30"
-              style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+              style={{ fontFamily: 'var(--font-serif-accent)' }}
             >
               real business results.
             </span>

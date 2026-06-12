@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div
               className="text-3xl font-black text-white mb-4"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Rogue Studio
             </div>

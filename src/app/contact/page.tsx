@@ -26,13 +26,13 @@ export default function ContactPage() {
               </span>
               <h1
                 className="mt-4 text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Let&apos;s build something{' '}
                 <br className="hidden md:block" />
                 <span
                   className="italic font-normal text-primary-container"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   remembered.
                 </span>
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <span className="material-symbols-outlined">chat</span>
                   <span
                     className="font-bold text-xl"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     WhatsApp Us
                   </span>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                 </p>
                 <p
                   className="text-2xl md:text-3xl font-bold leading-tight max-w-sm"
-                  style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                  style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   {STUDIO_ADDRESS.street},<br />
                   {STUDIO_ADDRESS.city}, {STUDIO_ADDRESS.state},<br />
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 </p>
                 <p
                   className="text-xl font-bold"
-                  style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                  style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   IST (GMT+5:30)
                 </p>
@@ -103,12 +103,12 @@ export default function ContactPage() {
             <div>
               <h2
                 className="text-3xl md:text-4xl font-black tracking-tighter"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Locate the{' '}
                 <span
                   className="italic font-normal text-primary-container"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   Rogue
                 </span>

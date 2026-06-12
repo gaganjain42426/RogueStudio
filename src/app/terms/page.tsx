@@ -22,7 +22,7 @@ export default function TermsPage() {
 
         <h1
           className="text-4xl md:text-5xl font-black text-white mb-4"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           Terms of Service
         </h1>

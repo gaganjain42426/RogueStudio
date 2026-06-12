@@ -17,18 +17,18 @@ const cardVariants = {
 
 export default function Pricing() {
   return (
-    <section className="bg-tertiary-fixed text-on-tertiary-fixed py-32 px-6 md:px-8">
+    <section id="pricing" className="bg-tertiary-fixed text-on-tertiary-fixed py-32 px-6 md:px-8 scroll-mt-24">
       <div className="max-w-[1440px] mx-auto">
         <FadeInUp>
           <div className="text-center mb-20">
             <h2
               className="text-4xl md:text-6xl lg:text-7xl font-black"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Choose Your{' '}
               <span
                 className="text-primary-container italic font-normal"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Pace
               </span>
@@ -57,14 +57,14 @@ export default function Pricing() {
                 {plan.featured && (
                   <div
                     className="absolute top-0 right-0 bg-white text-primary-container px-4 py-1 rounded-bl-lg font-bold text-xs uppercase"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     Most Popular
                   </div>
                 )}
                 <h3
                   className="text-2xl font-black"
-                  style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                  style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   {plan.name}
                 </h3>
@@ -78,7 +78,7 @@ export default function Pricing() {
                 <div className="mt-8 mb-8">
                   <span
                     className="text-4xl font-black"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {plan.price}
                   </span>
@@ -103,7 +103,7 @@ export default function Pricing() {
                   <Link
                     href={`/contact?plan=${plan.name.toLowerCase()}`}
                     className="w-full bg-white text-primary-container py-4 rounded-full font-bold hover:bg-surface transition-colors text-center block"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {plan.ctaLabel}
                   </Link>
@@ -111,7 +111,7 @@ export default function Pricing() {
                   <Link
                     href={`/contact?plan=${plan.name.toLowerCase()}`}
                     className="w-full border-2 border-primary-container text-primary-container py-4 rounded-full font-bold hover:bg-primary-container hover:text-white transition-all text-center block"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {plan.ctaLabel}
                   </Link>

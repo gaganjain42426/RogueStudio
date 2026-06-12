@@ -49,7 +49,7 @@ export default function Hero() {
                 className="text-[11px] md:text-xs tracking-[0.28em] uppercase"
                 style={{ fontFamily: 'var(--font-label)', color: '#fa5c1b' }}
               >
-                Jaipur Â· Creative Studio
+                Jaipur · Creative Studio
               </span>
             </div>
           </AnimateIn>
@@ -60,25 +60,21 @@ export default function Hero() {
           <div className="flex flex-col">
             <AnimateIn delay={0.2} variant="heroSlide">
               <h1
-                className="font-black text-white leading-[0.88] tracking-tighter"
+                className="font-black text-white tracking-tighter"
                 style={{
                   fontFamily: 'var(--font-headline)',
                   fontSize: 'clamp(56px, 9.5vw, 160px)',
                 }}
               >
-                SCROLL<span style={{ color: '#fa5c1b' }}>-</span>STOPPING
-              </h1>
-            </AnimateIn>
-            <AnimateIn delay={0.34} variant="heroSlide">
-              <h1
-                className="italic leading-[0.9] tracking-tighter mt-1"
-                style={{
-                  fontFamily: 'var(--font-serif-accent)',
-                  fontSize: 'clamp(56px, 9.5vw, 160px)',
-                  color: '#fa5c1b',
-                }}
-              >
-                Content.
+                <span className="block leading-[0.88]">
+                  SCROLL<span style={{ color: '#fa5c1b' }}>-</span>STOPPING
+                </span>
+                <span
+                  className="block italic leading-[0.9] mt-1"
+                  style={{ fontFamily: 'var(--font-serif-accent)', color: '#fa5c1b' }}
+                >
+                  Content.
+                </span>
               </h1>
             </AnimateIn>
           </div>
@@ -106,7 +102,7 @@ export default function Hero() {
           <AnimateIn delay={1.3}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
-                href="/work"
+                href="/portfolio"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm transition-transform hover:-translate-y-0.5"
                 style={{
                   background: '#fa5c1b',
@@ -116,7 +112,7 @@ export default function Hero() {
                 }}
               >
                 See Our Work
-                <span className="transition-transform group-hover:translate-x-1">â†’</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
               </Link>
               <Link
                 href="/contact"
@@ -144,7 +140,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-2">
                 <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: '#fa5c1b' }} />
-                Jaipur Â· India
+                Jaipur · India
               </span>
             </div>
           </AnimateIn>

@@ -51,12 +51,12 @@ export default function BlogPage() {
           </span>
           <h1
             className="mt-4 text-5xl md:text-7xl font-black text-white leading-tight"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             The Rogue{' '}
             <span
               className="text-primary-container italic font-normal"
-              style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+              style={{ fontFamily: 'var(--font-serif-accent)' }}
             >
               Dispatch
             </span>
@@ -78,7 +78,7 @@ export default function BlogPage() {
                   </div>
                   <h2
                     className="text-xl font-black text-white mb-3 group-hover:text-primary transition-colors"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {post.title}
                   </h2>

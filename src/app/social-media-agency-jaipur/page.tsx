@@ -8,7 +8,7 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Social Media Agency in Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is the social media agency in Jaipur that turns brands into scroll-stopping presences. Strategy, content, reels & growth — all under one roof.',
+    'Rogue Studio is the social media agency in Jaipur that turns brands into scroll-stopping presences. Strategy, content, reels & growth â€” all under one roof.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Social Media Agency in Jaipur | Rogue Studio',
@@ -43,7 +43,7 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How much does social media management cost in Jaipur?',
-    a: 'Our social media retainers start at ₹25,000/month and scale based on platform count, content volume, and ad spend management. We offer transparent, deliverable-based pricing — no vague monthly fees.',
+    a: 'Our social media retainers start at â‚¹25,000/month and scale based on platform count, content volume, and ad spend management. We offer transparent, deliverable-based pricing â€” no vague monthly fees.',
   },
   {
     q: 'Which platforms do you manage?',
@@ -51,15 +51,15 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How long until we see results?',
-    a: 'Organic growth is a 90-day game. Most clients see measurable engagement uplift in 30–45 days. We track follower quality, reach, saves, and DMs — not just vanity likes.',
+    a: 'Organic growth is a 90-day game. Most clients see measurable engagement uplift in 30â€“45 days. We track follower quality, reach, saves, and DMs â€” not just vanity likes.',
   },
   {
     q: 'Do you work with businesses outside Jaipur?',
-    a: 'Yes — we work with brands across India and internationally. But our Jaipur roots mean we deeply understand the local market, culture, and aesthetics that resonate with Rajasthani consumers.',
+    a: 'Yes â€” we work with brands across India and internationally. But our Jaipur roots mean we deeply understand the local market, culture, and aesthetics that resonate with Rajasthani consumers.',
   },
   {
     q: 'What makes Rogue Studio different from other agencies in Jaipur?',
-    a: 'Most agencies recycle Canva templates. We build a visual system unique to your brand, shoot cinematic content, and treat your account like a portfolio piece — because it is one.',
+    a: 'Most agencies recycle Canva templates. We build a visual system unique to your brand, shoot cinematic content, and treat your account like a portfolio piece â€” because it is one.',
   },
 ]
 
@@ -85,13 +85,13 @@ export default function SocialMediaAgencyJaipurPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background min-h-[80vh] flex items-center py-32 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto w-full">
           <AnimateIn variant="fadeUp">
             <p
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary-container mb-6"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Jaipur's Social Media Agency
             </p>
@@ -99,12 +99,12 @@ export default function SocialMediaAgencyJaipurPage() {
           <AnimateIn variant="fadeUp" delay={0.1}>
             <h1
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               The social media agency in Jaipur{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 your brand deserves.
               </span>
@@ -113,7 +113,7 @@ export default function SocialMediaAgencyJaipurPage() {
           <AnimateIn variant="fadeUp" delay={0.2}>
             <p className="mt-8 text-xl text-on-surface-variant leading-relaxed max-w-2xl">
               Jaipur brands that look like they belong in Mumbai or Delhi. We build content
-              ecosystems — strategy, production, and distribution — that turn followers into
+              ecosystems â€” strategy, production, and distribution â€” that turn followers into
               customers.
             </p>
           </AnimateIn>
@@ -122,14 +122,14 @@ export default function SocialMediaAgencyJaipurPage() {
               <Link
                 href="/contact"
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit →
+                Get a Free Audit â†’
               </Link>
               <Link
-                href="/work"
+                href="/portfolio"
                 className="border border-white/20 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 View Our Work
               </Link>
@@ -138,18 +138,18 @@ export default function SocialMediaAgencyJaipurPage() {
         </div>
       </section>
 
-      {/* ── WHY ROGUE ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ WHY ROGUE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-16"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Why Jaipur businesses choose{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Rogue Studio
               </span>
@@ -159,11 +159,11 @@ export default function SocialMediaAgencyJaipurPage() {
             {[
               {
                 title: 'We know Jaipur',
-                body: "We're not a Gurgaon agency with a Jaipur office. We live here, understand the market, and know what resonates with the city's consumers — from old city bazaars to Vaishali Nagar startups.",
+                body: "We're not a Gurgaon agency with a Jaipur office. We live here, understand the market, and know what resonates with the city's consumers â€” from old city bazaars to Vaishali Nagar startups.",
               },
               {
                 title: 'Cinematic quality, every post',
-                body: 'Your feed is your portfolio. We shoot and edit every piece of content like it belongs in a brand campaign — not a stock library. The production quality shows.',
+                body: 'Your feed is your portfolio. We shoot and edit every piece of content like it belongs in a brand campaign â€” not a stock library. The production quality shows.',
               },
               {
                 title: 'Retainer-first, results-obsessed',
@@ -178,7 +178,7 @@ export default function SocialMediaAgencyJaipurPage() {
                 <div className="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10 h-full">
                   <h3
                     className="text-xl font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {title}
                   </h3>
@@ -190,18 +190,18 @@ export default function SocialMediaAgencyJaipurPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeLeft">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-4"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               What's included
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              A complete social media engine — from the strategy deck to the scheduled post.
+              A complete social media engine â€” from the strategy deck to the scheduled post.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -220,7 +220,7 @@ export default function SocialMediaAgencyJaipurPage() {
                   key={item}
                   className="flex items-start gap-3 bg-surface-container p-5 rounded-lg border border-outline-variant/10"
                 >
-                  <span className="text-primary-container font-black mt-0.5 shrink-0">✓</span>
+                  <span className="text-primary-container font-black mt-0.5 shrink-0">âœ“</span>
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -229,13 +229,13 @@ export default function SocialMediaAgencyJaipurPage() {
         </div>
       </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[900px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-12"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Frequently asked questions
             </h2>
@@ -246,7 +246,7 @@ export default function SocialMediaAgencyJaipurPage() {
                 <div className="border border-outline-variant/20 rounded-xl p-7">
                   <h3
                     className="text-lg font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {q}
                   </h3>
@@ -258,40 +258,40 @@ export default function SocialMediaAgencyJaipurPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ FINAL CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-gradient-to-br from-primary-container to-background py-32 px-6 md:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-6xl font-black text-white leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Ready to grow your brand in Jaipur?
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Let&apos;s audit your current social presence — free, no commitment.
+              Let&apos;s audit your current social presence â€” free, no commitment.
             </p>
           </AnimateIn>
           <AnimateIn variant="scaleIn" delay={0.3}>
             <Link
               href="/contact"
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk →
+              Let&apos;s Talk â†’
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ── INTERNAL LINKS ──────────────────────────────────────────────── */}
+      {/* â”€â”€ INTERNAL LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-16 px-6 md:px-8 border-t border-outline-variant/10">
         <div className="max-w-[1440px] mx-auto">
           <p
             className="text-sm text-on-surface-variant mb-4 uppercase tracking-widest font-bold"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Also explore
           </p>

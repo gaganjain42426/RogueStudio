@@ -31,6 +31,7 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Rogue Studio — Creative & Social Media Agency Jaipur',
   description:
     'Rogue Studio is a creative and social media marketing agency based in Jaipur, India. We build cinematic brands, scroll-stopping content, and growth-driven strategies.',

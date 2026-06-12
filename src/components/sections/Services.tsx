@@ -38,12 +38,12 @@ export default function Services() {
           </span>
           <h2
             className="mt-6 text-4xl md:text-6xl lg:text-7xl font-black text-white max-w-4xl leading-tight"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             We believe great creative isn&apos;t just beautiful,{' '}
             <span
               className="italic font-normal"
-              style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+              style={{ fontFamily: 'var(--font-serif-accent)' }}
             >
               it works.
             </span>

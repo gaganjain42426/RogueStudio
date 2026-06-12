@@ -1,4 +1,4 @@
-﻿import Image from 'next/image'
+import Image from 'next/image'
 import FadeInLeft from '@/components/animations/FadeInLeft'
 import FadeInRight from '@/components/animations/FadeInRight'
 import { CountUpClient } from '@/components/sections/CountUpClient'
@@ -25,12 +25,12 @@ export default function About() {
           <FadeInLeft>
             <h2
               className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               World-class creative{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 setting a higher standard.
               </span>

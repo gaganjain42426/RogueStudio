@@ -18,7 +18,7 @@ export default function FinalCTA() {
         <FadeInUp>
           <h2
             className="text-6xl md:text-[10rem] font-black text-white leading-none"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Ready to go
           </h2>
@@ -27,7 +27,7 @@ export default function FinalCTA() {
         <FadeInUp delay={0.2}>
           <h2
             className="text-7xl md:text-[12rem] font-black text-primary-container italic leading-none -mt-4 md:-mt-10"
-            style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+            style={{ fontFamily: 'var(--font-serif-accent)' }}
           >
             Rogue?
           </h2>
@@ -37,7 +37,7 @@ export default function FinalCTA() {
           <Link
             href="/contact"
             className="inline-flex items-center gap-3 bg-white text-primary-container px-12 py-5 rounded-full text-xl md:text-2xl font-black hover:scale-110 transition-transform duration-300 shadow-2xl"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             LET&apos;S TALK →
           </Link>

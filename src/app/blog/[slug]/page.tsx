@@ -70,7 +70,7 @@ export default async function BlogPostPage({
         </span>
         <h1
           className="mt-4 text-4xl md:text-6xl font-black text-white leading-tight"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           {post.title}
         </h1>

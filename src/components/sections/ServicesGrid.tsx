@@ -29,7 +29,7 @@ export default function ServicesGrid() {
                 </span>
                 <span
                   className="font-bold text-sm text-on-surface"
-                  style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                  style={{ fontFamily: 'var(--font-headline)' }}
                 >
                   {tile.label}
                 </span>

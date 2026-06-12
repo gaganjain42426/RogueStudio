@@ -7,7 +7,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin', '/portal', '/client-login', '/dashboard'],
+        // Prefix match (no trailing slash) blocks both the index route and all
+        // sub-paths — e.g. `/admin` also covers `/admin/clients`.
+        disallow: ['/api/', '/admin', '/portal', '/client-login'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

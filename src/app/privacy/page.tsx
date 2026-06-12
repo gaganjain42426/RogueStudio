@@ -22,7 +22,7 @@ export default function PrivacyPage() {
 
         <h1
           className="text-4xl md:text-5xl font-black text-white mb-4"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           Privacy Policy
         </h1>

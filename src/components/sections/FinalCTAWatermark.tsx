@@ -17,7 +17,7 @@ export function FinalCTAWatermark() {
       <motion.span
         className="text-[40vw] font-black text-white leading-none"
         style={{
-          fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)',
+          fontFamily: 'var(--font-headline)',
           opacity: 0.07,
         }}
         animate={prefersReduced ? {} : { scale: [0.95, 1.05] }}

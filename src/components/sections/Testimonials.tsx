@@ -16,12 +16,12 @@ export default function Testimonials() {
         <FadeInUp>
           <h2
             className="text-center text-4xl md:text-6xl font-black text-white mb-20"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             The{' '}
             <span
               className="text-primary-container italic font-normal"
-              style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+              style={{ fontFamily: 'var(--font-serif-accent)' }}
             >
               Word
             </span>{' '}

@@ -45,7 +45,7 @@ export function CountUpClient({ target, suffix = '' }: CountUpClientProps) {
     <div ref={ref}>
       <span
         className="text-5xl font-black text-primary-container"
-        style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+        style={{ fontFamily: 'var(--font-headline)' }}
       >
         {count}
         {suffix}

@@ -63,7 +63,7 @@ export default function ClientLoginPage() {
           <Link
             href="/"
             className="text-3xl font-black tracking-tighter text-white"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Rogue Studio
           </Link>
@@ -74,7 +74,7 @@ export default function ClientLoginPage() {
           <header className="mb-10 text-center">
             <h1
               className="text-3xl md:text-4xl font-black tracking-tight text-on-tertiary-fixed leading-tight mb-2"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Welcome Back
             </h1>
@@ -82,7 +82,7 @@ export default function ClientLoginPage() {
               Login to Your{' '}
               <span
                 className="italic font-normal"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Dashboard
               </span>
@@ -141,7 +141,7 @@ export default function ClientLoginPage() {
                 type="submit"
                 disabled={loading}
                 className="w-full bg-primary-container text-on-primary-fixed font-black py-5 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 {loading ? 'Logging in...' : (
                   <>

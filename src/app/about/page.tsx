@@ -55,12 +55,12 @@ export default function AboutPage() {
               </span>
               <h1
                 className="mt-6 text-6xl md:text-8xl lg:text-[9rem] font-black text-white leading-[0.85] max-w-5xl"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Born{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   Rogue.
                 </span>
@@ -68,7 +68,7 @@ export default function AboutPage() {
                 Built{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   Different.
                 </span>
@@ -88,12 +88,12 @@ export default function AboutPage() {
             <AnimatedItem>
               <h2
                 className="text-4xl md:text-6xl font-black mb-16"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Meet the{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   Visionaries
                 </span>
@@ -115,7 +115,7 @@ export default function AboutPage() {
                     </div>
                     <h3
                       className="text-xl font-black text-on-tertiary-fixed"
-                      style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                      style={{ fontFamily: 'var(--font-headline)' }}
                     >
                       {member.name}
                     </h3>
@@ -138,12 +138,12 @@ export default function AboutPage() {
             <AnimatedItem>
               <h2
                 className="text-4xl md:text-6xl font-black text-white mb-16"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Our{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   Values
                 </span>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                     </span>
                     <h3
                       className="text-xl font-bold text-white mt-6 mb-3"
-                      style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                      style={{ fontFamily: 'var(--font-headline)' }}
                     >
                       {v.title}
                     </h3>
@@ -175,14 +175,14 @@ export default function AboutPage() {
       <section className="bg-primary-container py-20 px-6 md:px-8 text-center">
         <h2
           className="text-3xl md:text-5xl font-black text-on-primary-fixed"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           Ready to work with us?
         </h2>
         <Link
           href="/contact"
           className="mt-8 inline-flex bg-on-primary-fixed text-primary-container px-10 py-4 rounded-full font-black text-lg hover:scale-105 transition-transform"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           Book a Call →
         </Link>

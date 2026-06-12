@@ -13,12 +13,12 @@ export default function WhatWeDo() {
           <FadeInLeft className="w-full md:w-1/2" delay={0.1}>
             <h2
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Creativity Meets{' '}
               <span
                 className="text-primary-container italic font-normal"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Strategy
               </span>
@@ -28,9 +28,9 @@ export default function WhatWeDo() {
               research with unapologetic artistic direction to move needles and hearts.
             </p>
             <Link
-              href="/work"
+              href="/portfolio"
               className="mt-10 inline-flex items-center gap-2 border border-on-tertiary-fixed/20 text-on-tertiary-fixed px-8 py-3 rounded-full font-bold text-sm hover:bg-on-tertiary-fixed hover:text-tertiary-fixed transition-colors duration-300"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               See Our Work →
             </Link>
@@ -55,7 +55,7 @@ export default function WhatWeDo() {
         <FadeInUp className="mt-24 text-center overflow-hidden pointer-events-none select-none" delay={0.3}>
           <h3
             className="text-[12vw] font-black text-primary-container opacity-20 leading-none"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             ROGUE STUDIO
           </h3>

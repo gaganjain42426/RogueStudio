@@ -8,12 +8,12 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Reels Production Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is Jaipur\'s reels production agency — cinematic short-form video for Instagram, YouTube Shorts & more. Shot, edited, and published to convert.',
+    'Rogue Studio is Jaipur\'s reels production agency â€” cinematic short-form video for Instagram, YouTube Shorts & more. Shot, edited, and published to convert.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Reels Production Agency Jaipur | Rogue Studio',
     description:
-      'Cinematic Reels and short-form video production for Jaipur businesses. From concept to cut — we make content that stops the scroll.',
+      'Cinematic Reels and short-form video production for Jaipur businesses. From concept to cut â€” we make content that stops the scroll.',
     url: CANONICAL,
     images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
@@ -43,11 +43,11 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How much does Reels production cost in Jaipur?',
-    a: 'Our Reels production packages start at ₹8,000 per Reel for concept, shoot, and edit. Volume retainers (8–12 Reels/month) significantly reduce the per-unit cost. We quote based on location, talent, and complexity.',
+    a: 'Our Reels production packages start at â‚¹8,000 per Reel for concept, shoot, and edit. Volume retainers (8â€“12 Reels/month) significantly reduce the per-unit cost. We quote based on location, talent, and complexity.',
   },
   {
     q: 'Do you handle scripting and concept development?',
-    a: 'Yes — fully. We start with a content brief, develop hooks and scripts aligned to your brand voice, then handle production and post-production end-to-end. You approve before we shoot.',
+    a: 'Yes â€” fully. We start with a content brief, develop hooks and scripts aligned to your brand voice, then handle production and post-production end-to-end. You approve before we shoot.',
   },
   {
     q: 'What industries do you make Reels for?',
@@ -55,11 +55,11 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How long does it take to produce one Reel?',
-    a: 'From brief to delivery: 5–7 business days for a standard shoot-and-edit Reel. Faster turnarounds are available for retainer clients. We batch shoots to maximise output per session.',
+    a: 'From brief to delivery: 5â€“7 business days for a standard shoot-and-edit Reel. Faster turnarounds are available for retainer clients. We batch shoots to maximise output per session.',
   },
   {
     q: 'Will you post and manage distribution too?',
-    a: 'Yes — our social media retainer includes scheduling, caption writing, hashtag research, and posting at optimal times. Or we can hand off edited files if you have an in-house team.',
+    a: 'Yes â€” our social media retainer includes scheduling, caption writing, hashtag research, and posting at optimal times. Or we can hand off edited files if you have an in-house team.',
   },
 ]
 
@@ -85,26 +85,26 @@ export default function ReelsProductionJaipurPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background min-h-[80vh] flex items-center py-32 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto w-full">
           <AnimateIn variant="fadeUp">
             <p
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary-container mb-6"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Reels Production · Jaipur
+              Reels Production Â· Jaipur
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.1}>
             <h1
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Reels production agency Jaipur —{' '}
+              Reels production agency Jaipur â€”{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 cinematic, not cringe.
               </span>
@@ -121,14 +121,14 @@ export default function ReelsProductionJaipurPage() {
               <Link
                 href="/contact"
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit →
+                Get a Free Audit â†’
               </Link>
               <Link
-                href="/work"
+                href="/portfolio"
                 className="border border-white/20 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 View Our Work
               </Link>
@@ -137,18 +137,18 @@ export default function ReelsProductionJaipurPage() {
         </div>
       </section>
 
-      {/* ── WHY ROGUE ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ WHY ROGUE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-16"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Why Jaipur brands choose{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Rogue Studio
               </span>{' '}
@@ -159,26 +159,26 @@ export default function ReelsProductionJaipurPage() {
             {[
               {
                 title: 'Production quality that earns attention',
-                body: 'Colour-graded, properly lit, crispy audio. Every Reel we produce looks like it came out of a proper production house — because it did.',
+                body: 'Colour-graded, properly lit, crispy audio. Every Reel we produce looks like it came out of a proper production house â€” because it did.',
               },
               {
                 title: 'Hooks designed for the algorithm',
-                body: 'The first 1.5 seconds decide everything. We obsess over hooks, pattern interrupts, and pacing that drives replays and shares — the signals that get Reels pushed by Instagram.',
+                body: 'The first 1.5 seconds decide everything. We obsess over hooks, pattern interrupts, and pacing that drives replays and shares â€” the signals that get Reels pushed by Instagram.',
               },
               {
                 title: 'Rooted in Jaipur, scaled for India',
-                body: "We understand the Jaipur market's aesthetics — the textures, colour palette, and cultural codes that make content feel authentic rather than imported.",
+                body: "We understand the Jaipur market's aesthetics â€” the textures, colour palette, and cultural codes that make content feel authentic rather than imported.",
               },
               {
                 title: "Retainer partners, not one-off vendors",
-                body: "Volume and consistency win on Reels. Our retainer model means you're never scrambling for content — the pipeline is always full, always on-brand.",
+                body: "Volume and consistency win on Reels. Our retainer model means you're never scrambling for content â€” the pipeline is always full, always on-brand.",
               },
             ].map(({ title, body }, i) => (
               <AnimateIn key={title} variant="fadeUp" delay={i * 0.1}>
                 <div className="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10 h-full">
                   <h3
                     className="text-xl font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {title}
                   </h3>
@@ -190,18 +190,18 @@ export default function ReelsProductionJaipurPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeLeft">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-4"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               What's in every production
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              From the brief to the publish button — we handle every frame.
+              From the brief to the publish button â€” we handle every frame.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -209,7 +209,7 @@ export default function ReelsProductionJaipurPage() {
               {[
                 'Hook writing & script development',
                 'Location scouting & set dressing (Jaipur & surroundings)',
-                'Cinematography — handheld, gimbal, drone available',
+                'Cinematography â€” handheld, gimbal, drone available',
                 'Professional lighting & audio capture',
                 'Colour grading & motion graphics',
                 'Subtitles, text overlays & captions',
@@ -220,7 +220,7 @@ export default function ReelsProductionJaipurPage() {
                   key={item}
                   className="flex items-start gap-3 bg-surface-container p-5 rounded-lg border border-outline-variant/10"
                 >
-                  <span className="text-primary-container font-black mt-0.5 shrink-0">✓</span>
+                  <span className="text-primary-container font-black mt-0.5 shrink-0">âœ“</span>
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -229,13 +229,13 @@ export default function ReelsProductionJaipurPage() {
         </div>
       </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[900px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-12"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Frequently asked questions
             </h2>
@@ -246,7 +246,7 @@ export default function ReelsProductionJaipurPage() {
                 <div className="border border-outline-variant/20 rounded-xl p-7">
                   <h3
                     className="text-lg font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {q}
                   </h3>
@@ -258,40 +258,40 @@ export default function ReelsProductionJaipurPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ FINAL CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-gradient-to-br from-primary-container to-background py-32 px-6 md:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-6xl font-black text-white leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Ready to grow your brand in Jaipur?
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Let&apos;s talk about your Reels strategy — one conversation, zero jargon.
+              Let&apos;s talk about your Reels strategy â€” one conversation, zero jargon.
             </p>
           </AnimateIn>
           <AnimateIn variant="scaleIn" delay={0.3}>
             <Link
               href="/contact"
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk →
+              Let&apos;s Talk â†’
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ── INTERNAL LINKS ──────────────────────────────────────────────── */}
+      {/* â”€â”€ INTERNAL LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-16 px-6 md:px-8 border-t border-outline-variant/10">
         <div className="max-w-[1440px] mx-auto">
           <p
             className="text-sm text-on-surface-variant mb-4 uppercase tracking-widest font-bold"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Also explore
           </p>

@@ -63,12 +63,12 @@ export default function ServicesPage() {
               </span>
               <h1
                 className="mt-6 text-6xl md:text-8xl font-black text-white leading-tight max-w-4xl"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Services built to{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   actually work.
                 </span>
@@ -87,7 +87,7 @@ export default function ServicesPage() {
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection>
             <div className="space-y-8">
-              {mainServices.map((svc, i) => (
+              {mainServices.map((svc) => (
                 <AnimatedItem key={svc.title}>
                   <div className="bg-surface-container-highest rounded-lg p-10 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-10 hover:bg-surface-bright transition-colors duration-300">
                     <div className="md:col-span-2">
@@ -97,7 +97,7 @@ export default function ServicesPage() {
                         </span>
                         <h3
                           className="text-2xl md:text-3xl font-black text-white"
-                          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                          style={{ fontFamily: 'var(--font-headline)' }}
                         >
                           {svc.title}
                         </h3>
@@ -136,12 +136,12 @@ export default function ServicesPage() {
             <AnimatedItem>
               <h2
                 className="text-3xl md:text-5xl font-black text-white mb-12 text-center"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Everything in our{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   arsenal
                 </span>
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                     </span>
                     <span
                       className="font-bold text-sm text-on-surface"
-                      style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                      style={{ fontFamily: 'var(--font-headline)' }}
                     >
                       {tile.label}
                     </span>
@@ -175,12 +175,12 @@ export default function ServicesPage() {
             <AnimatedItem>
               <h2
                 className="text-4xl md:text-6xl font-black mb-6"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 Simple,{' '}
                 <span
                   className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
                   transparent
                 </span>{' '}
@@ -192,11 +192,11 @@ export default function ServicesPage() {
             </AnimatedItem>
             <AnimatedItem>
               <Link
-                href="/#pricing"
+                href="/contact"
                 className="inline-flex bg-primary-container text-on-primary-fixed px-10 py-4 rounded-full font-black text-lg hover:scale-105 transition-transform"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
-                View Pricing →
+                Book a Call →
               </Link>
             </AnimatedItem>
           </AnimatedSection>

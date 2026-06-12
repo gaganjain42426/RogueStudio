@@ -35,7 +35,7 @@ export function ServiceCardClient({ icon, title, description }: ServiceCardClien
         </span>
         <h3
           className="mt-8 text-2xl font-bold text-white"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           {title}
         </h3>

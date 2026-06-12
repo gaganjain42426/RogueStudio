@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { WHATSAPP_NUMBER } from '@/lib/constants'
 import type { ContactFormData } from '@/types'
 
 const schema = z.object({
@@ -49,7 +50,7 @@ export default function ContactForm() {
       `*Message:*\n${data.message}`
     )
 
-    window.open(`https://wa.me/918003225164?text=${text}`, '_blank')
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank')
     setSubmitted(true)
     setSubmitting(false)
   }
@@ -67,7 +68,7 @@ export default function ContactForm() {
         </div>
         <h3
           className="text-3xl font-black text-on-tertiary-fixed"
-          style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+          style={{ fontFamily: 'var(--font-headline)' }}
         >
           Opening WhatsApp…
         </h3>
@@ -82,10 +83,14 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
       {/* Name */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-name"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           Full Name
         </label>
         <input
+          id="contact-name"
           {...register('name')}
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed placeholder:text-on-tertiary-fixed/20"
           placeholder="John Doe"
@@ -97,10 +102,14 @@ export default function ContactForm() {
 
       {/* Company */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-company"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           Business Name
         </label>
         <input
+          id="contact-company"
           {...register('company')}
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed placeholder:text-on-tertiary-fixed/20"
           placeholder="Your Company"
@@ -112,10 +121,14 @@ export default function ContactForm() {
 
       {/* Email */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-email"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           Email Address
         </label>
         <input
+          id="contact-email"
           {...register('email')}
           type="email"
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed placeholder:text-on-tertiary-fixed/20"
@@ -128,10 +141,14 @@ export default function ContactForm() {
 
       {/* WhatsApp */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-whatsapp"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           WhatsApp Number
         </label>
         <input
+          id="contact-whatsapp"
           {...register('whatsapp')}
           type="tel"
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed placeholder:text-on-tertiary-fixed/20"
@@ -144,10 +161,14 @@ export default function ContactForm() {
 
       {/* Service */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-service"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           Service Interested In
         </label>
         <select
+          id="contact-service"
           {...register('service')}
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed appearance-none"
         >
@@ -167,10 +188,14 @@ export default function ContactForm() {
 
       {/* Message */}
       <div className="space-y-1">
-        <label className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60">
+        <label
+          htmlFor="contact-message"
+          className="block text-[10px] uppercase tracking-widest font-bold text-on-tertiary-fixed/60"
+        >
           Your Vision
         </label>
         <textarea
+          id="contact-message"
           {...register('message')}
           rows={4}
           className="w-full bg-transparent border-b-2 border-on-tertiary-fixed/10 py-4 focus:outline-none focus:border-primary-container transition-colors text-lg font-medium text-on-tertiary-fixed placeholder:text-on-tertiary-fixed/20 resize-none"
@@ -185,7 +210,7 @@ export default function ContactForm() {
         type="submit"
         disabled={submitting}
         className="w-full bg-primary-container text-on-primary-fixed py-5 rounded-full font-black text-lg hover:scale-[1.02] transition-transform duration-300 shadow-[0_40px_60px_-20px_rgba(250,92,27,0.3)] flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
-        style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+        style={{ fontFamily: 'var(--font-headline)' }}
       >
         {submitting ? 'Sending...' : 'Send Inquiry'}
         {!submitting && (

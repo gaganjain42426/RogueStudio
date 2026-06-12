@@ -20,7 +20,7 @@ export default function Marquee() {
           >
             <span
               className="text-on-primary-fixed font-black text-2xl md:text-4xl uppercase tracking-tighter pr-12"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               {text}
             </span>

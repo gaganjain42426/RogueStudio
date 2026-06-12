@@ -8,12 +8,12 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is a full-service digital marketing agency in Jaipur — SEO, paid ads, social media, and content strategy that grows revenue, not just impressions.',
+    'Rogue Studio is a full-service digital marketing agency in Jaipur â€” SEO, paid ads, social media, and content strategy that grows revenue, not just impressions.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Digital Marketing Agency Jaipur | Rogue Studio',
     description:
-      'Performance digital marketing for Jaipur businesses. SEO, paid social, Google Ads, and content — all tied to revenue outcomes.',
+      'Performance digital marketing for Jaipur businesses. SEO, paid social, Google Ads, and content â€” all tied to revenue outcomes.',
     url: CANONICAL,
     images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
@@ -43,23 +43,23 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'What digital marketing services do you offer in Jaipur?',
-    a: 'We offer SEO (on-page, technical, local), Google Ads & Performance Max, Meta & Instagram paid ads, social media management, content marketing, and email automation. We build integrated strategies — not siloed channel tactics.',
+    a: 'We offer SEO (on-page, technical, local), Google Ads & Performance Max, Meta & Instagram paid ads, social media management, content marketing, and email automation. We build integrated strategies â€” not siloed channel tactics.',
   },
   {
     q: 'How much does digital marketing cost for a Jaipur business?',
-    a: 'Retainers start at ₹30,000/month for a focused single-channel strategy (e.g. SEO or paid social). Full-funnel multi-channel programs start at ₹75,000/month. We always start with an audit to scope exactly what will move the needle for your business.',
+    a: 'Retainers start at â‚¹30,000/month for a focused single-channel strategy (e.g. SEO or paid social). Full-funnel multi-channel programs start at â‚¹75,000/month. We always start with an audit to scope exactly what will move the needle for your business.',
   },
   {
     q: 'How do you measure success?',
-    a: 'Revenue, leads, and ROAS — not impressions. We set up proper conversion tracking in GA4 and Meta before spending a rupee on ads. You see exactly what each channel is contributing.',
+    a: 'Revenue, leads, and ROAS â€” not impressions. We set up proper conversion tracking in GA4 and Meta before spending a rupee on ads. You see exactly what each channel is contributing.',
   },
   {
     q: 'Do you work with small businesses or only large brands?',
-    a: 'We work with ambitious businesses of all sizes — from Jaipur startups with ₹50K/month budgets to established brands with multi-crore ad spends. What matters is that you want to grow seriously.',
+    a: 'We work with ambitious businesses of all sizes â€” from Jaipur startups with â‚¹50K/month budgets to established brands with multi-crore ad spends. What matters is that you want to grow seriously.',
   },
   {
     q: 'Why choose a Jaipur-based agency over a national one?',
-    a: 'Proximity matters — we can attend shoots, meet your team, and understand the local competition first-hand. Plus, we know which Jaipur neighbourhoods and festivals to target, and which local publications and influencers carry real weight.',
+    a: 'Proximity matters â€” we can attend shoots, meet your team, and understand the local competition first-hand. Plus, we know which Jaipur neighbourhoods and festivals to target, and which local publications and influencers carry real weight.',
   },
 ]
 
@@ -85,26 +85,26 @@ export default function DigitalMarketingJaipurPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
       />
 
-      {/* ── HERO ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background min-h-[80vh] flex items-center py-32 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto w-full">
           <AnimateIn variant="fadeUp">
             <p
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary-container mb-6"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Digital Marketing · Jaipur
+              Digital Marketing Â· Jaipur
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.1}>
             <h1
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Digital marketing agency Jaipur —{' '}
+              Digital marketing agency Jaipur â€”{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 built for growth, not reports.
               </span>
@@ -112,7 +112,7 @@ export default function DigitalMarketingJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.2}>
             <p className="mt-8 text-xl text-on-surface-variant leading-relaxed max-w-2xl">
-              We run digital marketing that converts — SEO that brings inbound leads, ads that
+              We run digital marketing that converts â€” SEO that brings inbound leads, ads that
               return real ROAS, and content that builds lasting brand authority. For Jaipur
               businesses serious about scaling.
             </p>
@@ -122,14 +122,14 @@ export default function DigitalMarketingJaipurPage() {
               <Link
                 href="/contact"
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit →
+                Get a Free Audit â†’
               </Link>
               <Link
-                href="/work"
+                href="/portfolio"
                 className="border border-white/20 text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors"
-                style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                style={{ fontFamily: 'var(--font-headline)' }}
               >
                 View Our Work
               </Link>
@@ -138,18 +138,18 @@ export default function DigitalMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── WHY ROGUE ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ WHY ROGUE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-16"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Why Jaipur brands trust{' '}
               <span
                 className="italic font-normal text-primary-container"
-                style={{ fontFamily: 'var(--loaded-playfair, "Playfair Display", serif)' }}
+                style={{ fontFamily: 'var(--font-serif-accent)' }}
               >
                 Rogue Studio
               </span>{' '}
@@ -160,7 +160,7 @@ export default function DigitalMarketingJaipurPage() {
             {[
               {
                 title: 'Local market intelligence',
-                body: "We know Jaipur's competition — who's ranking where, which brands are outspending on ads, and what content gaps exist in your industry locally. Data-backed decisions from day one.",
+                body: "We know Jaipur's competition â€” who's ranking where, which brands are outspending on ads, and what content gaps exist in your industry locally. Data-backed decisions from day one.",
               },
               {
                 title: 'Creative that performs',
@@ -168,7 +168,7 @@ export default function DigitalMarketingJaipurPage() {
               },
               {
                 title: "Retainer model means skin in the game",
-                body: "We're not billing by the hour. Our retainers are milestone-based — tied to growth targets. If your business grows, we grow. That's the alignment you want from an agency.",
+                body: "We're not billing by the hour. Our retainers are milestone-based â€” tied to growth targets. If your business grows, we grow. That's the alignment you want from an agency.",
               },
               {
                 title: 'Transparent, jargon-free reporting',
@@ -179,7 +179,7 @@ export default function DigitalMarketingJaipurPage() {
                 <div className="bg-surface-container-high p-8 rounded-xl border border-outline-variant/10 h-full">
                   <h3
                     className="text-xl font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {title}
                   </h3>
@@ -191,18 +191,18 @@ export default function DigitalMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── SERVICES ────────────────────────────────────────────────────── */}
+      {/* â”€â”€ SERVICES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-24 px-6 md:px-8">
         <div className="max-w-[1440px] mx-auto">
           <AnimateIn variant="fadeLeft">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-4"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               What's included
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              Full-funnel digital marketing — from the first impression to the closed sale.
+              Full-funnel digital marketing â€” from the first impression to the closed sale.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -221,7 +221,7 @@ export default function DigitalMarketingJaipurPage() {
                   key={item}
                   className="flex items-start gap-3 bg-surface-container p-5 rounded-lg border border-outline-variant/10"
                 >
-                  <span className="text-primary-container font-black mt-0.5 shrink-0">✓</span>
+                  <span className="text-primary-container font-black mt-0.5 shrink-0">âœ“</span>
                   <span className="leading-relaxed">{item}</span>
                 </li>
               ))}
@@ -230,13 +230,13 @@ export default function DigitalMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-surface-container py-24 px-6 md:px-8">
         <div className="max-w-[900px] mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-5xl font-black text-white mb-12"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Frequently asked questions
             </h2>
@@ -247,7 +247,7 @@ export default function DigitalMarketingJaipurPage() {
                 <div className="border border-outline-variant/20 rounded-xl p-7">
                   <h3
                     className="text-lg font-black text-white mb-3"
-                    style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+                    style={{ fontFamily: 'var(--font-headline)' }}
                   >
                     {q}
                   </h3>
@@ -259,20 +259,20 @@ export default function DigitalMarketingJaipurPage() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ───────────────────────────────────────────────────── */}
+      {/* â”€â”€ FINAL CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-gradient-to-br from-primary-container to-background py-32 px-6 md:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <AnimateIn variant="fadeUp">
             <h2
               className="text-4xl md:text-6xl font-black text-white leading-tight"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
               Ready to grow your brand in Jaipur?
             </h2>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Get a free digital audit — we&apos;ll show you exactly where you&apos;re losing
+              Get a free digital audit â€” we&apos;ll show you exactly where you&apos;re losing
               revenue online.
             </p>
           </AnimateIn>
@@ -280,20 +280,20 @@ export default function DigitalMarketingJaipurPage() {
             <Link
               href="/contact"
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
-              style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+              style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk →
+              Let&apos;s Talk â†’
             </Link>
           </AnimateIn>
         </div>
       </section>
 
-      {/* ── INTERNAL LINKS ──────────────────────────────────────────────── */}
+      {/* â”€â”€ INTERNAL LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="bg-background py-16 px-6 md:px-8 border-t border-outline-variant/10">
         <div className="max-w-[1440px] mx-auto">
           <p
             className="text-sm text-on-surface-variant mb-4 uppercase tracking-widest font-bold"
-            style={{ fontFamily: 'var(--loaded-epilogue, Epilogue, sans-serif)' }}
+            style={{ fontFamily: 'var(--font-headline)' }}
           >
             Also explore
           </p>

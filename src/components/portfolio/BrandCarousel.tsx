@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export interface BrandItem {
   slug: string
@@ -17,7 +17,7 @@ function BrandCard({ brand, onJump }: { brand: BrandItem; onJump: (slug: string)
       type="button"
       onClick={() => onJump(brand.slug)}
       aria-label={`View ${brand.name} work`}
-      className="group/card relative mr-4 flex w-[280px] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/25 hover:bg-white/[0.06]"
+      className="group/card relative flex h-full min-h-[104px] w-full items-center gap-4 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-left transition-all duration-300 hover:-translate-y-1.5 hover:border-white/25 hover:bg-white/[0.06]"
     >
       {/* accent glow on hover */}
       <div
@@ -46,13 +46,13 @@ function BrandCard({ brand, onJump }: { brand: BrandItem; onJump: (slug: string)
       {/* text */}
       <div className="relative min-w-0">
         <p
-          className="truncate text-[10px] font-bold uppercase tracking-[0.16em]"
+          className="text-[10px] font-bold uppercase leading-tight tracking-[0.16em]"
           style={{ color: brand.accent }}
         >
           {brand.industry}
         </p>
         <p
-          className="mt-1 truncate text-lg font-black leading-tight text-white"
+          className="mt-1 text-lg font-black leading-tight text-white"
           style={{ fontFamily: 'var(--font-headline)' }}
         >
           {brand.name}
@@ -67,10 +67,9 @@ function BrandCard({ brand, onJump }: { brand: BrandItem; onJump: (slug: string)
 }
 
 /**
- * BrandCarousel — a continuously scrolling marquee of brand cards.
- * Pauses on hover/focus so cards can be clicked; clicking jumps to that brand's
- * panel. Edge-faded with a mask; falls back to a manual scroll strip under
- * reduced-motion.
+ * BrandCarousel — a still grid of brand cards (the hero already has the moving
+ * name marquee, so these stay put). Cards fade in once on scroll and lift /
+ * glow on hover; clicking jumps to that brand's panel.
  */
 export default function BrandCarousel({
   brands,
@@ -79,12 +78,6 @@ export default function BrandCarousel({
   brands: BrandItem[]
   onJump: (slug: string) => void
 }) {
-  const reduced = useReducedMotion()
-  // Duplicate the set so the marquee can loop seamlessly (-50% == one full set).
-  const items = reduced ? brands : [...brands, ...brands]
-
-  const cards = items.map((b, i) => <BrandCard key={`${b.slug}-${i}`} brand={b} onJump={onJump} />)
-
   return (
     <section className="relative overflow-hidden border-b border-white/5 bg-[#0D0D0D] py-16 md:py-20">
       {/* faint depth glow */}
@@ -97,8 +90,8 @@ export default function BrandCarousel({
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto mb-10 max-w-[1440px] px-6 md:px-8">
-        <div className="flex items-center gap-3">
+      <div className="relative mx-auto max-w-[1440px] px-6 md:px-8">
+        <div className="mb-10 flex items-center gap-3">
           <span className="inline-block h-px w-8" style={{ background: '#fa5c1b' }} />
           <span
             className="text-[11px] uppercase tracking-[0.28em] text-white/50"
@@ -107,25 +100,20 @@ export default function BrandCarousel({
             The Roster · tap a brand to jump in
           </span>
         </div>
-      </div>
 
-      {/* edge-faded marquee */}
-      <div
-        className="group relative"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, #000 7%, #000 93%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, #000 7%, #000 93%, transparent)',
-        }}
-      >
-        {reduced ? (
-          <div className="overflow-x-auto">
-            <div className="flex w-max px-6">{cards}</div>
-          </div>
-        ) : (
-          <div className="flex w-max animate-vault-marquee group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
-            {cards}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {brands.map((b, i) => (
+            <motion.div
+              key={b.slug}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
+            >
+              <BrandCard brand={b} onJump={onJump} />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

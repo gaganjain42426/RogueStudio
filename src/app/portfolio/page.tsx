@@ -3,18 +3,13 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { buildMetadata } from '@/lib/metadata'
 import { SITE_URL } from '@/lib/constants'
-import {
-  PORTFOLIO_CLIENTS,
-  type ResolvedClient,
-  type MediaSlot,
-  type ResolvedMedia,
-} from '@/data/portfolio'
+import { PORTFOLIO_CLIENTS, type ResolvedClient } from '@/data/portfolio'
 import PortfolioExperience from './PortfolioExperience'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Portfolio',
   description:
-    'Real Rogue Studio clients, real results — case studies, reels, and dashboards for Sarvatra Energy, Naman Vaastu, Janta Bar, Noble Vibes Clinic, Vimla International and more, from Jaipur, India.',
+    'Real Rogue Studio clients, real results — case studies and reels for Sarvatra Energy, Naman Vaastu, Janta Bar, Noble Vibes Clinic, Vimla International and more, from Jaipur, India.',
   path: '/portfolio',
   keywords: [
     'creative agency portfolio Jaipur',
@@ -33,19 +28,13 @@ function existsInPublic(publicPath: string): boolean {
   }
 }
 
-function resolveMedia(slot: MediaSlot): ResolvedMedia {
-  return { ...slot, available: existsInPublic(slot.src) }
-}
-
-/** Resolve every client's media against the filesystem once, at render time. */
+/** Resolve every client's reels against the filesystem once, at render time. */
 const resolvedClients: ResolvedClient[] = PORTFOLIO_CLIENTS.map((c) => {
   const reels = c.reels.map((src) => ({ src, available: existsInPublic(src) }))
   return {
     ...c,
     reels,
     liveReelCount: reels.filter((r) => r.available).length,
-    dashboards: c.dashboards.map(resolveMedia),
-    workSamples: c.workSamples.map(resolveMedia),
   }
 })
 

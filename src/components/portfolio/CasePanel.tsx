@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import type { ResolvedClient, ActiveReel } from '@/data/portfolio'
 import ReelStrip from './ReelStrip'
-import MediaSlot from './MediaSlot'
 
 interface CasePanelProps {
   client: ResolvedClient
@@ -27,8 +26,6 @@ export default function CasePanel({ client, index, onOpen }: CasePanelProps) {
 
   // Alternate the media side for editorial rhythm.
   const flip = index % 2 === 1
-  const hasMedia =
-    client.dashboards.length > 0 || client.workSamples.length > 0
 
   return (
     <section
@@ -188,22 +185,6 @@ export default function CasePanel({ client, index, onOpen }: CasePanelProps) {
             accent={client.accent}
             onOpen={onOpen}
           />
-
-          {hasMedia && (
-            <div className="mt-6">
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-widest text-white/35">
-                Dashboards & deliverables
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {client.dashboards.map((m) => (
-                  <MediaSlot key={m.src} media={m} kind="dashboard" aspect="aspect-video" />
-                ))}
-                {client.workSamples.map((m) => (
-                  <MediaSlot key={m.src} media={m} kind="sample" aspect="aspect-[4/5]" />
-                ))}
-              </div>
-            </div>
-          )}
         </motion.div>
       </div>
     </section>

@@ -1,11 +1,10 @@
 /**
  * Portfolio data — real Rogue Studio clients.
  *
- * Media resolution:
- *   • `reels`      → local mp4s under /public/reels (best videos, play inline + lightbox)
- *   • `dashboards` → screenshot SLOTS. Drop a file at the given `src` path and it
- *                    renders automatically (server checks existence in page.tsx).
- *   • `workSamples`→ image SLOTS for posts/designs, same drop-in behaviour.
+ * Media: `reels` are local mp4s under /public/reels. The portfolio plays the
+ * short preview loops for autoplay and the full file (with audio) in the
+ * lightbox — see src/lib/reels.ts. Reels that don't yet exist on disk render
+ * as a "coming soon" placeholder (resolved in the server page).
  *
  * Metrics policy: REAL numbers only (from client notes). Where no figure exists,
  * we show qualitative `highlights` instead of inventing percentages.
@@ -21,14 +20,6 @@ export type PortfolioTag =
 
 export interface Metric {
   value: string
-  label: string
-}
-
-/** A media slot that resolves to a real file if present, else a labeled placeholder. */
-export interface MediaSlot {
-  /** Intended public path. Drop a file here and it appears automatically. */
-  src: string
-  /** What this slot represents (shown on the placeholder + as alt text). */
   label: string
 }
 
@@ -55,12 +46,8 @@ export interface PortfolioClient {
   metrics: Metric[]
   /** Qualitative wins shown when metrics are sparse. */
   highlights: string[]
-  /** Local mp4 reels (already in /public/reels). */
+  /** Local mp4 reels (under /public/reels). */
   reels: string[]
-  /** Dashboard screenshot slots (drop-in). */
-  dashboards: MediaSlot[]
-  /** Work-sample image slots (drop-in). */
-  workSamples: MediaSlot[]
   /** Rogue's own subsidiary brand, not a paying client. */
   isInHouse?: boolean
   /** Notes file was empty — copy is minimal, flag for the team to expand. */
@@ -81,12 +68,7 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     tagline: 'Founder-led content that sells solar.',
     summary:
       'With them since day one — building founder-led content and running performance ads that turn trust into qualified leads.',
-    scope: [
-      'Founder-Led Content',
-      'Brand Storytelling',
-      'Meta Ads Management',
-      'Lead Generation',
-    ],
+    scope: ['Founder-Led Content', 'Brand Storytelling', 'Meta Ads Management', 'Lead Generation'],
     caseStudy:
       "We've been with Sarvatra from the very start of the brand. We built engaging, founder-led content that shows how they actually do business — the kind of transparency that builds real trust in a high-consideration purchase like solar. Alongside the content, we run their Meta ads end-to-end, consistently pulling qualified leads at under ₹15 each and returning roughly 10X on ad spend.",
     metrics: [
@@ -95,14 +77,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     ],
     highlights: ['Brand built from day one', 'Founder-led trust content', 'Qualified lead pipeline'],
     reels: ['/reels/sarvatra1.mp4', '/reels/sarvatra2.mp4', '/reels/sarvatra3.mp4'],
-    dashboards: [
-      { src: '/clients/sarvatra/dashboard-ads.jpg', label: 'Meta Ads Manager — cost per lead' },
-      { src: '/clients/sarvatra/dashboard-leads.jpg', label: 'Lead volume & ROI dashboard' },
-    ],
-    workSamples: [
-      { src: '/clients/sarvatra/work-1.jpg', label: 'Founder content still' },
-      { src: '/clients/sarvatra/work-2.jpg', label: 'Ad creative' },
-    ],
   },
   {
     id: 'naman-vaastu',
@@ -142,14 +116,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
       '/reels/interior3.mp4',
       '/reels/interior4.mp4',
     ],
-    dashboards: [
-      { src: '/clients/naman-vaastu/dashboard-ads.jpg', label: 'Meta Ads — 5X ROI view' },
-      { src: '/clients/naman-vaastu/dashboard-reach.jpg', label: 'Instagram reach & growth' },
-    ],
-    workSamples: [
-      { src: '/clients/naman-vaastu/work-1.jpg', label: 'Founder branding still' },
-      { src: '/clients/naman-vaastu/work-2.jpg', label: 'On-site shoot frame' },
-    ],
   },
   {
     id: 'janta-bar',
@@ -164,12 +130,7 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     tagline: 'From shoot to footfall.',
     summary:
       'Engaging content for one of Jaipur’s buzzing restaurant-bars — showcasing top-tier service and driving real footfall.',
-    scope: [
-      'Content Shoots',
-      'Social Media Management',
-      'Influencer Collaborations',
-      'Footfall Marketing',
-    ],
+    scope: ['Content Shoots', 'Social Media Management', 'Influencer Collaborations', 'Footfall Marketing'],
     caseStudy:
       "We create engaging content for Janta Bar's Instagram, focused on showcasing their top-tier service and the energy of the restaurant itself. Our role spans the full funnel — from shooting the content to driving real business through influencer collaborations and a social presence that keeps the venue front of mind.",
     metrics: [],
@@ -180,13 +141,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
       'Shoot-to-footfall pipeline',
     ],
     reels: ['/reels/jantabar1.mp4', '/reels/jantabar2.mp4'],
-    dashboards: [
-      { src: '/clients/janta-bar/dashboard-reach.jpg', label: 'Instagram reach & engagement' },
-    ],
-    workSamples: [
-      { src: '/clients/janta-bar/work-1.jpg', label: 'Venue content still' },
-      { src: '/clients/janta-bar/work-2.jpg', label: 'Influencer collab post' },
-    ],
   },
   {
     id: 'noble-vibes-clinic',
@@ -205,18 +159,8 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     caseStudy:
       'For Noble Vibes Clinic we produce personal-branding videos that put their specialists front and centre — capturing each available doctor in a way that builds patient trust and authority. Everything, from concept to final edit, is done in-house.',
     metrics: [],
-    highlights: [
-      'Doctor personal branding',
-      'Specialist features',
-      '100% in-house production',
-    ],
+    highlights: ['Doctor personal branding', 'Specialist features', '100% in-house production'],
     reels: ['/reels/noblevibes1.mp4', '/reels/noblevibes2.mp4'],
-    dashboards: [
-      { src: '/clients/noble-vibes/dashboard-reach.jpg', label: 'Instagram reach & growth' },
-    ],
-    workSamples: [
-      { src: '/clients/noble-vibes/work-1.jpg', label: 'Doctor feature still' },
-    ],
   },
   {
     id: 'vimla-international',
@@ -237,13 +181,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     metrics: [],
     highlights: ['Sustained organic content', 'AI image generation', 'Product storytelling'],
     reels: ['/reels/vimla1.mp4', '/reels/vimla2.mp4'],
-    dashboards: [
-      { src: '/clients/vimla-international/dashboard-reach.jpg', label: 'Instagram reach & growth' },
-    ],
-    workSamples: [
-      { src: '/clients/vimla-international/work-1.jpg', label: 'Organic content still' },
-      { src: '/clients/vimla-international/work-2.jpg', label: 'AI-generated visual' },
-    ],
   },
   {
     id: 'solaroof-solutions',
@@ -263,8 +200,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     metrics: [],
     highlights: ['Solar brand content'],
     reels: ['/reels/solaroof1.mp4'],
-    dashboards: [],
-    workSamples: [{ src: '/clients/solaroof-solutions/work-1.jpg', label: 'Brand content still' }],
     needsContext: true,
   },
   {
@@ -286,11 +221,6 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     metrics: [{ value: '1M+', label: 'Views on top reels' }],
     highlights: ['In-house subsidiary brand', 'Cinematic wedding films', 'Millions of views'],
     reels: ['/reels/secretgrapher1.mp4', '/reels/secretgrapher2.mp4'],
-    dashboards: [],
-    workSamples: [
-      { src: '/clients/secret-grapher/work-1.jpg', label: 'Wedding film still' },
-      { src: '/clients/secret-grapher/work-2.jpg', label: 'Cinematic frame' },
-    ],
     isInHouse: true,
   },
 ]
@@ -305,28 +235,15 @@ export const PORTFOLIO_FILTERS: { label: string; value: PortfolioTag | 'All' }[]
   { label: 'In-House', value: 'In-House' },
 ]
 
-/** Aggregate, de-duplicated reel list for the "reel wall" section. */
-export const ALL_REELS: { src: string; client: string }[] = PORTFOLIO_CLIENTS.flatMap((c) =>
-  c.reels.map((src) => ({ src, client: c.name })),
-)
-
 /* ── Resolved shapes (built in the server page after on-disk existence checks) ── */
-
-export interface ResolvedMedia extends MediaSlot {
-  /** True if the file exists in /public — render it; otherwise show a placeholder. */
-  available: boolean
-}
 
 export interface ResolvedReel {
   src: string
   available: boolean
 }
 
-export interface ResolvedClient
-  extends Omit<PortfolioClient, 'dashboards' | 'workSamples' | 'reels'> {
+export interface ResolvedClient extends Omit<PortfolioClient, 'reels'> {
   reels: ResolvedReel[]
-  dashboards: ResolvedMedia[]
-  workSamples: ResolvedMedia[]
   /** Count of reels that actually exist on disk. */
   liveReelCount: number
 }

@@ -77,7 +77,8 @@ function ReelTile({
 export default function ReelStrip({ reels, client, instagram, accent, onOpen }: ReelStripProps) {
   const available = reels.filter((r) => r.available)
   const primary = available[0]
-  const secondary = reels.slice(reels.indexOf(primary ?? reels[0]) + 1).slice(0, 4)
+  // Everything after the primary — show them all (videos are the only media now).
+  const secondary = reels.slice(reels.indexOf(primary ?? reels[0]) + 1)
 
   return (
     <div className="flex flex-col gap-4">

@@ -10,8 +10,10 @@ import {
   type PortfolioTag,
 } from '@/data/portfolio'
 import PortfolioHero from '@/components/portfolio/PortfolioHero'
+import Bookshelf from '@/components/portfolio/Bookshelf'
 import CasePanel from '@/components/portfolio/CasePanel'
 import ReelLightbox from '@/components/portfolio/ReelLightbox'
+import { scrollToId } from '@/lib/smooth-scroll'
 
 type Filter = PortfolioTag | 'All'
 
@@ -24,24 +26,38 @@ export default function PortfolioExperience({ clients }: { clients: ResolvedClie
     [filter, clients],
   )
 
-  const stats = useMemo(() => {
-    const reels = clients.reduce((n, c) => n + c.liveReelCount, 0)
-    return [
-      { value: `${clients.length}`, label: 'Brands built' },
-      { value: `${reels}+`, label: 'Reels produced' },
-      { value: '1M+', label: 'Views on top reels' },
-      { value: '10X', label: 'Peak return on ad spend' },
-    ]
-  }, [clients])
+  const stats = [
+    { value: '1000+', label: 'Reels produced' },
+    { value: '1M+', label: 'Views on top reels' },
+    { value: '10X', label: 'Peak return on ad spend' },
+  ]
 
   // Only surface filters that actually match a client.
   const availableFilters = PORTFOLIO_FILTERS.filter(
     (f) => f.value === 'All' || clients.some((c) => c.tag === f.value),
   )
 
+  // Bookshelf jump — clear any active filter so the target panel is mounted,
+  // then scroll once it's in the DOM.
+  const handleJump = (slug: string) => {
+    setFilter('All')
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(slug)))
+  }
+
   return (
     <div style={{ background: '#0D0D0D' }}>
       <PortfolioHero clientNames={clients.map((c) => c.name)} stats={stats} />
+
+      {/* Bookshelf — tap a brand to jump to its panel */}
+      <Bookshelf
+        books={clients.map((c) => ({
+          slug: c.slug,
+          name: c.name,
+          logo: c.logo,
+          accent: c.accent,
+        }))}
+        onJump={handleJump}
+      />
 
       {/* Filter bar */}
       <div className="sticky top-[72px] z-30 border-b border-white/5 bg-[#0D0D0D]/85 backdrop-blur-xl">

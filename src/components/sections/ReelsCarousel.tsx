@@ -2,6 +2,8 @@
 
 import { useRef, useEffect } from 'react'
 import FadeInUp from '@/components/animations/FadeInUp'
+import LazyVideo from '@/components/LazyVideo'
+import { reelPreview, reelPoster } from '@/lib/reels'
 
 const reels = [
   { id: '1',  src: '/reels/sarvatra1.mp4',   client: 'Sarvatra Energy',      category: 'Social Media' },
@@ -141,15 +143,12 @@ export default function ReelsCarousel() {
               background: '#1c1b1b',
             }}
           >
-            {/* Video — autoplay all */}
-            <video
-              src={reel.src}
-              muted
-              autoPlay
-              playsInline
-              loop
-              preload="none"
+            {/* Video — lazy, plays only while on-screen */}
+            <LazyVideo
+              src={reelPreview(reel.src)}
+              poster={reelPoster(reel.src)}
               className="w-full h-full object-cover"
+              ariaHidden
             />
 
             {/* Bottom info overlay */}

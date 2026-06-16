@@ -1,6 +1,8 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+import LazyVideo from '@/components/LazyVideo'
+import { reelPreview, reelPoster } from '@/lib/reels'
 
 const REELS = [
   { id: '1',  src: '/reels/sarvatra1.mp4',   client: 'Sarvatra Energy',    category: 'Brand Film' },
@@ -38,14 +40,11 @@ function ReelCard({
         boxShadow: '0 20px 40px -20px rgba(0,0,0,0.7), 0 1px 0 rgba(255,255,255,0.04) inset',
       }}
     >
-      <video
-        src={src}
-        muted
-        autoPlay
-        playsInline
-        loop
-        preload="none"
+      <LazyVideo
+        src={reelPreview(src)}
+        poster={reelPoster(src)}
         className="w-full h-full object-cover"
+        ariaHidden
       />
       <div
         className="absolute top-3 left-3 px-2 py-0.5 text-[10px] tracking-[0.18em] uppercase rounded-full"

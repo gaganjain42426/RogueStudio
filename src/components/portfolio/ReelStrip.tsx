@@ -3,6 +3,8 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import type { ResolvedReel, ActiveReel } from '@/data/portfolio'
+import LazyVideo from '@/components/LazyVideo'
+import { reelPreview, reelPoster } from '@/lib/reels'
 
 interface ReelStripProps {
   reels: ResolvedReel[]
@@ -49,7 +51,8 @@ function ReelTile({
     >
       <video
         ref={ref}
-        src={reel.src}
+        src={reelPreview(reel.src)}
+        poster={reelPoster(reel.src)}
         muted
         loop
         playsInline
@@ -98,13 +101,9 @@ export default function ReelStrip({ reels, client, instagram, accent, onOpen }: 
         >
           {primary ? (
             <>
-              <video
-                src={primary.src}
-                muted
-                autoPlay
-                loop
-                playsInline
-                preload="metadata"
+              <LazyVideo
+                src={reelPreview(primary.src)}
+                poster={reelPoster(primary.src)}
                 className="h-full w-full object-cover"
               />
               <button

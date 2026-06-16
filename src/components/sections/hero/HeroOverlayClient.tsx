@@ -2,49 +2,31 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 
-const COLS = 40
-const ROWS = 26
-const dots = Array.from({ length: COLS * ROWS }, (_, i) => ({
-  x: (i % COLS) * 40 + 20,
-  y: Math.floor(i / COLS) * 40 + 20,
-  duration: 2 + (i % 13) * 0.23,
-  delay: (i % 17) * 0.18,
-}))
-
 /**
- * HeroOverlayClient — decorative background elements only.
- * Both are aria-hidden, so no SEO impact from client-rendering.
- * Contains the dot grid (CSS animation) and the ROGUE watermark (Framer Motion).
+ * HeroOverlayClient — decorative background only (aria-hidden).
+ *
+ * The dot grid is a single static CSS-gradient layer. It previously rendered
+ * 1,040 individually-animated <circle> nodes, which forced a full repaint on
+ * every frame and was the main source of hero scroll jank — replaced here with
+ * one GPU-cheap layer. The ROGUE watermark stays as a single Framer element.
  */
 export function HeroOverlayClient() {
   const prefersReduced = useReducedMotion()
 
   return (
     <>
-      {/* Animated dot grid */}
-      <svg
+      {/* Dot grid — one static CSS layer, edge-faded with a mask */}
+      <div
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full pointer-events-none select-none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-        viewBox={`0 0 ${COLS * 40} ${ROWS * 40}`}
-      >
-        {dots.map((dot, i) => (
-          <circle
-            key={i}
-            cx={dot.x}
-            cy={dot.y}
-            r={1.2}
-            fill="#fa5c1b"
-            style={{
-              opacity: 0.1,
-              animation: prefersReduced
-                ? 'none'
-                : `hero-dot-pulse ${dot.duration.toFixed(2)}s ease-in-out ${dot.delay.toFixed(2)}s infinite alternate`,
-            }}
-          />
-        ))}
-      </svg>
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle, rgba(250,92,27,0.13) 1.2px, transparent 1.4px)',
+          backgroundSize: '40px 40px',
+          maskImage: 'radial-gradient(ellipse 75% 75% at 35% 45%, #000 35%, transparent 78%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 75% 75% at 35% 45%, #000 35%, transparent 78%)',
+        }}
+      />
 
       {/* Giant "ROGUE" watermark — decorative */}
       <div

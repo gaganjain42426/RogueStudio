@@ -10,7 +10,7 @@ import {
   type PortfolioTag,
 } from '@/data/portfolio'
 import PortfolioHero from '@/components/portfolio/PortfolioHero'
-import Bookshelf from '@/components/portfolio/Bookshelf'
+import BrandCarousel from '@/components/portfolio/BrandCarousel'
 import CasePanel from '@/components/portfolio/CasePanel'
 import ReelLightbox from '@/components/portfolio/ReelLightbox'
 import { scrollToId } from '@/lib/smooth-scroll'
@@ -48,13 +48,14 @@ export default function PortfolioExperience({ clients }: { clients: ResolvedClie
     <div style={{ background: '#0D0D0D' }}>
       <PortfolioHero clientNames={clients.map((c) => c.name)} stats={stats} />
 
-      {/* Bookshelf — tap a brand to jump to its panel */}
-      <Bookshelf
-        books={clients.map((c) => ({
+      {/* Brand carousel — tap a brand to jump to its panel */}
+      <BrandCarousel
+        brands={clients.map((c) => ({
           slug: c.slug,
           name: c.name,
           logo: c.logo,
           accent: c.accent,
+          industry: c.industry,
         }))}
         onJump={handleJump}
       />

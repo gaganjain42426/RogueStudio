@@ -71,6 +71,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Warm up the connection to the Bunny Stream CDN so hero/reel videos start faster */}
+        <link rel="preconnect" href="https://vz-2d00a478-198.b-cdn.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vz-2d00a478-198.b-cdn.net" />
         {/* Google Material Symbols */}
         <link
           rel="stylesheet"

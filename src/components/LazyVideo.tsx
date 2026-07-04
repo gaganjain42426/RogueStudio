@@ -10,51 +10,66 @@ interface LazyVideoProps {
   poster?: string
   className?: string
   style?: CSSProperties
-  /** Start loading this far before the element enters the viewport. */
-  rootMargin?: string
+  /** Start downloading (but not playing) this far before the element enters the viewport. */
+  preloadMargin?: string
+  /** Only play/pause within this margin — kept tight so off-screen videos never decode. */
+  playMargin?: string
   ariaHidden?: boolean
 }
 
 /**
  * LazyVideo — an autoplaying, muted, looping video that:
- *   • only sets its `src` (downloads) once it nears the viewport,
- *   • only plays while actually on-screen (pauses when scrolled away),
+ *   • starts downloading well before it reaches the viewport (preloadMargin) so playback
+ *     feels instant once it scrolls into view,
+ *   • only decodes/plays while actually on-screen (playMargin), pausing when scrolled away,
  *   • shows a poster for instant first paint,
  *   • stays paused entirely under prefers-reduced-motion.
  *
- * This is the core fix for "too many videos decoding at once" — at any moment
- * only the handful of reels actually visible are using the video decoder.
+ * Two separate observers so a large preload distance doesn't also mean a dozen
+ * off-screen videos decoding at once — that was the original perf problem.
  */
 export default function LazyVideo({
   src,
   poster,
   className,
   style,
-  rootMargin = '300px',
+  preloadMargin = '1000px',
+  playMargin = '100px',
   ariaHidden = false,
 }: LazyVideoProps) {
   const ref = useRef<HTMLVideoElement>(null)
-  const [active, setActive] = useState(false) // has entered viewport at least once → set src
+  const [active, setActive] = useState(false) // near viewport at least once → set src (download)
   const reduced = useReducedMotion()
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
 
-    const io = new IntersectionObserver(
+    const preloadIo = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setActive(true)
+      },
+      { rootMargin: preloadMargin, threshold: 0.01 },
+    )
+    preloadIo.observe(el)
+
+    const playIo = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setActive(true)
           if (!reduced) el.play().catch(() => {})
         } else {
           el.pause()
         }
       },
-      { rootMargin, threshold: 0.01 },
+      { rootMargin: playMargin, threshold: 0.01 },
     )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [rootMargin, reduced])
+    playIo.observe(el)
+
+    return () => {
+      preloadIo.disconnect()
+      playIo.disconnect()
+    }
+  }, [preloadMargin, playMargin, reduced])
 
   return (
     <video
@@ -64,7 +79,7 @@ export default function LazyVideo({
       muted
       loop
       playsInline
-      preload="none"
+      preload={active ? 'auto' : 'none'}
       aria-hidden={ariaHidden}
       tabIndex={ariaHidden ? -1 : undefined}
       className={className}

@@ -166,12 +166,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: 'Frames every shoot with intention — reels, brand films, and campaigns that stop the scroll.',
     imageUrl: 'https://picsum.photos/seed/nikhil/400/400',
   },
-  {
-    name: 'Bhuvanesh Jaiswal',
-    role: 'Tech & Development',
-    bio: 'Builds the digital backbone — websites, dashboards, and every line of code that powers the brand.',
-    imageUrl: 'https://picsum.photos/seed/bhuvanesh/400/400',
-  },
 ]
 
 export const SERVICES_LIST = [

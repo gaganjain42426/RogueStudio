@@ -3,19 +3,34 @@
 import { useRef, useEffect } from 'react'
 import FadeInUp from '@/components/animations/FadeInUp'
 import LazyVideo from '@/components/LazyVideo'
-import { reelPreview, reelPoster } from '@/lib/reels'
+
+const BUNNY_CDN_HOST = 'https://vz-2d00a478-198.b-cdn.net'
+const bunnyPreview = (guid: string) => `${BUNNY_CDN_HOST}/${guid}/play_240p.mp4`
+const bunnyPoster = (guid: string) => `${BUNNY_CDN_HOST}/${guid}/thumbnail.jpg`
 
 const reels = [
-  { id: '1',  src: '/reels/sarvatra1.mp4',   client: 'Sarvatra Energy',      category: 'Social Media' },
-  { id: '2',  src: '/reels/noblevibes1.mp4',  client: 'Noble Vibes Clinic',   category: 'Reels' },
-  { id: '3',  src: '/reels/vimla1.mp4',       client: 'Vimla LoomCraft',      category: 'Content' },
-  { id: '4',  src: '/reels/naman1.mp4',       client: 'Naman Vaastu',         category: 'Social Media' },
-  { id: '5',  src: '/reels/vimla2.mp4',       client: 'Vimla LoomCraft',      category: 'Reels' },
-  { id: '6',  src: '/reels/noblevibes2.mp4',  client: 'Noble Vibes Clinic',   category: 'Content' },
-  { id: '7',  src: '/reels/naman2.mp4',       client: 'Naman Vaastu',         category: 'Social Media' },
-  { id: '8',  src: '/reels/naman3.mp4',       client: 'Naman Vaastu',         category: 'Reels' },
-  { id: '9',  src: '/reels/sarvatra2.mp4',    client: 'Sarvatra Energy',      category: 'Content' },
-  { id: '10', src: '/reels/sarvatra3.mp4',    client: 'Sarvatra Energy',      category: 'Social Media' },
+  { id: '11', src: bunnyPreview('ddb8875c-8421-459f-917a-d27b9451cc11'), poster: bunnyPoster('ddb8875c-8421-459f-917a-d27b9451cc11'), client: 'Fashion Client', category: 'UGC' },
+  { id: '12', src: bunnyPreview('42e149d4-fd4b-4e11-a6dc-3725a1385fa7'), poster: bunnyPoster('42e149d4-fd4b-4e11-a6dc-3725a1385fa7'), client: 'Fashion Client', category: 'UGC' },
+  { id: '13', src: bunnyPreview('60179654-ec64-4e42-8748-39035f9fac4a'), poster: bunnyPoster('60179654-ec64-4e42-8748-39035f9fac4a'), client: 'Fashion Client', category: 'UGC' },
+  { id: '14', src: bunnyPreview('2e0d8f27-dcdc-45aa-b9fe-09f61a757e44'), poster: bunnyPoster('2e0d8f27-dcdc-45aa-b9fe-09f61a757e44'), client: 'Fashion Client', category: 'UGC' },
+  { id: '15', src: bunnyPreview('fa0ec563-31b4-4020-8b04-558cc9c94746'), poster: bunnyPoster('fa0ec563-31b4-4020-8b04-558cc9c94746'), client: 'Fashion Client', category: 'UGC' },
+  { id: '16', src: bunnyPreview('e87304f7-9f5e-4d88-8419-5338a285dcb5'), poster: bunnyPoster('e87304f7-9f5e-4d88-8419-5338a285dcb5'), client: 'Fashion Client', category: 'UGC' },
+  { id: '17', src: bunnyPreview('f3b8bed6-a0eb-46c4-b058-341b06e6b6d5'), poster: bunnyPoster('f3b8bed6-a0eb-46c4-b058-341b06e6b6d5'), client: 'Fashion Client', category: 'UGC' },
+  { id: '18', src: bunnyPreview('1de7fcf6-af74-4839-ae9e-99ae38a4657b'), poster: bunnyPoster('1de7fcf6-af74-4839-ae9e-99ae38a4657b'), client: 'Fashion Client', category: 'UGC' },
+  { id: '19', src: bunnyPreview('8053d536-0f8a-411f-83d7-59bfcca3f895'), poster: bunnyPoster('8053d536-0f8a-411f-83d7-59bfcca3f895'), client: 'Fashion Client', category: 'UGC' },
+  { id: '20', src: bunnyPreview('359c83b5-2ed9-4682-8790-05d4290fdb66'), poster: bunnyPoster('359c83b5-2ed9-4682-8790-05d4290fdb66'), client: 'Fashion Client', category: 'UGC' },
+  { id: '21', src: bunnyPreview('b3b7b4e1-322d-4d56-8c79-b4e0049d476f'), poster: bunnyPoster('b3b7b4e1-322d-4d56-8c79-b4e0049d476f'), client: 'Fashion Client', category: 'UGC' },
+  { id: '22', src: bunnyPreview('9ede39eb-1e82-4605-a0df-97fc4dfb6773'), poster: bunnyPoster('9ede39eb-1e82-4605-a0df-97fc4dfb6773'), client: 'Fashion Client', category: 'UGC' },
+  { id: '23', src: bunnyPreview('ee8e18db-e178-486b-824e-a7b99664aa4d'), poster: bunnyPoster('ee8e18db-e178-486b-824e-a7b99664aa4d'), client: 'Fashion Client', category: 'UGC' },
+  { id: '24', src: bunnyPreview('14e80aa2-b8dc-4281-8123-17527f039a4e'), poster: bunnyPoster('14e80aa2-b8dc-4281-8123-17527f039a4e'), client: 'Fashion Client', category: 'UGC' },
+  { id: '25', src: bunnyPreview('daa39ec5-61af-4448-bbc4-0611ce4bba98'), poster: bunnyPoster('daa39ec5-61af-4448-bbc4-0611ce4bba98'), client: 'Fashion Client', category: 'UGC' },
+  { id: '26', src: bunnyPreview('ad5c6e68-8b3e-4d7b-adf3-2331afdf3910'), poster: bunnyPoster('ad5c6e68-8b3e-4d7b-adf3-2331afdf3910'), client: 'Fashion Client', category: 'UGC' },
+  { id: '27', src: bunnyPreview('989111d8-8005-48a2-aa0e-a32bd38e906c'), poster: bunnyPoster('989111d8-8005-48a2-aa0e-a32bd38e906c'), client: 'Fashion Client', category: 'UGC' },
+  { id: '28', src: bunnyPreview('29d4be8e-cf12-4cb4-82a3-f4e81c02955b'), poster: bunnyPoster('29d4be8e-cf12-4cb4-82a3-f4e81c02955b'), client: 'Fashion Client', category: 'UGC' },
+  { id: '29', src: bunnyPreview('8fb6f750-5dcb-4a11-8d9b-91d5932d4f88'), poster: bunnyPoster('8fb6f750-5dcb-4a11-8d9b-91d5932d4f88'), client: 'Fashion Client', category: 'UGC' },
+  { id: '30', src: bunnyPreview('204c0ec8-40f1-47c3-bdc3-731b2afa5c34'), poster: bunnyPoster('204c0ec8-40f1-47c3-bdc3-731b2afa5c34'), client: 'Fashion Client', category: 'UGC' },
+  { id: '31', src: bunnyPreview('14277dde-97a9-4b9f-be24-c53708d3d9b6'), poster: bunnyPoster('14277dde-97a9-4b9f-be24-c53708d3d9b6'), client: 'Fashion Client', category: 'UGC' },
+  { id: '32', src: bunnyPreview('61c58869-553a-40d0-9820-c6b91dce0ba8'), poster: bunnyPoster('61c58869-553a-40d0-9820-c6b91dce0ba8'), client: 'Fashion Client', category: 'UGC' },
 ]
 
 // Duplicate for seamless infinite loop
@@ -145,8 +160,8 @@ export default function ReelsCarousel() {
           >
             {/* Video — lazy, plays only while on-screen */}
             <LazyVideo
-              src={reelPreview(reel.src)}
-              poster={reelPoster(reel.src)}
+              src={reel.src}
+              poster={reel.poster}
               className="w-full h-full object-cover"
               ariaHidden
             />

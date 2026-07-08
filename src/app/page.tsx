@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
-import { getBunnyReels } from '@/lib/bunny'
+import { getBunnyReels, shuffleReels } from '@/lib/bunny'
 import Hero from '@/components/sections/Hero'
 import Marquee from '@/components/sections/Marquee'
 import ReelsCarousel from '@/components/sections/ReelsCarousel'
@@ -42,9 +42,9 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero reels={reels} />
+      <Hero reels={shuffleReels(reels)} />
       <Marquee />
-      <ReelsCarousel reels={reels} />
+      <ReelsCarousel reels={shuffleReels(reels)} />
       <WhatWeDo />
       <Services />
       <FeaturedWork />

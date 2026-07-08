@@ -7,7 +7,7 @@ import type { BunnyReel } from '@/lib/bunny'
 
 const CARD_WIDTH = 260
 const CARD_GAP   = 16
-const SCROLL_SPEED = 0.8
+const SCROLL_SPEED = 1.6
 
 export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
   const trackRef   = useRef<HTMLDivElement>(null)

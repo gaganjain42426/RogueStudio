@@ -71,3 +71,13 @@ export async function getBunnyReels(): Promise<BunnyReel[]> {
       }
     })
 }
+
+/** Fisher-Yates shuffle — returns a new array, doesn't mutate the input. */
+export function shuffleReels(reels: BunnyReel[]): BunnyReel[] {
+  const shuffled = [...reels]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}

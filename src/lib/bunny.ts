@@ -11,7 +11,10 @@
 
 export interface BunnyReel {
   id: string
+  /** Small, muted 240p loop — used for the autoplaying background cards. */
   src: string
+  /** Higher-quality 720p version with audio — used for click-to-watch playback. */
+  fullSrc: string
   poster: string
   client: string
   category: string
@@ -65,6 +68,7 @@ export async function getBunnyReels(): Promise<BunnyReel[]> {
       return {
         id: v.guid,
         src: `https://${cdnHost}/${v.guid}/play_240p.mp4`,
+        fullSrc: `https://${cdnHost}/${v.guid}/play_720p.mp4`,
         poster: `https://${cdnHost}/${v.guid}/thumbnail.jpg`,
         client: clientRaw ? normalizeClient(clientRaw) : 'Rogue Studio',
         category: categoryRaw || 'Client Work',

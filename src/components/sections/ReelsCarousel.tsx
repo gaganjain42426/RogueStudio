@@ -1,9 +1,11 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import FadeInUp from '@/components/animations/FadeInUp'
 import LazyVideo from '@/components/LazyVideo'
 import type { BunnyReel } from '@/lib/bunny'
+import type { ActiveReel } from '@/data/portfolio'
+import ReelLightbox from '@/components/portfolio/ReelLightbox'
 
 const CARD_WIDTH = 260
 const CARD_GAP   = 16
@@ -15,6 +17,7 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
   const scrollX    = useRef(0)
   const isPaused   = useRef(false)
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const [activeReel, setActiveReel] = useState<ActiveReel | null>(null)
 
   // Duplicate for seamless infinite loop
   const infiniteReels = [...reels, ...reels]
@@ -120,9 +123,11 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
         } as React.CSSProperties}
       >
         {infiniteReels.map((reel, i) => (
-          <div
+          <button
             key={`${reel.id}-${i}`}
-            className="flex-shrink-0 relative overflow-hidden"
+            onClick={() => setActiveReel({ src: reel.fullSrc, client: reel.client, instagram: '' })}
+            aria-label={`Play ${reel.client} reel with sound`}
+            className="group flex-shrink-0 relative overflow-hidden text-left appearance-none border-0 p-0 m-0 cursor-pointer"
             style={{
               width: `${CARD_WIDTH}px`,
               aspectRatio: '9/16',
@@ -137,6 +142,18 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
               className="w-full h-full object-cover"
               ariaHidden
             />
+
+            {/* Play affordance on hover */}
+            <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-opacity group-hover:bg-black/20 group-hover:opacity-100">
+              <span
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-sm"
+                aria-hidden="true"
+              >
+                <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  play_arrow
+                </span>
+              </span>
+            </span>
 
             {/* Bottom info overlay */}
             <div
@@ -154,7 +171,7 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
                 {reel.category}
               </p>
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -172,6 +189,8 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
           Follow us on Instagram →
         </a>
       </div>
+
+      <ReelLightbox reel={activeReel} onClose={() => setActiveReel(null)} />
     </section>
   )
 }

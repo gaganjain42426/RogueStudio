@@ -134,9 +134,9 @@ export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
           />
 
           <div className="grid grid-cols-2 gap-4 h-full">
-            <ReelColumn reels={colA} direction="up" duration={28} />
+            <ReelColumn reels={colA} direction="up" duration={48} />
             <div className="translate-y-8">
-              <ReelColumn reels={colB} direction="down" duration={34} delay={0.4} />
+              <ReelColumn reels={colB} direction="down" duration={58} delay={0.4} />
             </div>
           </div>
 

@@ -16,6 +16,7 @@ export type PortfolioTag =
   | 'Healthcare'
   | 'Solar & Energy'
   | 'Export'
+  | 'Fashion'
   | 'In-House'
 
 export interface Metric {
@@ -223,6 +224,46 @@ export const PORTFOLIO_CLIENTS: PortfolioClient[] = [
     reels: ['/reels/secretgrapher1.mp4', '/reels/secretgrapher2.mp4'],
     isInHouse: true,
   },
+  {
+    id: 'avni-fashion',
+    name: 'Avni Fashion',
+    slug: 'avni-fashion',
+    logo: '/clients/avni-fashion.jpg',
+    accent: '#e0538a',
+    industry: 'Fashion & Apparel',
+    tag: 'Fashion',
+    instagram: 'https://www.instagram.com/avni_fashion_jaipur/',
+    instagramHandle: '@avni_fashion_jaipur',
+    tagline: 'Fashion content for Jaipur.',
+    summary: 'Content partnership for Avni Fashion, a Jaipur-based fashion brand.',
+    scope: ['Content Production', 'Social Media'],
+    caseStudy:
+      'Content partnership for Avni Fashion. [Add the engagement details — pillars, ads, results — to fill this case study out.]',
+    metrics: [],
+    highlights: ['Fashion brand content'],
+    reels: [],
+    needsContext: true,
+  },
+  {
+    id: 'shions',
+    name: 'Shions',
+    slug: 'shions',
+    logo: '/clients/shions.jpg',
+    accent: '#c9a24b',
+    industry: 'Fashion & Apparel',
+    tag: 'Fashion',
+    instagram: 'https://www.instagram.com/stylebyshions/',
+    instagramHandle: '@stylebyshions',
+    tagline: 'Style-led content.',
+    summary: 'Content partnership for Shions, a fashion and style brand.',
+    scope: ['Content Production', 'Social Media'],
+    caseStudy:
+      'Content partnership for Shions. [Add the engagement details — pillars, ads, results — to fill this case study out.]',
+    metrics: [],
+    highlights: ['Fashion brand content'],
+    reels: [],
+    needsContext: true,
+  },
 ]
 
 export const PORTFOLIO_FILTERS: { label: string; value: PortfolioTag | 'All' }[] = [
@@ -232,6 +273,7 @@ export const PORTFOLIO_FILTERS: { label: string; value: PortfolioTag | 'All' }[]
   { label: 'Hospitality', value: 'Hospitality' },
   { label: 'Healthcare', value: 'Healthcare' },
   { label: 'Export', value: 'Export' },
+  { label: 'Fashion', value: 'Fashion' },
   { label: 'In-House', value: 'In-House' },
 ]
 

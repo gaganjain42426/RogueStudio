@@ -19,18 +19,20 @@ export const metadata: Metadata = buildMetadata({
   ],
 })
 
-/** True when the file backing a /public path exists on disk. */
-function existsInPublic(publicPath: string): boolean {
+/** True when a reel is playable: a remote URL (e.g. Bunny Stream), or a local
+ *  /public path that actually exists on disk. */
+function reelIsAvailable(src: string): boolean {
+  if (/^https?:\/\//i.test(src)) return true
   try {
-    return fs.existsSync(path.join(process.cwd(), 'public', publicPath))
+    return fs.existsSync(path.join(process.cwd(), 'public', src))
   } catch {
     return false
   }
 }
 
-/** Resolve every client's reels against the filesystem once, at render time. */
+/** Resolve every client's reels once, at render time. */
 const resolvedClients: ResolvedClient[] = PORTFOLIO_CLIENTS.map((c) => {
-  const reels = c.reels.map((src) => ({ src, available: existsInPublic(src) }))
+  const reels = c.reels.map((src) => ({ src, available: reelIsAvailable(src) }))
   return {
     ...c,
     reels,

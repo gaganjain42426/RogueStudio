@@ -3,6 +3,7 @@ import { HeroOverlayClient } from './hero/HeroOverlayClient'
 import { HeroReelStack } from './hero/HeroReelStack'
 import { HeroScrollIndicator } from './hero/HeroScrollIndicator'
 import { AnimateIn } from '@/components/ui/AnimateIn'
+import type { BunnyReel } from '@/lib/bunny'
 
 /**
  * Hero â€” Server Component.
@@ -16,7 +17,7 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
  * The `heroSlide` variant keeps opacity:1 in SSR HTML so the H1 text
  * is visible to crawlers on the first HTML pass.
  */
-export default function Hero() {
+export default function Hero({ reels }: { reels: BunnyReel[] }) {
   return (
     <header
       className="relative min-h-screen overflow-hidden pt-24 md:pt-28"
@@ -147,7 +148,7 @@ export default function Hero() {
         </div>
 
         {/* â”€â”€ RIGHT: reel stack â€” client island â”€â”€ */}
-        <HeroReelStack />
+        <HeroReelStack reels={reels} />
       </div>
 
       <HeroScrollIndicator />

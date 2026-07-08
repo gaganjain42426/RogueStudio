@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
+import { getBunnyReels } from '@/lib/bunny'
 import Hero from '@/components/sections/Hero'
 import Marquee from '@/components/sections/Marquee'
 import ReelsCarousel from '@/components/sections/ReelsCarousel'
@@ -36,12 +37,14 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const reels = await getBunnyReels()
+
   return (
     <>
-      <Hero />
+      <Hero reels={reels} />
       <Marquee />
-      <ReelsCarousel />
+      <ReelsCarousel reels={reels} />
       <WhatWeDo />
       <Services />
       <FeaturedWork />

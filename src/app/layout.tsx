@@ -94,16 +94,16 @@ export default function RootLayout({
               },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Sanganer',
+                streetAddress: 'Malviya Nagar',
                 addressLocality: 'Jaipur',
                 addressRegion: 'Rajasthan',
-                postalCode: '302029',
+                postalCode: '302017',
                 addressCountry: 'IN',
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 26.8192,
-                longitude: 75.766,
+                latitude: 26.8574,
+                longitude: 75.8022,
               },
               areaServed: [
                 { '@type': 'City', name: 'Jaipur' },

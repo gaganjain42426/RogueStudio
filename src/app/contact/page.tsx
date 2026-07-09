@@ -122,8 +122,8 @@ export default function ContactPage() {
           {/* Google Maps embed */}
           <div className="w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden border border-outline-variant/20 grayscale hover:grayscale-0 transition-all duration-700">
             <iframe
-              title="Rogue Studio location — Sanganer, Jaipur"
-              src="https://maps.google.com/maps?q=26.8191641,75.7659513&z=15&output=embed"
+              title="Rogue Studio location — Malviya Nagar, Jaipur"
+              src="https://maps.google.com/maps?q=Malviya+Nagar,+Jaipur,+Rajasthan+302017&z=15&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

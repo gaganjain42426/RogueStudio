@@ -19,7 +19,7 @@ export default function Studio() {
             className="mt-6 text-4xl md:text-6xl lg:text-7xl font-black leading-[1.02]"
             style={{ fontFamily: 'var(--font-headline)' }}
           >
-            A 12-person studio in Sanganer that{' '}
+            A 7-person studio in Malviya Nagar that{' '}
             <span
               className="italic font-normal"
               style={{ fontFamily: 'var(--font-serif-accent)', color: '#aa3600' }}
@@ -50,7 +50,7 @@ export default function Studio() {
           <dl className="grid grid-cols-2 gap-px bg-on-tertiary-fixed/15 border border-on-tertiary-fixed/15">
             {[
               { target: 150, suffix: '+', label: 'Projects delivered' },
-              { target: 12, suffix: '+', label: 'People on the team' },
+              { target: 7, suffix: '', label: 'People on the team' },
               { target: 40, suffix: 'M+', label: 'Views produced' },
               { target: 5, suffix: '', label: 'Years shooting, since 2021' },
             ].map((stat) => (

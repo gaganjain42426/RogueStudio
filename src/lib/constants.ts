@@ -5,12 +5,12 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.roguest
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '918003225164'
 
 export const STUDIO_ADDRESS = {
-  street: 'Sanganer',
+  street: 'Malviya Nagar',
   city: 'Jaipur',
   state: 'Rajasthan',
   country: 'India',
-  pin: '302029',
-  full: 'Sanganer, Jaipur, Rajasthan, India – 302029',
+  pin: '302017',
+  full: 'Malviya Nagar, Jaipur, Rajasthan, India – 302017',
 }
 
 export const NAV_LINKS: NavLink[] = [

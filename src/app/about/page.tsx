@@ -7,7 +7,7 @@ import { AnimatedSection, AnimatedItem, AnimatedCard } from '@/components/ui/Ani
 export const metadata: Metadata = buildMetadata({
   title: 'About Us',
   description:
-    'The Rogue Studio story — a creative studio founded in Jaipur in 2021, now 12+ specialists shipping 150+ projects. Meet the team and how we work.',
+    'The Rogue Studio story — a creative studio founded in Jaipur in 2021, a 7-person specialist team shipping 150+ projects. Meet the team and how we work.',
   path: '/about',
   keywords: ['about Rogue Studio', 'creative team Jaipur', 'agency story India'],
 })
@@ -16,7 +16,7 @@ const timeline = [
   { year: '2021', event: 'Founded in Jaipur with 3 people and a camera.' },
   { year: '2022', event: 'First 20 clients onboarded — 100% word-of-mouth.' },
   { year: '2023', event: 'Full production studio; video department launched.' },
-  { year: '2024', event: '150+ projects delivered; team grows to 12+ specialists.' },
+  { year: '2024', event: '150+ projects delivered by a deliberately small specialist team.' },
   { year: '2025', event: 'International client services — Jaipur to the world.' },
 ]
 

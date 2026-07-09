@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -61,7 +62,7 @@ export default async function BlogPostPage({
           href="/blog"
           className="text-on-surface-variant hover:text-white transition-colors text-sm flex items-center gap-2 mb-12"
         >
-          <span className="material-symbols-outlined text-base">arrow_back</span>
+          <Icon name="arrow-right" size={16} style={{ transform: 'rotate(180deg)' }} />
           Back to Blog
         </Link>
 

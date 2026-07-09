@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import LazyVideo from '@/components/LazyVideo'
+import Icon from '@/components/ui/Icon'
 import type { BunnyReel } from '@/lib/bunny'
 
 function ReelCard({
@@ -30,6 +31,7 @@ function ReelCard({
         src={src}
         poster={poster}
         className="w-full h-full object-cover"
+        unmuteOnHold
         ariaHidden
       />
       <div
@@ -44,8 +46,28 @@ function ReelCard({
       >
         {category}
       </div>
+
+      {/* Hold-for-sound hint — desktop hover only, non-interactive */}
       <div
-        className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-8"
+        className="pointer-events-none absolute top-3 right-3 hidden md:flex items-center gap-1.5 rounded-full px-2 py-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: 'rgba(0,0,0,0.55)',
+          backdropFilter: 'blur(6px)',
+          color: 'rgba(255,255,255,0.85)',
+        }}
+        aria-hidden="true"
+      >
+        <Icon name="volume" size={12} />
+        <span
+          className="text-[9px] tracking-[0.14em] uppercase"
+          style={{ fontFamily: 'var(--font-label)' }}
+        >
+          Hold for sound
+        </span>
+      </div>
+
+      <div
+        className="absolute inset-x-0 bottom-0 px-4 pb-3 pt-8 pointer-events-none"
         style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%)' }}
       >
         <p
@@ -100,8 +122,9 @@ function ReelColumn({
 
 /**
  * HeroReelStack — the right-column video reel grid + entry animation.
- * Kept as a client island because it uses Framer Motion animate (page-load)
- * and CSS custom properties for the infinite scroll animation.
+ * Client island: Framer Motion page-load animation + CSS custom properties
+ * for the infinite scroll. Mobile renders a single column (half the videos,
+ * half the decode/data cost on cellular).
  */
 export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
   const prefersReduced = useReducedMotion()
@@ -114,7 +137,7 @@ export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
         className="lg:col-span-6 xl:col-span-5 relative w-full"
         initial={prefersReduced ? {} : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number], delay: 0.6 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
       >
         <div
           className="relative mx-auto overflow-hidden"
@@ -133,9 +156,9 @@ export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-2 gap-4 h-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
             <ReelColumn reels={colA} direction="up" duration={48} />
-            <div className="translate-y-8">
+            <div className="hidden sm:block translate-y-8">
               <ReelColumn reels={colB} direction="down" duration={58} delay={0.4} />
             </div>
           </div>
@@ -155,7 +178,7 @@ export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
         <div className="hidden lg:flex items-center gap-2 justify-end mt-6 pr-2">
           <span
             className="text-[10px] tracking-[0.3em] uppercase"
-            style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-label)' }}
+            style={{ color: 'rgba(255,255,255,0.64)', fontFamily: 'var(--font-label)' }}
           >
             Live from the studio
           </span>
@@ -168,10 +191,6 @@ export function HeroReelStack({ reels }: { reels: BunnyReel[] }) {
 
       {/* CSS keyframes for reel column animation */}
       <style>{`
-        @keyframes hero-dot-pulse {
-          from { opacity: 0.04; }
-          to   { opacity: 0.22; }
-        }
         @keyframes hero-reel-scroll-up {
           0%   { transform: translateY(0); }
           100% { transform: translateY(-50%); }

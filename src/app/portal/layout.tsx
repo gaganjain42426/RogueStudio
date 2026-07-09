@@ -4,6 +4,16 @@ import PortalNav from '@/components/portal/PortalNav'
 
 export const dynamic = 'force-dynamic'
 
+/** Material Symbols — internal tools only; public pages use the SVG icon set. */
+function IconFontLink() {
+  return (
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+    />
+  )
+}
+
 export default async function PortalLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
 
@@ -21,21 +31,27 @@ export default async function PortalLayout({ children }: { children: React.React
 
   if (!client) {
     return (
-      <div className="fixed inset-0 z-[200] bg-[#0e0e0e] flex items-center justify-center p-6">
-        <div className="text-center max-w-sm">
-          <p className="text-white font-semibold text-lg mb-2">Access Denied</p>
-          <p className="text-gray-400 text-sm">
-            Your account is not linked to a client. Please contact your account manager.
-          </p>
+      <>
+        <IconFontLink />
+        <div className="fixed inset-0 z-[200] bg-[#0e0e0e] flex items-center justify-center p-6">
+          <div className="text-center max-w-sm">
+            <p className="text-white font-semibold text-lg mb-2">Access Denied</p>
+            <p className="text-gray-400 text-sm">
+              Your account is not linked to a client. Please contact your account manager.
+            </p>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
   return (
-    <div className="fixed inset-0 z-[200] flex flex-col bg-[#0e0e0e] overflow-hidden">
-      <PortalNav clientName={client.name} />
-      <main className="flex-1 overflow-y-auto bg-[#0e0e0e]">{children}</main>
-    </div>
+    <>
+      <IconFontLink />
+      <div className="fixed inset-0 z-[200] flex flex-col bg-[#0e0e0e] overflow-hidden">
+        <PortalNav clientName={client.name} />
+        <main className="flex-1 overflow-y-auto bg-[#0e0e0e]">{children}</main>
+      </div>
+    </>
   )
 }

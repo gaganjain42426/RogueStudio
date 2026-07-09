@@ -31,12 +31,10 @@ export function NavInteractiveClient({ children }: NavInteractiveClientProps) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
-
   const alwaysSolid = pathname.startsWith('/portfolio')
+  // Drawer links close the menu on tap (was previously an effect on pathname,
+  // which the React Compiler flags as a cascading-render hazard).
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <>
@@ -109,6 +107,7 @@ export function NavInteractiveClient({ children }: NavInteractiveClientProps) {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={closeMenu}
                 className={`text-xl font-black tracking-tight transition-colors ${
                   pathname === link.href ? 'text-primary-container' : 'text-white hover:text-primary'
                 }`}
@@ -119,6 +118,7 @@ export function NavInteractiveClient({ children }: NavInteractiveClientProps) {
             ))}
             <Link
               href="/client-login"
+              onClick={closeMenu}
               className="text-xl font-black tracking-tight text-white/70 hover:text-white transition-colors"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
@@ -126,6 +126,7 @@ export function NavInteractiveClient({ children }: NavInteractiveClientProps) {
             </Link>
             <Link
               href="/contact"
+              onClick={closeMenu}
               className="mt-4 w-full text-center bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold text-base"
               style={{ fontFamily: 'var(--font-headline)' }}
             >

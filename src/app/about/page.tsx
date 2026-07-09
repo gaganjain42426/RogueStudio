@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { TEAM_MEMBERS } from '@/lib/constants'
@@ -8,37 +7,34 @@ import { AnimatedSection, AnimatedItem, AnimatedCard } from '@/components/ui/Ani
 export const metadata: Metadata = buildMetadata({
   title: 'About Us',
   description:
-    'Learn the Rogue Studio origin story — a creative agency born in Jaipur with global ambitions. Meet the team of designers, strategists, and storytellers.',
+    'The Rogue Studio story — a creative studio founded in Jaipur in 2021, now 12+ specialists shipping 150+ projects. Meet the team and how we work.',
   path: '/about',
   keywords: ['about Rogue Studio', 'creative team Jaipur', 'agency story India'],
 })
 
 const timeline = [
-  { year: '2021', event: 'Rogue Studio founded in Jaipur with 3 obsessed creatives.' },
-  { year: '2022', event: 'First 20 clients onboarded. 100% word-of-mouth growth.' },
-  { year: '2023', event: 'Expanded to full content production studio. Launched video department.' },
-  { year: '2024', event: '150+ projects delivered. Team grew to 12+ specialists.' },
-  { year: '2025', event: 'Launched international client services. India to the world.' },
+  { year: '2021', event: 'Founded in Jaipur with 3 people and a camera.' },
+  { year: '2022', event: 'First 20 clients onboarded — 100% word-of-mouth.' },
+  { year: '2023', event: 'Full production studio; video department launched.' },
+  { year: '2024', event: '150+ projects delivered; team grows to 12+ specialists.' },
+  { year: '2025', event: 'International client services — Jaipur to the world.' },
 ]
 
 const values = [
   {
-    icon: 'diamond',
-    title: 'Uncompromising Quality',
+    title: 'Finished beats fancy',
     description:
-      'We treat every deliverable like a film frame — every pixel, every word, every strategy is deliberate.',
+      'A reel that ships this week beats a concept deck that ships next month. We optimise for delivered work, measured results.',
   },
   {
-    icon: 'bolt',
-    title: 'Raw Velocity',
+    title: 'One room, one pipeline',
     description:
-      'We move fast without losing precision. Speed and quality are not opposites in our studio.',
+      'Script, shoot, edit, post, ads — no handoffs between departments, because there are no departments. The person who wrote your hook grades your final cut.',
   },
   {
-    icon: 'handshake',
-    title: 'Client First',
+    title: 'Numbers or it didn’t happen',
     description:
-      'Your growth is our KPI. We win when you win — aligned incentives, honest communication.',
+      'Every case study on this site carries real figures from client accounts. If we can’t measure it, we won’t claim it.',
   },
 ]
 
@@ -74,9 +70,50 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="mt-10 text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                Rogue Studio started as a refusal — a refusal to accept mediocre marketing, cookie-cutter content, and agencies that treat creativity as a commodity. We are the alternative.
+                Rogue Studio started in 2021 as a refusal — a refusal to accept mediocre
+                marketing and cookie-cutter content. Five years later: 150+ projects,
+                40M+ views, and clients who renew because the numbers say to.
               </p>
             </AnimatedItem>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Timeline */}
+      <section className="bg-surface-container-low py-32 px-6 md:px-8">
+        <div className="max-w-[1440px] mx-auto">
+          <AnimatedSection>
+            <AnimatedItem>
+              <h2
+                className="text-4xl md:text-6xl font-black text-white mb-16"
+                style={{ fontFamily: 'var(--font-headline)' }}
+              >
+                Five years,{' '}
+                <span
+                  className="text-primary-container italic font-normal"
+                  style={{ fontFamily: 'var(--font-serif-accent)' }}
+                >
+                  fast-forwarded.
+                </span>
+              </h2>
+            </AnimatedItem>
+            <div className="border-t border-white/10">
+              {timeline.map((t, i) => (
+                <AnimatedCard key={t.year} delay={i * 0.06}>
+                  <div className="grid grid-cols-12 items-baseline gap-4 border-b border-white/10 py-7">
+                    <span
+                      className="col-span-3 md:col-span-2 text-2xl md:text-4xl font-black text-primary-container"
+                      style={{ fontFamily: 'var(--font-headline)' }}
+                    >
+                      {t.year}
+                    </span>
+                    <p className="col-span-9 md:col-span-10 text-base md:text-lg text-on-surface-variant">
+                      {t.event}
+                    </p>
+                  </div>
+                </AnimatedCard>
+              ))}
+            </div>
           </AnimatedSection>
         </div>
       </section>
@@ -87,40 +124,46 @@ export default function AboutPage() {
           <AnimatedSection>
             <AnimatedItem>
               <h2
-                className="text-4xl md:text-6xl font-black mb-16"
+                className="text-4xl md:text-6xl font-black mb-4"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Meet the{' '}
+                The people{' '}
                 <span
-                  className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--font-serif-accent)' }}
+                  className="italic font-normal"
+                  style={{ fontFamily: 'var(--font-serif-accent)', color: '#aa3600' }}
                 >
-                  Visionaries
+                  on your shoot.
                 </span>
               </h2>
+              <p className="max-w-xl text-on-tertiary-fixed-variant mb-16">
+                A core team of specialists — plus the editors, shooters, and strategists
+                they pull in per project.
+              </p>
             </AnimatedItem>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-tertiary-fixed/15 border border-on-tertiary-fixed/15">
               {TEAM_MEMBERS.map((member, i) => (
-                <AnimatedCard key={member.name} delay={i * 0.1}>
-                  <div className="group">
-                    <div className="aspect-square rounded-lg overflow-hidden bg-surface mb-6">
-                      <Image
-                        src={member.imageUrl}
-                        alt={`${member.name} — ${member.role}`}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                        sizes="25vw"
-                      />
-                    </div>
+                <AnimatedCard key={member.name} delay={i * 0.08}>
+                  <div className="bg-tertiary-fixed p-10 h-full">
+                    <span
+                      className="inline-flex h-14 w-14 items-center justify-center rounded-xl text-xl font-black text-white"
+                      style={{ background: '#aa3600', fontFamily: 'var(--font-headline)' }}
+                      aria-hidden="true"
+                    >
+                      {member.name
+                        .split(' ')
+                        .map((w) => w[0])
+                        .join('')}
+                    </span>
                     <h3
-                      className="text-xl font-black text-on-tertiary-fixed"
+                      className="mt-6 text-xl font-black"
                       style={{ fontFamily: 'var(--font-headline)' }}
                     >
                       {member.name}
                     </h3>
-                    <p className="text-primary-container font-bold text-sm mt-0.5">{member.role}</p>
-                    <p className="text-on-tertiary-fixed-variant text-sm mt-2 leading-relaxed">
+                    <p className="font-bold text-sm mt-0.5" style={{ color: '#aa3600' }}>
+                      {member.role}
+                    </p>
+                    <p className="text-on-tertiary-fixed-variant text-sm mt-3 leading-relaxed">
                       {member.bio}
                     </p>
                   </div>
@@ -140,24 +183,21 @@ export default function AboutPage() {
                 className="text-4xl md:text-6xl font-black text-white mb-16"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Our{' '}
+                How we{' '}
                 <span
                   className="text-primary-container italic font-normal"
                   style={{ fontFamily: 'var(--font-serif-accent)' }}
                 >
-                  Values
+                  decide.
                 </span>
               </h2>
             </AnimatedItem>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {values.map((v, i) => (
                 <AnimatedCard key={v.title} delay={i * 0.1}>
-                  <div className="bg-surface-container-high p-10 rounded-lg h-full">
-                    <span className="material-symbols-outlined text-primary-container text-4xl">
-                      {v.icon}
-                    </span>
+                  <div className="border-l-2 border-primary-container/50 pl-8 h-full">
                     <h3
-                      className="text-xl font-bold text-white mt-6 mb-3"
+                      className="text-xl font-bold text-white mb-3"
                       style={{ fontFamily: 'var(--font-headline)' }}
                     >
                       {v.title}

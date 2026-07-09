@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { SERVICE_TILES, PRICING_PLANS } from '@/lib/constants'
-import { AnimatedSection, AnimatedItem, AnimatedCard } from '@/components/ui/AnimatedSection'
+import { AnimatedSection, AnimatedItem } from '@/components/ui/AnimatedSection'
+import Icon from '@/components/ui/Icon'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Services',
@@ -74,8 +74,8 @@ export default function ServicesPage() {
                 </span>
               </h1>
               <p className="mt-8 text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-                We don&apos;t offer everything. We offer the right things — and we do them better than
-                anyone else in the room.
+                We don&apos;t offer everything. Five services, one pipeline — each
+                one attached to a real number on our portfolio page.
               </p>
             </AnimatedItem>
           </AnimatedSection>
@@ -91,17 +91,12 @@ export default function ServicesPage() {
                 <AnimatedItem key={svc.title}>
                   <div className="bg-surface-container-highest rounded-lg p-10 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-10 hover:bg-surface-bright transition-colors duration-300">
                     <div className="md:col-span-2">
-                      <div className="flex items-center gap-4 mb-6">
-                        <span className="material-symbols-outlined text-primary-container text-4xl">
-                          {svc.icon}
-                        </span>
-                        <h3
-                          className="text-2xl md:text-3xl font-black text-white"
-                          style={{ fontFamily: 'var(--font-headline)' }}
-                        >
-                          {svc.title}
-                        </h3>
-                      </div>
+                      <h3
+                        className="mb-6 text-2xl md:text-3xl font-black text-white"
+                        style={{ fontFamily: 'var(--font-headline)' }}
+                      >
+                        {svc.title}
+                      </h3>
                       <p className="text-on-surface-variant leading-relaxed text-lg">
                         {svc.description}
                       </p>
@@ -109,13 +104,8 @@ export default function ServicesPage() {
                     <div>
                       <ul className="space-y-3">
                         {svc.features.map((f) => (
-                          <li key={f} className="flex items-center gap-2 text-sm text-on-surface-variant">
-                            <span
-                              className="material-symbols-outlined text-primary-container text-base"
-                              style={{ fontVariationSettings: "'FILL' 1" }}
-                            >
-                              check_circle
-                            </span>
+                          <li key={f} className="flex items-center gap-2.5 text-sm text-on-surface-variant">
+                            <Icon name="check" size={15} className="shrink-0 text-primary-container" />
                             {f}
                           </li>
                         ))}
@@ -123,45 +113,6 @@ export default function ServicesPage() {
                     </div>
                   </div>
                 </AnimatedItem>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Service tiles grid */}
-      <section className="bg-background py-32 px-6 md:px-8">
-        <div className="max-w-[1440px] mx-auto">
-          <AnimatedSection>
-            <AnimatedItem>
-              <h2
-                className="text-3xl md:text-5xl font-black text-white mb-12 text-center"
-                style={{ fontFamily: 'var(--font-headline)' }}
-              >
-                Everything in our{' '}
-                <span
-                  className="text-primary-container italic font-normal"
-                  style={{ fontFamily: 'var(--font-serif-accent)' }}
-                >
-                  arsenal
-                </span>
-              </h2>
-            </AnimatedItem>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {SERVICE_TILES.map((tile, i) => (
-                <AnimatedCard key={tile.label} delay={i * 0.05}>
-                  <div className="bg-surface-container-high p-6 md:p-8 rounded-lg flex flex-col items-center text-center hover:bg-surface-bright transition-colors duration-300">
-                    <span className="material-symbols-outlined text-primary text-3xl mb-4">
-                      {tile.icon}
-                    </span>
-                    <span
-                      className="font-bold text-sm text-on-surface"
-                      style={{ fontFamily: 'var(--font-headline)' }}
-                    >
-                      {tile.label}
-                    </span>
-                  </div>
-                </AnimatedCard>
               ))}
             </div>
           </AnimatedSection>

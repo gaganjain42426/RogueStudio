@@ -8,14 +8,13 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Digital Marketing Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is a full-service digital marketing agency in Jaipur â€” SEO, paid ads, social media, and content strategy that grows revenue, not just impressions.',
+    'Rogue Studio is a full-service digital marketing agency in Jaipur — SEO, paid ads, social media, and content strategy that grows revenue, not just impressions.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Digital Marketing Agency Jaipur | Rogue Studio',
     description:
-      'Performance digital marketing for Jaipur businesses. SEO, paid social, Google Ads, and content â€” all tied to revenue outcomes.',
+      'Performance digital marketing for Jaipur businesses. SEO, paid social, Google Ads, and content — all tied to revenue outcomes.',
     url: CANONICAL,
-    images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -43,7 +42,7 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'What digital marketing services do you offer in Jaipur?',
-    a: 'We offer SEO (on-page, technical, local), Google Ads & Performance Max, Meta & Instagram paid ads, social media management, content marketing, and email automation. We build integrated strategies â€” not siloed channel tactics.',
+    a: 'We offer SEO (on-page, technical, local), Google Ads & Performance Max, Meta & Instagram paid ads, social media management, content marketing, and email automation. We build integrated strategies — not siloed channel tactics.',
   },
   {
     q: 'How much does digital marketing cost for a Jaipur business?',
@@ -51,15 +50,15 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How do you measure success?',
-    a: 'Revenue, leads, and ROAS â€” not impressions. We set up proper conversion tracking in GA4 and Meta before spending a rupee on ads. You see exactly what each channel is contributing.',
+    a: 'Revenue, leads, and ROAS — not impressions. We set up proper conversion tracking in GA4 and Meta before spending a rupee on ads. You see exactly what each channel is contributing.',
   },
   {
     q: 'Do you work with small businesses or only large brands?',
-    a: 'We work with ambitious businesses of all sizes â€” from Jaipur startups with â‚¹50K/month budgets to established brands with multi-crore ad spends. What matters is that you want to grow seriously.',
+    a: 'We work with ambitious businesses of all sizes — from Jaipur startups with â‚¹50K/month budgets to established brands with multi-crore ad spends. What matters is that you want to grow seriously.',
   },
   {
     q: 'Why choose a Jaipur-based agency over a national one?',
-    a: 'Proximity matters â€” we can attend shoots, meet your team, and understand the local competition first-hand. Plus, we know which Jaipur neighbourhoods and festivals to target, and which local publications and influencers carry real weight.',
+    a: 'Proximity matters — we can attend shoots, meet your team, and understand the local competition first-hand. Plus, we know which Jaipur neighbourhoods and festivals to target, and which local publications and influencers carry real weight.',
   },
 ]
 
@@ -101,7 +100,7 @@ export default function DigitalMarketingJaipurPage() {
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Digital marketing agency Jaipur â€”{' '}
+              Digital marketing agency Jaipur —{' '}
               <span
                 className="italic font-normal text-primary-container"
                 style={{ fontFamily: 'var(--font-serif-accent)' }}
@@ -112,7 +111,7 @@ export default function DigitalMarketingJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.2}>
             <p className="mt-8 text-xl text-on-surface-variant leading-relaxed max-w-2xl">
-              We run digital marketing that converts â€” SEO that brings inbound leads, ads that
+              We run digital marketing that converts — SEO that brings inbound leads, ads that
               return real ROAS, and content that builds lasting brand authority. For Jaipur
               businesses serious about scaling.
             </p>
@@ -124,7 +123,7 @@ export default function DigitalMarketingJaipurPage() {
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit â†’
+                Get a Free Audit →
               </Link>
               <Link
                 href="/portfolio"
@@ -160,7 +159,7 @@ export default function DigitalMarketingJaipurPage() {
             {[
               {
                 title: 'Local market intelligence',
-                body: "We know Jaipur's competition â€” who's ranking where, which brands are outspending on ads, and what content gaps exist in your industry locally. Data-backed decisions from day one.",
+                body: "We know Jaipur's competition — who's ranking where, which brands are outspending on ads, and what content gaps exist in your industry locally. Data-backed decisions from day one.",
               },
               {
                 title: 'Creative that performs',
@@ -168,7 +167,7 @@ export default function DigitalMarketingJaipurPage() {
               },
               {
                 title: "Retainer model means skin in the game",
-                body: "We're not billing by the hour. Our retainers are milestone-based â€” tied to growth targets. If your business grows, we grow. That's the alignment you want from an agency.",
+                body: "We're not billing by the hour. Our retainers are milestone-based — tied to growth targets. If your business grows, we grow. That's the alignment you want from an agency.",
               },
               {
                 title: 'Transparent, jargon-free reporting',
@@ -199,10 +198,10 @@ export default function DigitalMarketingJaipurPage() {
               className="text-4xl md:text-5xl font-black text-white mb-4"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              What's included
+              What&apos;s included
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              Full-funnel digital marketing â€” from the first impression to the closed sale.
+              Full-funnel digital marketing — from the first impression to the closed sale.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -272,7 +271,7 @@ export default function DigitalMarketingJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Get a free digital audit â€” we&apos;ll show you exactly where you&apos;re losing
+              Get a free digital audit — we&apos;ll show you exactly where you&apos;re losing
               revenue online.
             </p>
           </AnimateIn>
@@ -282,7 +281,7 @@ export default function DigitalMarketingJaipurPage() {
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk â†’
+              Let&apos;s Talk →
             </Link>
           </AnimateIn>
         </div>

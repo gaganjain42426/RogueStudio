@@ -8,14 +8,13 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Reels Production Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is Jaipur\'s reels production agency â€” cinematic short-form video for Instagram, YouTube Shorts & more. Shot, edited, and published to convert.',
+    'Rogue Studio is Jaipur\'s reels production agency — cinematic short-form video for Instagram, YouTube Shorts & more. Shot, edited, and published to convert.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Reels Production Agency Jaipur | Rogue Studio',
     description:
-      'Cinematic Reels and short-form video production for Jaipur businesses. From concept to cut â€” we make content that stops the scroll.',
+      'Cinematic Reels and short-form video production for Jaipur businesses. From concept to cut — we make content that stops the scroll.',
     url: CANONICAL,
-    images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -43,11 +42,11 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How much does Reels production cost in Jaipur?',
-    a: 'Our Reels production packages start at â‚¹8,000 per Reel for concept, shoot, and edit. Volume retainers (8â€“12 Reels/month) significantly reduce the per-unit cost. We quote based on location, talent, and complexity.',
+    a: 'Our Reels production packages start at â‚¹8,000 per Reel for concept, shoot, and edit. Volume retainers (8—“12 Reels/month) significantly reduce the per-unit cost. We quote based on location, talent, and complexity.',
   },
   {
     q: 'Do you handle scripting and concept development?',
-    a: 'Yes â€” fully. We start with a content brief, develop hooks and scripts aligned to your brand voice, then handle production and post-production end-to-end. You approve before we shoot.',
+    a: 'Yes — fully. We start with a content brief, develop hooks and scripts aligned to your brand voice, then handle production and post-production end-to-end. You approve before we shoot.',
   },
   {
     q: 'What industries do you make Reels for?',
@@ -55,11 +54,11 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How long does it take to produce one Reel?',
-    a: 'From brief to delivery: 5â€“7 business days for a standard shoot-and-edit Reel. Faster turnarounds are available for retainer clients. We batch shoots to maximise output per session.',
+    a: 'From brief to delivery: 5—“7 business days for a standard shoot-and-edit Reel. Faster turnarounds are available for retainer clients. We batch shoots to maximise output per session.',
   },
   {
     q: 'Will you post and manage distribution too?',
-    a: 'Yes â€” our social media retainer includes scheduling, caption writing, hashtag research, and posting at optimal times. Or we can hand off edited files if you have an in-house team.',
+    a: 'Yes — our social media retainer includes scheduling, caption writing, hashtag research, and posting at optimal times. Or we can hand off edited files if you have an in-house team.',
   },
 ]
 
@@ -101,7 +100,7 @@ export default function ReelsProductionJaipurPage() {
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Reels production agency Jaipur â€”{' '}
+              Reels production agency Jaipur —{' '}
               <span
                 className="italic font-normal text-primary-container"
                 style={{ fontFamily: 'var(--font-serif-accent)' }}
@@ -123,7 +122,7 @@ export default function ReelsProductionJaipurPage() {
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit â†’
+                Get a Free Audit →
               </Link>
               <Link
                 href="/portfolio"
@@ -159,19 +158,19 @@ export default function ReelsProductionJaipurPage() {
             {[
               {
                 title: 'Production quality that earns attention',
-                body: 'Colour-graded, properly lit, crispy audio. Every Reel we produce looks like it came out of a proper production house â€” because it did.',
+                body: 'Colour-graded, properly lit, crispy audio. Every Reel we produce looks like it came out of a proper production house — because it did.',
               },
               {
                 title: 'Hooks designed for the algorithm',
-                body: 'The first 1.5 seconds decide everything. We obsess over hooks, pattern interrupts, and pacing that drives replays and shares â€” the signals that get Reels pushed by Instagram.',
+                body: 'The first 1.5 seconds decide everything. We obsess over hooks, pattern interrupts, and pacing that drives replays and shares — the signals that get Reels pushed by Instagram.',
               },
               {
                 title: 'Rooted in Jaipur, scaled for India',
-                body: "We understand the Jaipur market's aesthetics â€” the textures, colour palette, and cultural codes that make content feel authentic rather than imported.",
+                body: "We understand the Jaipur market's aesthetics — the textures, colour palette, and cultural codes that make content feel authentic rather than imported.",
               },
               {
                 title: "Retainer partners, not one-off vendors",
-                body: "Volume and consistency win on Reels. Our retainer model means you're never scrambling for content â€” the pipeline is always full, always on-brand.",
+                body: "Volume and consistency win on Reels. Our retainer model means you're never scrambling for content — the pipeline is always full, always on-brand.",
               },
             ].map(({ title, body }, i) => (
               <AnimateIn key={title} variant="fadeUp" delay={i * 0.1}>
@@ -198,10 +197,10 @@ export default function ReelsProductionJaipurPage() {
               className="text-4xl md:text-5xl font-black text-white mb-4"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              What's in every production
+              What&apos;s in every production
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              From the brief to the publish button â€” we handle every frame.
+              From the brief to the publish button — we handle every frame.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -209,7 +208,7 @@ export default function ReelsProductionJaipurPage() {
               {[
                 'Hook writing & script development',
                 'Location scouting & set dressing (Jaipur & surroundings)',
-                'Cinematography â€” handheld, gimbal, drone available',
+                'Cinematography — handheld, gimbal, drone available',
                 'Professional lighting & audio capture',
                 'Colour grading & motion graphics',
                 'Subtitles, text overlays & captions',
@@ -271,7 +270,7 @@ export default function ReelsProductionJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Let&apos;s talk about your Reels strategy â€” one conversation, zero jargon.
+              Let&apos;s talk about your Reels strategy — one conversation, zero jargon.
             </p>
           </AnimateIn>
           <AnimateIn variant="scaleIn" delay={0.3}>
@@ -280,7 +279,7 @@ export default function ReelsProductionJaipurPage() {
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk â†’
+              Let&apos;s Talk →
             </Link>
           </AnimateIn>
         </div>

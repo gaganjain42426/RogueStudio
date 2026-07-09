@@ -7,40 +7,43 @@ const schema = z.object({
   email: z.string().email(),
   whatsapp: z.string().min(10),
   service: z.string().min(1),
+  budget: z.string().optional(),
   message: z.string().min(10),
 })
 
+/**
+ * Contact inquiry logger.
+ *
+ * The primary lead channel is the client-side WhatsApp handoff (same-tab
+ * navigation, immune to popup blockers). This route is the paper trail:
+ * every inquiry is structured-logged before the handoff, so a lead is
+ * recoverable from Vercel logs even if the visitor never hits send.
+ */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const data = schema.parse(body)
 
-    // TODO (Phase 2): Send via Nodemailer or Resend
-    // import { sendEmail } from '@/lib/email'
-    // await sendEmail({ to: process.env.CONTACT_EMAIL, ...data })
-
-    // For now — log to console
-    console.log('[Contact Form Submission]', {
-      name: data.name,
-      company: data.company,
-      email: data.email,
-      service: data.service,
-      timestamp: new Date().toISOString(),
-    })
+    console.log(
+      JSON.stringify({
+        type: 'contact_inquiry',
+        timestamp: new Date().toISOString(),
+        ...data,
+      }),
+    )
 
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { error: 'Invalid form data', details: error.flatten() },
-        { status: 400 }
+        { status: 400 },
       )
     }
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
 
-// Reject non-POST methods
 export async function GET() {
   return NextResponse.json({ error: 'Method not allowed' }, { status: 405 })
 }

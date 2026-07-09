@@ -6,7 +6,6 @@ interface MetaOptions {
   description: string
   path: string
   keywords?: string[]
-  ogImage?: string
 }
 
 export function buildMetadata({
@@ -14,7 +13,6 @@ export function buildMetadata({
   description,
   path,
   keywords = [],
-  ogImage = '/og/default-og.jpg',
 }: MetaOptions): Metadata {
   const url = `${SITE_URL}${path}`
 
@@ -33,7 +31,6 @@ export function buildMetadata({
       description,
       url,
       siteName: 'Rogue Studio',
-      images: [{ url: ogImage, width: 1200, height: 630 }],
       type: 'website',
       locale: 'en_IN',
     },
@@ -41,7 +38,6 @@ export function buildMetadata({
       card: 'summary_large_image',
       title: `${title} | Rogue Studio`,
       description,
-      images: [ogImage],
     },
     alternates: {
       canonical: url,

@@ -2,22 +2,20 @@ import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import { getBunnyReels, shuffleReels } from '@/lib/bunny'
 import Hero from '@/components/sections/Hero'
-import Marquee from '@/components/sections/Marquee'
-import ReelsCarousel from '@/components/sections/ReelsCarousel'
-import WhatWeDo from '@/components/sections/WhatWeDo'
-import Services from '@/components/sections/Services'
+import ProofTicker from '@/components/sections/ProofTicker'
 import FeaturedWork from '@/components/sections/FeaturedWork'
-import Results from '@/components/sections/Results'
-import Pricing from '@/components/sections/Pricing'
-import ServicesGrid from '@/components/sections/ServicesGrid'
-import About from '@/components/sections/About'
+import ReelsCarousel from '@/components/sections/ReelsCarousel'
+import Services from '@/components/sections/Services'
+import Process from '@/components/sections/Process'
+import Studio from '@/components/sections/Studio'
 import Testimonials from '@/components/sections/Testimonials'
+import Pricing from '@/components/sections/Pricing'
 import FinalCTA from '@/components/sections/FinalCTA'
 
 export const metadata: Metadata = {
   title: 'Rogue Studio — Creative & Social Media Agency Jaipur',
   description:
-    'Rogue Studio is a creative and social media marketing agency based in Jaipur, India. Cinematic brands, scroll-stopping content, and growth-driven strategies.',
+    'Rogue Studio is a creative and social media agency in Jaipur, India. 200+ reels, 40M+ views, 10X peak ROAS — content production, social management, and performance ads from one studio.',
   keywords: [
     'social media agency Jaipur',
     'creative agency Rajasthan',
@@ -28,9 +26,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Rogue Studio — Creative Agency Jaipur',
-    description: 'Cinematic brands, scroll-stopping content, and strategies that grow business.',
+    description: '200+ reels, 40M+ views, 10X peak ROAS. Content that turns scrolls into customers.',
     url: SITE_URL,
-    images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -40,22 +37,22 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const reels = await getBunnyReels()
 
+  // Curated counts per surface — enough to feel endless, few enough to stay fast.
+  const heroReels = shuffleReels(reels).slice(0, 12)
+  const carouselReels = shuffleReels(reels).slice(0, 14)
+
   return (
     <>
-      <Hero reels={shuffleReels(reels)} />
-      <Marquee />
-      <ReelsCarousel reels={shuffleReels(reels)} />
-      <WhatWeDo />
-      <Services />
+      <Hero reels={heroReels} />
+      <ProofTicker />
       <FeaturedWork />
-      <Results />
-      <Pricing />
-      <ServicesGrid />
-      <About />
+      <ReelsCarousel reels={carouselReels} />
+      <Services />
+      <Process />
+      <Studio />
       <Testimonials />
+      <Pricing />
       <FinalCTA />
     </>
   )
 }
-
-

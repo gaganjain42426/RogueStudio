@@ -8,14 +8,13 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Social Media Agency in Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is the social media agency in Jaipur that turns brands into scroll-stopping presences. Strategy, content, reels & growth â€” all under one roof.',
+    'Rogue Studio is the social media agency in Jaipur that turns brands into scroll-stopping presences. Strategy, content, reels & growth — all under one roof.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Social Media Agency in Jaipur | Rogue Studio',
     description:
       'Scroll-stopping social media strategy and content production for Jaipur businesses. We make your brand impossible to ignore.',
     url: CANONICAL,
-    images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -43,7 +42,7 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How much does social media management cost in Jaipur?',
-    a: 'Our social media retainers start at â‚¹25,000/month and scale based on platform count, content volume, and ad spend management. We offer transparent, deliverable-based pricing â€” no vague monthly fees.',
+    a: 'Our social media retainers start at â‚¹25,000/month and scale based on platform count, content volume, and ad spend management. We offer transparent, deliverable-based pricing — no vague monthly fees.',
   },
   {
     q: 'Which platforms do you manage?',
@@ -51,15 +50,15 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How long until we see results?',
-    a: 'Organic growth is a 90-day game. Most clients see measurable engagement uplift in 30â€“45 days. We track follower quality, reach, saves, and DMs â€” not just vanity likes.',
+    a: 'Organic growth is a 90-day game. Most clients see measurable engagement uplift in 30—“45 days. We track follower quality, reach, saves, and DMs — not just vanity likes.',
   },
   {
     q: 'Do you work with businesses outside Jaipur?',
-    a: 'Yes â€” we work with brands across India and internationally. But our Jaipur roots mean we deeply understand the local market, culture, and aesthetics that resonate with Rajasthani consumers.',
+    a: 'Yes — we work with brands across India and internationally. But our Jaipur roots mean we deeply understand the local market, culture, and aesthetics that resonate with Rajasthani consumers.',
   },
   {
     q: 'What makes Rogue Studio different from other agencies in Jaipur?',
-    a: 'Most agencies recycle Canva templates. We build a visual system unique to your brand, shoot cinematic content, and treat your account like a portfolio piece â€” because it is one.',
+    a: 'Most agencies recycle Canva templates. We build a visual system unique to your brand, shoot cinematic content, and treat your account like a portfolio piece — because it is one.',
   },
 ]
 
@@ -93,7 +92,7 @@ export default function SocialMediaAgencyJaipurPage() {
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary-container mb-6"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Jaipur's Social Media Agency
+              Jaipur&apos;s Social Media Agency
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.1}>
@@ -113,7 +112,7 @@ export default function SocialMediaAgencyJaipurPage() {
           <AnimateIn variant="fadeUp" delay={0.2}>
             <p className="mt-8 text-xl text-on-surface-variant leading-relaxed max-w-2xl">
               Jaipur brands that look like they belong in Mumbai or Delhi. We build content
-              ecosystems â€” strategy, production, and distribution â€” that turn followers into
+              ecosystems — strategy, production, and distribution — that turn followers into
               customers.
             </p>
           </AnimateIn>
@@ -124,7 +123,7 @@ export default function SocialMediaAgencyJaipurPage() {
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit â†’
+                Get a Free Audit →
               </Link>
               <Link
                 href="/portfolio"
@@ -159,11 +158,11 @@ export default function SocialMediaAgencyJaipurPage() {
             {[
               {
                 title: 'We know Jaipur',
-                body: "We're not a Gurgaon agency with a Jaipur office. We live here, understand the market, and know what resonates with the city's consumers â€” from old city bazaars to Vaishali Nagar startups.",
+                body: "We're not a Gurgaon agency with a Jaipur office. We live here, understand the market, and know what resonates with the city's consumers — from old city bazaars to Vaishali Nagar startups.",
               },
               {
                 title: 'Cinematic quality, every post',
-                body: 'Your feed is your portfolio. We shoot and edit every piece of content like it belongs in a brand campaign â€” not a stock library. The production quality shows.',
+                body: 'Your feed is your portfolio. We shoot and edit every piece of content like it belongs in a brand campaign — not a stock library. The production quality shows.',
               },
               {
                 title: 'Retainer-first, results-obsessed',
@@ -198,10 +197,10 @@ export default function SocialMediaAgencyJaipurPage() {
               className="text-4xl md:text-5xl font-black text-white mb-4"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              What's included
+              What&apos;s included
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
-              A complete social media engine â€” from the strategy deck to the scheduled post.
+              A complete social media engine — from the strategy deck to the scheduled post.
             </p>
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
@@ -271,7 +270,7 @@ export default function SocialMediaAgencyJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Let&apos;s audit your current social presence â€” free, no commitment.
+              Let&apos;s audit your current social presence — free, no commitment.
             </p>
           </AnimateIn>
           <AnimateIn variant="scaleIn" delay={0.3}>
@@ -280,7 +279,7 @@ export default function SocialMediaAgencyJaipurPage() {
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk â†’
+              Let&apos;s Talk →
             </Link>
           </AnimateIn>
         </div>

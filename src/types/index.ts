@@ -3,26 +3,12 @@ export interface NavLink {
   href: string
 }
 
-export interface Project {
-  id: string
-  title: string
-  category: string
-  imageUrl: string
-  imageAlt: string
-  tags: string[]
-}
-
 export interface Testimonial {
   id: string
   quote: string
   author: string
   role: string
   company: string
-}
-
-export interface ServiceTile {
-  icon: string
-  label: string
 }
 
 export interface PricingPlan {
@@ -39,7 +25,6 @@ export interface TeamMember {
   name: string
   role: string
   bio: string
-  imageUrl: string
 }
 
 export interface ContactFormData {
@@ -48,5 +33,6 @@ export interface ContactFormData {
   email: string
   whatsapp: string
   service: string
+  budget?: string
   message: string
 }

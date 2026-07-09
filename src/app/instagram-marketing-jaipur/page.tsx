@@ -8,14 +8,13 @@ const CANONICAL = `https://www.roguestudio.in/${SLUG}`
 export const metadata: Metadata = {
   title: 'Instagram Marketing Agency Jaipur | Rogue Studio',
   description:
-    'Rogue Studio is Jaipur\'s Instagram marketing agency â€” account strategy, Reels production, paid ads, and growth management that builds real audiences and drives sales.',
+    'Rogue Studio is Jaipur\'s Instagram marketing agency — account strategy, Reels production, paid ads, and growth management that builds real audiences and drives sales.',
   alternates: { canonical: CANONICAL },
   openGraph: {
     title: 'Instagram Marketing Agency Jaipur | Rogue Studio',
     description:
       'Instagram strategy, content, and paid ads for Jaipur brands. We turn your profile into a lead machine.',
     url: CANONICAL,
-    images: [{ url: '/og/home-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -43,23 +42,23 @@ const SERVICE_SCHEMA = {
 const FAQ_ITEMS = [
   {
     q: 'How do you grow Instagram followers for Jaipur businesses?',
-    a: "We focus on content quality, hook engineering, and strategic hashtag use â€” not follow/unfollow tricks. Sustainable Instagram growth comes from Reels that get pushed by the algorithm, collabs with relevant local accounts, and consistent posting that signals reliability to the platform.",
+    a: "We focus on content quality, hook engineering, and strategic hashtag use — not follow/unfollow tricks. Sustainable Instagram growth comes from Reels that get pushed by the algorithm, collabs with relevant local accounts, and consistent posting that signals reliability to the platform.",
   },
   {
     q: 'Do you run Instagram ads?',
-    a: 'Yes. We manage Meta Ads Manager for Instagram campaigns â€” from awareness Reels to conversion-focused stories and DM campaigns. We handle creative, targeting, A/B testing, and budget optimisation.',
+    a: 'Yes. We manage Meta Ads Manager for Instagram campaigns — from awareness Reels to conversion-focused stories and DM campaigns. We handle creative, targeting, A/B testing, and budget optimisation.',
   },
   {
     q: 'How many posts per month is standard?',
-    a: "Our standard Instagram retainer includes 12â€“16 posts per month (a mix of Reels, carousels, and statics) plus Stories. We've found this cadence optimal for Jaipur-scale brands â€” enough volume to stay relevant without sacrificing quality.",
+    a: "Our standard Instagram retainer includes 12—“16 posts per month (a mix of Reels, carousels, and statics) plus Stories. We've found this cadence optimal for Jaipur-scale brands — enough volume to stay relevant without sacrificing quality.",
   },
   {
     q: 'Can you help with influencer partnerships in Jaipur?',
-    a: 'Yes â€” we have relationships with Jaipur-based micro and mid-tier creators across fashion, food, lifestyle, and business niches. We handle outreach, briefs, and performance tracking for influencer campaigns.',
+    a: 'Yes — we have relationships with Jaipur-based micro and mid-tier creators across fashion, food, lifestyle, and business niches. We handle outreach, briefs, and performance tracking for influencer campaigns.',
   },
   {
     q: 'What results can I realistically expect from Instagram marketing?',
-    a: 'For a well-run account with consistent Reels, expect 2â€“5x reach growth within 90 days. Direct business outcomes (DMs, link clicks, sales) depend heavily on your offer and funnel. We set baseline KPIs in month one so you can track real progress.',
+    a: 'For a well-run account with consistent Reels, expect 2—“5x reach growth within 90 days. Direct business outcomes (DMs, link clicks, sales) depend heavily on your offer and funnel. We set baseline KPIs in month one so you can track real progress.',
   },
 ]
 
@@ -101,7 +100,7 @@ export default function InstagramMarketingJaipurPage() {
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] text-white max-w-4xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Instagram marketing agency Jaipur â€”{' '}
+              Instagram marketing agency Jaipur —{' '}
               <span
                 className="italic font-normal text-primary-container"
                 style={{ fontFamily: 'var(--font-serif-accent)' }}
@@ -124,7 +123,7 @@ export default function InstagramMarketingJaipurPage() {
                 className="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-black text-base hover:scale-105 transition-transform duration-300"
                 style={{ fontFamily: 'var(--font-headline)' }}
               >
-                Get a Free Audit â†’
+                Get a Free Audit →
               </Link>
               <Link
                 href="/portfolio"
@@ -168,7 +167,7 @@ export default function InstagramMarketingJaipurPage() {
               },
               {
                 title: 'Full-funnel approach',
-                body: 'Instagram is not just top-of-funnel. We build strategies that move followers from discovery through to DM inquiries, link clicks, and purchases â€” with Reels, Stories, and paid ads working in tandem.',
+                body: 'Instagram is not just top-of-funnel. We build strategies that move followers from discovery through to DM inquiries, link clicks, and purchases — with Reels, Stories, and paid ads working in tandem.',
               },
               {
                 title: 'Partners, not post-and-ghost vendors',
@@ -199,7 +198,7 @@ export default function InstagramMarketingJaipurPage() {
               className="text-4xl md:text-5xl font-black text-white mb-4"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              What's included
+              What&apos;s included
             </h2>
             <p className="text-on-surface-variant mb-12 max-w-xl">
               Everything your Instagram needs to grow from a page into a sales channel.
@@ -272,7 +271,7 @@ export default function InstagramMarketingJaipurPage() {
           </AnimateIn>
           <AnimateIn variant="fadeUp" delay={0.15}>
             <p className="mt-6 text-xl text-white/80">
-              Free Instagram audit â€” we&apos;ll tell you exactly what&apos;s holding your account
+              Free Instagram audit — we&apos;ll tell you exactly what&apos;s holding your account
               back.
             </p>
           </AnimateIn>
@@ -282,7 +281,7 @@ export default function InstagramMarketingJaipurPage() {
               className="mt-10 inline-flex bg-white text-primary-container px-12 py-5 rounded-full text-xl font-black hover:scale-105 transition-transform duration-300 shadow-2xl"
               style={{ fontFamily: 'var(--font-headline)' }}
             >
-              Let&apos;s Talk â†’
+              Let&apos;s Talk →
             </Link>
           </AnimateIn>
         </div>

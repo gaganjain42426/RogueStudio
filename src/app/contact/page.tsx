@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Icon from '@/components/ui/Icon'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { STUDIO_ADDRESS, WHATSAPP_NUMBER } from '@/lib/constants'
@@ -16,10 +17,10 @@ export default function ContactPage() {
   return (
     <div className="bg-tertiary-fixed text-on-tertiary-fixed min-h-screen pt-32 pb-20">
       <div className="max-w-[1440px] mx-auto px-6 md:px-8">
-        {/* Two-column grid */}
+        {/* Two-column grid — the form leads on mobile; info follows */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-          {/* Left — info */}
-          <div className="space-y-16">
+          {/* Info — second on mobile, first on desktop */}
+          <div className="space-y-16 order-2 lg:order-1">
             <div>
               <span className="text-secondary font-bold text-xs tracking-widest uppercase">
                 Let&apos;s Talk
@@ -51,7 +52,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-4 bg-on-tertiary-fixed text-tertiary-fixed px-10 py-5 rounded-full hover:bg-primary-container hover:text-on-primary-fixed transition-colors duration-300"
                 >
-                  <span className="material-symbols-outlined">chat</span>
+                  <Icon name="chat" size={22} />
                   <span
                     className="font-bold text-xl"
                     style={{ fontFamily: 'var(--font-headline)' }}
@@ -91,8 +92,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right — form card */}
-          <div className="bg-white/40 backdrop-blur-xl p-10 md:p-16 rounded-2xl border border-white/20 shadow-[0_40px_60px_-15px_rgba(14,14,14,0.06)]">
+          {/* Form card — first on mobile */}
+          <div className="order-1 lg:order-2 bg-white/40 backdrop-blur-xl p-8 md:p-16 rounded-2xl border border-white/20 shadow-[0_40px_60px_-15px_rgba(14,14,14,0.06)]">
             <ContactForm />
           </div>
         </div>

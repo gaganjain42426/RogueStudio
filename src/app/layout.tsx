@@ -48,7 +48,6 @@ export const metadata: Metadata = {
       'Cinematic brands, scroll-stopping content, and growth-driven strategies from Jaipur, India.',
     url: SITE_URL,
     siteName: 'Rogue Studio',
-    images: [{ url: '/og/default-og.jpg', width: 1200, height: 630 }],
     type: 'website',
     locale: 'en_IN',
   },
@@ -56,7 +55,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Rogue Studio — Creative Agency Jaipur',
     description: 'Cinematic brands and scroll-stopping content from Jaipur.',
-    images: ['/og/default-og.jpg'],
   },
   robots: { index: true, follow: true },
 }
@@ -74,11 +72,6 @@ export default function RootLayout({
         {/* Warm up the connection to the Bunny Stream CDN so hero/reel videos start faster */}
         <link rel="preconnect" href="https://vz-2d00a478-198.b-cdn.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://vz-2d00a478-198.b-cdn.net" />
-        {/* Google Material Symbols */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-        />
         {/* Schema.org JSON-LD — LocalBusiness + ProfessionalService */}
         <script
           type="application/ld+json"
@@ -101,16 +94,16 @@ export default function RootLayout({
               },
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Malviya Nagar',
+                streetAddress: 'Sanganer',
                 addressLocality: 'Jaipur',
                 addressRegion: 'Rajasthan',
-                postalCode: '302017',
+                postalCode: '302029',
                 addressCountry: 'IN',
               },
               geo: {
                 '@type': 'GeoCoordinates',
-                latitude: 26.8574,
-                longitude: 75.8022,
+                latitude: 26.8192,
+                longitude: 75.766,
               },
               areaServed: [
                 { '@type': 'City', name: 'Jaipur' },

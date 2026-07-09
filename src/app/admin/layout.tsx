@@ -23,11 +23,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const userRole = roleRows?.[0]?.role as string | undefined
 
   return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      />
     <div className="fixed inset-0 z-[200] flex bg-[#0e0e0e] overflow-hidden">
       <AdminNav mrr={mrr} userRole={userRole} />
       <main className="flex-1 overflow-y-auto bg-[#0e0e0e]" data-lenis-prevent>
         {children}
       </main>
     </div>
+    </>
   )
 }

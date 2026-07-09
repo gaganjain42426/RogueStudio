@@ -1,4 +1,4 @@
-import type { NavLink, Project, Testimonial, ServiceTile, PricingPlan, TeamMember } from '@/types'
+import type { NavLink, Testimonial, PricingPlan, TeamMember } from '@/types'
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.roguestudio.in'
 
@@ -17,59 +17,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Services', href: '/services' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
-]
-
-export const PROJECTS: Project[] = [
-  {
-    id: 'sarvatra-energy',
-    title: 'Sarvatra Energy',
-    category: 'Brand Design',
-    imageUrl: 'https://picsum.photos/seed/sarvatra/400/500',
-    imageAlt: 'Sarvatra Energy – Brand Design project',
-    tags: ['Brand'],
-  },
-  {
-    id: 'vimla-loomcraft',
-    title: 'Vimla LoomCraft',
-    category: 'Social Strategy',
-    imageUrl: 'https://picsum.photos/seed/vimla/400/500',
-    imageAlt: 'Vimla LoomCraft – Social Strategy project',
-    tags: ['Social'],
-  },
-  {
-    id: 'naman-vaastu',
-    title: 'Naman Vaastu',
-    category: 'Digital Content',
-    imageUrl: 'https://picsum.photos/seed/naman/400/500',
-    imageAlt: 'Naman Vaastu – Digital Content project',
-    tags: ['Video'],
-  },
-  {
-    id: 'noble-vibes-clinic',
-    title: 'Noble Vibes Clinic',
-    category: 'Visual Identity',
-    imageUrl: 'https://picsum.photos/seed/noble/400/500',
-    imageAlt: 'Noble Vibes Clinic – Visual Identity project',
-    tags: ['Brand'],
-  },
-  {
-    id: 'lets-moveon-yoga',
-    title: "Let's Moveon Yoga",
-    category: 'Campaign',
-    imageUrl: 'https://picsum.photos/seed/yoga/400/500',
-    imageAlt: "Let's Moveon Yoga – Campaign project",
-    tags: ['Social'],
-  },
-  {
-    id: 'new-project',
-    title: 'Coming Soon',
-    category: 'Social Media',
-    imageUrl: 'https://picsum.photos/seed/roguestudio6/400/500',
-    imageAlt: 'New Rogue Studio project – coming soon',
-    tags: ['Social'],
-  },
 ]
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -97,19 +45,6 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'CEO',
     company: 'Wellness Hub',
   },
-]
-
-export const SERVICE_TILES: ServiceTile[] = [
-  { icon: 'terminal', label: 'Web Design' },
-  { icon: 'movie', label: 'Reels Production' },
-  { icon: 'brush', label: 'Branding' },
-  { icon: 'ads_click', label: 'Paid Social' },
-  { icon: 'edit_note', label: 'Copywriting' },
-  { icon: 'groups', label: 'Community' },
-  { icon: 'local_mall', label: 'E-commerce' },
-  { icon: 'auto_awesome', label: 'AI Solutions' },
-  { icon: 'camera', label: 'Photography' },
-  { icon: 'podcasts', label: 'Podcast Ops' },
 ]
 
 export const PRICING_PLANS: PricingPlan[] = [
@@ -152,19 +87,16 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Gagan Jain',
     role: 'Operations',
     bio: 'Keeps the studio running — from client onboarding to delivery, nothing falls through the cracks.',
-    imageUrl: 'https://picsum.photos/seed/gagan/400/400',
   },
   {
     name: 'Shruti Sharma',
     role: 'Head of Strategy',
     bio: 'The brain behind every content plan — she turns brand goals into strategies that actually convert.',
-    imageUrl: 'https://picsum.photos/seed/shruti/400/400',
   },
   {
     name: 'Nikhil Singh',
     role: 'Lead Cinematographer',
     bio: 'Frames every shoot with intention — reels, brand films, and campaigns that stop the scroll.',
-    imageUrl: 'https://picsum.photos/seed/nikhil/400/400',
   },
 ]
 

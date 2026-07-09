@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://fonts.googleapis.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https://picsum.photos https://lh3.googleusercontent.com https://vz-2d00a478-198.b-cdn.net",
+              "img-src 'self' data: blob: https://lh3.googleusercontent.com https://vz-2d00a478-198.b-cdn.net",
               "media-src 'self' blob: https://vz-2d00a478-198.b-cdn.net",
               "connect-src 'self' https://www.google-analytics.com https://*.supabase.co",
               "frame-src 'self' https://www.google.com",
@@ -32,12 +32,6 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 85, 90],
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',

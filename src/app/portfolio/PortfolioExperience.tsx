@@ -1,100 +1,168 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import {
-  PORTFOLIO_FILTERS,
-  type ResolvedClient,
-  type ActiveReel,
-  type PortfolioTag,
-} from '@/data/portfolio'
-import PortfolioHero from '@/components/portfolio/PortfolioHero'
-import BrandCarousel from '@/components/portfolio/BrandCarousel'
-import CasePanel from '@/components/portfolio/CasePanel'
+import Image from 'next/image'
+import { motion, useReducedMotion } from 'framer-motion'
+import type { ResolvedClient, ActiveReel } from '@/data/portfolio'
+import Scene from '@/components/portfolio/Scene'
+import FilmRail from '@/components/portfolio/FilmRail'
 import ReelLightbox from '@/components/portfolio/ReelLightbox'
-import { scrollToId } from '@/lib/smooth-scroll'
+import Magnetic from '@/components/ui/Magnetic'
+import Icon from '@/components/ui/Icon'
+import { EASE, DUR } from '@/lib/motion'
 
-type Filter = PortfolioTag | 'All'
-
+/**
+ * PortfolioExperience — "The Work", played as a film.
+ *
+ *   Title sequence → scenes (one full chapter per client, alternating
+ *   compositions, accent lighting, CSS-3D media planes) → end credits for
+ *   engagements still in production → closing CTA.
+ *
+ * A film rail on the right edge tracks and navigates scenes. No grids,
+ * no filters, no cards — a directed sequence.
+ */
 export default function PortfolioExperience({ clients }: { clients: ResolvedClient[] }) {
-  const [filter, setFilter] = useState<Filter>('All')
   const [activeReel, setActiveReel] = useState<ActiveReel | null>(null)
+  const reduced = useReducedMotion()
 
-  const filtered = useMemo(
-    () => (filter === 'All' ? clients : clients.filter((c) => c.tag === filter)),
-    [filter, clients],
-  )
-
-  const stats = [
-    { value: '1000+', label: 'Reels produced' },
-    { value: '1M+', label: 'Views on top reels' },
-    { value: '10X', label: 'Peak return on ad spend' },
-  ]
-
-  // Only surface filters that actually match a client.
-  const availableFilters = PORTFOLIO_FILTERS.filter(
-    (f) => f.value === 'All' || clients.some((c) => c.tag === f.value),
-  )
-
-  // Bookshelf jump — clear any active filter so the target panel is mounted,
-  // then scroll once it's in the DOM.
-  const handleJump = (slug: string) => {
-    setFilter('All')
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(slug)))
-  }
+  // Finished case studies play as scenes; in-production clients roll in the credits.
+  const scenes = clients.filter((c) => !c.needsContext)
+  const credits = clients.filter((c) => c.needsContext)
 
   return (
     <div style={{ background: '#0D0D0D' }}>
-      <PortfolioHero clientNames={clients.map((c) => c.name)} stats={stats} />
+      {/* ── Title sequence ── */}
+      <header className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(250,92,27,0.14), transparent 70%)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="film-grain" aria-hidden="true" />
 
-      {/* Brand carousel — tap a brand to jump to its panel */}
-      <BrandCarousel
-        brands={clients.map((c) => ({
-          slug: c.slug,
-          name: c.name,
-          logo: c.logo,
-          accent: c.accent,
-          industry: c.industry,
-        }))}
-        onJump={handleJump}
-      />
+        <motion.p
+          initial={reduced ? {} : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: DUR.base, delay: 0.1 }}
+          className="text-[11px] uppercase tracking-[0.4em]"
+          style={{ fontFamily: 'var(--font-label)', color: 'rgba(255,255,255,0.64)' }}
+        >
+          Rogue Studio presents
+        </motion.p>
 
-      {/* Filter bar */}
-      <div className="sticky top-[72px] z-30 border-b border-white/5 bg-[#0D0D0D]/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap gap-2 px-6 py-4 md:px-8">
-          {availableFilters.map((f) => {
-            const active = filter === f.value
-            return (
-              <button
-                key={f.value}
-                onClick={() => setFilter(f.value)}
-                className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest transition-colors ${
-                  active
-                    ? 'bg-primary-container text-on-primary-fixed'
-                    : 'border border-white/10 text-white/55 hover:text-white'
-                }`}
-              >
-                {f.label}
-              </button>
-            )
-          })}
-        </div>
-      </div>
+        <motion.h1
+          initial={reduced ? {} : { opacity: 1, y: 60, scale: 1.03 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: DUR.slow, ease: EASE, delay: 0.25 }}
+          className="mt-6 font-black text-white"
+          style={{
+            fontFamily: 'var(--font-headline)',
+            fontSize: 'clamp(64px, 14vw, 220px)',
+            lineHeight: 0.9,
+            letterSpacing: '-0.03em',
+          }}
+        >
+          THE{' '}
+          <span
+            className="italic font-normal"
+            style={{ fontFamily: 'var(--font-serif-accent)', color: '#fa5c1b' }}
+          >
+            Work.
+          </span>
+        </motion.h1>
 
-      {/* Case panels */}
-      <motion.div
-        key={filter}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      >
-        {filtered.map((client, i) => (
-          <CasePanel key={client.id} client={client} index={i} onOpen={setActiveReel} />
-        ))}
-      </motion.div>
+        <motion.p
+          initial={reduced ? {} : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: DUR.base, delay: 0.8 }}
+          className="mt-8 max-w-md text-base leading-relaxed"
+          style={{ color: 'rgba(229,226,225,0.72)' }}
+        >
+          {scenes.length} clients. 200+ reels. 40M+ views. Every number on this
+          page came from a client&rsquo;s real account — nothing staged, nothing rounded up.
+        </motion.p>
 
-      {/* Closing CTA */}
+        <motion.div
+          initial={reduced ? {} : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: DUR.base, delay: 1.2 }}
+          className="absolute bottom-10 flex flex-col items-center gap-2"
+          aria-hidden="true"
+        >
+          <span
+            className="text-[10px] uppercase tracking-[0.3em]"
+            style={{ fontFamily: 'var(--font-label)', color: 'rgba(255,255,255,0.64)' }}
+          >
+            Scroll to roll
+          </span>
+          <motion.span
+            animate={reduced ? {} : { y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            className="block h-8 w-px"
+            style={{ background: 'linear-gradient(to bottom, #fa5c1b, transparent)' }}
+          />
+        </motion.div>
+      </header>
+
+      <FilmRail scenes={scenes.map((c) => ({ slug: c.slug, name: c.name }))} />
+
+      {/* ── Scenes ── */}
+      {scenes.map((client, i) => (
+        <Scene key={client.id} client={client} index={i} onOpen={setActiveReel} />
+      ))}
+
+      {/* ── End credits — engagements still in production ── */}
+      {credits.length > 0 && (
+        <section className="relative border-t border-white/5 px-6 py-28 md:px-8">
+          <div className="mx-auto max-w-[1100px]">
+            <p
+              className="text-center text-[11px] uppercase tracking-[0.4em]"
+              style={{ fontFamily: 'var(--font-label)', color: 'rgba(255,255,255,0.64)' }}
+            >
+              Also in production
+            </p>
+            <div className="mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+              {credits.map((c) => (
+                <a
+                  key={c.id}
+                  href={c.instagram || undefined}
+                  target={c.instagram ? '_blank' : undefined}
+                  rel={c.instagram ? 'noopener noreferrer' : undefined}
+                  className="group flex items-center gap-4 bg-[#0D0D0D] p-7 transition-colors hover:bg-white/[0.03]"
+                >
+                  <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/90 p-1">
+                    <Image src={c.logo} alt={`${c.name} logo`} width={48} height={48} className="h-full w-full object-contain" />
+                  </span>
+                  <span>
+                    <span className="block font-black text-white" style={{ fontFamily: 'var(--font-headline)' }}>
+                      {c.name}
+                    </span>
+                    <span className="mt-0.5 block text-[11px] uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.64)' }}>
+                      {c.industry}
+                    </span>
+                  </span>
+                  {c.instagram && (
+                    <Icon
+                      name="arrow-ne"
+                      size={16}
+                      className="ml-auto text-white/35 transition-colors group-hover:text-white"
+                    />
+                  )}
+                </a>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              First deliverables shipping now — full case studies when the numbers are in.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ── Closing CTA ── */}
       <section className="relative overflow-hidden border-t border-white/5 px-6 py-32 text-center md:px-8">
         <div
           className="pointer-events-none absolute inset-0 opacity-50"
@@ -105,37 +173,39 @@ export default function PortfolioExperience({ clients }: { clients: ResolvedClie
           aria-hidden="true"
         />
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={reduced ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: DUR.base, ease: EASE }}
           className="relative mx-auto max-w-3xl"
         >
           <h2
             className="text-4xl font-black leading-[0.95] text-white md:text-6xl"
             style={{ fontFamily: 'var(--font-headline)' }}
           >
-            Ready to be the next{' '}
+            Scene {String(scenes.length + 1).padStart(2, '0')}:{' '}
             <span className="italic" style={{ fontFamily: 'var(--font-serif-accent)', color: '#fa5c1b' }}>
-              case study?
+              your brand.
             </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-white/60">
-            We only take on brands we know we can move the needle for. If that&apos;s you, let&apos;s talk.
+          <p className="mx-auto mt-6 max-w-lg" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            We take on brands we know we can move the needle for — then put the
+            numbers on this page.
           </p>
-          <Link
-            href="/contact"
-            className="mt-10 inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-black transition-transform hover:-translate-y-0.5"
-            style={{
-              background: '#fa5c1b',
-              color: '#0D0D0D',
-              fontFamily: 'var(--font-headline)',
-              boxShadow: '0 10px 30px -10px rgba(250,92,27,0.6)',
-            }}
-          >
-            Start your project
-            <span>→</span>
-          </Link>
+          <Magnetic strength={10} className="mt-10">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-black transition-transform hover:-translate-y-0.5"
+              style={{
+                background: '#fa5c1b',
+                color: '#0D0D0D',
+                fontFamily: 'var(--font-headline)',
+                boxShadow: '0 10px 30px -10px rgba(250,92,27,0.6)',
+              }}
+            >
+              Start your project →
+            </Link>
+          </Magnetic>
         </motion.div>
       </section>
 

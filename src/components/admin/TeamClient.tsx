@@ -48,7 +48,9 @@ export default function TeamClient({
   const clientUsers = users.filter((u) => u.role === 'client')
 
   const clientsWithAccess: ClientWithAccess[] = clients.map((client) => {
-    const userRole = clientUsers.find((u) => u.email === client.portal_email)
+    const userRole = clientUsers.find(
+      (u) => u.email?.toLowerCase() === client.portal_email?.toLowerCase()
+    )
     return { ...client, hasAccess: !!userRole, userId: userRole?.user_id }
   })
   const activePortalCount = clientsWithAccess.filter((c) => c.hasAccess).length

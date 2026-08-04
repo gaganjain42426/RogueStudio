@@ -25,15 +25,19 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json()
-  const { email, password, clientId } = body as {
+  const { email: rawEmail, password, clientId } = body as {
     email: string
     password: string
     clientId: string
   }
 
-  if (!email || !password || !clientId) {
+  if (!rawEmail || !password || !clientId) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
+
+  // Supabase Auth stores emails lowercased — portal_email must match exactly,
+  // otherwise the portal lookup fails after login.
+  const email = rawEmail.trim().toLowerCase()
 
   const supabaseAdmin = createAdminClient()
 

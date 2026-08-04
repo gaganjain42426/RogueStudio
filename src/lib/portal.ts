@@ -31,8 +31,8 @@ export const getPortalClient = cache(async function () {
   const { data: client } = await supabase
     .from('clients')
     .select('id, name, industry, retainer_amount, color_tag, portal_email')
-    .eq('portal_email', user.email)
-    .single()
+    .ilike('portal_email', user.email)
+    .maybeSingle()
 
   if (!client) redirect('/client-login')
 

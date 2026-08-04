@@ -23,11 +23,13 @@ export default async function PortalLayout({ children }: { children: React.React
 
   if (!user?.email) redirect('/client-login')
 
+  // ilike = case-insensitive match; auth emails are lowercased but older
+  // portal_email values may have been saved with mixed case.
   const { data: client } = await supabase
     .from('clients')
     .select('id, name')
-    .eq('portal_email', user.email)
-    .single()
+    .ilike('portal_email', user.email)
+    .maybeSingle()
 
   if (!client) {
     return (

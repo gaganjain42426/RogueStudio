@@ -85,19 +85,26 @@ export async function getBunnyReels(): Promise<BunnyReel[]> {
 }
 
 /**
- * Does this Bunny video belong to `match`?
+ * Does this Bunny video belong to any of `matches`?
  *
- * Matches on the title (the upload filename, e.g. "averaclothing.in_1789051035…")
- * and on the Description, so a video works whether it was tagged by hand in the
- * Bunny dashboard or just uploaded with its original filename. Separators are
+ * Checks the title (the upload filename, e.g. "averaclothing.in_1789051035…") and
+ * the Description, so a video is found whether it was tagged by hand in the Bunny
+ * dashboard or just uploaded under its original filename. Separators are
  * normalised away because handles vary in punctuation (@sira.collection._).
+ *
+ * A client can list several keys: reels reposted from another account upload under
+ * that account's handle, and the older library entries are tagged by description
+ * ("Naman Vaastu") rather than named after a handle.
  */
 const normalizeKey = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
 
-export function reelBelongsTo(reel: BunnyReel, match: string): boolean {
-  const key = normalizeKey(match)
-  if (!key) return false
-  return normalizeKey(reel.title).startsWith(key) || normalizeKey(reel.client) === key
+export function reelBelongsTo(reel: BunnyReel, matches: string[]): boolean {
+  const title = normalizeKey(reel.title)
+  const client = normalizeKey(reel.client)
+  return matches.some((m) => {
+    const key = normalizeKey(m)
+    return key !== '' && (title.startsWith(key) || client === key)
+  })
 }
 
 /** Fisher-Yates shuffle — returns a new array, doesn't mutate the input. */

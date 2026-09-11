@@ -31,6 +31,9 @@ function ReelCard({
         src={src}
         poster={poster}
         className="w-full h-full object-cover"
+        // Cards are ~480px tall inside a ~720px clipped column, so a wide margin
+        // would queue most of the stack against the visible few. One card ahead.
+        preloadMargin="300px"
         unmuteOnHold
         ariaHidden
       />

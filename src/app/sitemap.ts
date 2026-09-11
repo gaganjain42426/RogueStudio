@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/services', priority: 0.9 },
     { path: '/about', priority: 0.8 },
     { path: '/contact', priority: 0.8 },
-    { path: '/blog', priority: 0.7 },
+    // /blog is omitted while its posts are placeholders — it is noindex too.
     { path: '/privacy', priority: 0.3 },
     { path: '/terms', priority: 0.3 },
     // Keyword-targeted SEO landing pages

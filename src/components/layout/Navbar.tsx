@@ -26,7 +26,9 @@ export default function Navbar() {
           width={160}
           height={52}
           className="h-10 w-auto object-contain"
-          style={{ mixBlendMode: 'screen' }}
+          // Set by NavInteractiveClient: `screen` on dark pages, `normal` on light
+          // ones, where screen would wash the mark out against cream.
+          style={{ mixBlendMode: 'var(--nav-logo-blend, screen)' as React.CSSProperties['mixBlendMode'] }}
           priority
         />
       </Link>

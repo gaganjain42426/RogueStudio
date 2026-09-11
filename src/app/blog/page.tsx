@@ -2,13 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Blog',
-  description:
-    'Insights, strategies, and creative thinking from the Rogue Studio team — your guide to social media, branding, and content production in India.',
-  path: '/blog',
-  keywords: ['social media blog India', 'creative agency insights', 'content strategy Jaipur'],
-})
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: 'Blog',
+    description:
+      'Insights, strategies, and creative thinking from the Rogue Studio team — your guide to social media, branding, and content production in India.',
+    path: '/blog',
+    keywords: ['social media blog India', 'creative agency insights', 'content strategy Jaipur'],
+  }),
+  // TODO: Remove this override (and restore the footer link + sitemap entry)
+  // once real articles replace the placeholder posts below.
+  robots: { index: false, follow: false },
+}
 
 // Placeholder posts — replace with CMS data
 const posts = [

@@ -14,7 +14,7 @@ export function NavLinks() {
         <Link
           key={link.href}
           href={link.href}
-          className="group relative font-bold tracking-tight text-white/80 hover:text-white transition-colors duration-200 text-sm lg:text-base"
+          className="group relative font-bold tracking-tight text-[color:var(--nav-fg-dim)] hover:text-[color:var(--nav-fg)] transition-colors duration-200 text-sm lg:text-base"
           style={{ fontFamily: 'var(--font-headline)' }}
         >
           {link.label}

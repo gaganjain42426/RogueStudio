@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Epilogue, Inter, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -181,7 +182,10 @@ export default function RootLayout({
           <Footer />
         </SmoothScroll>
 
-        {/* TODO: Add GA4 measurement ID — replace G-XXXXXXXXXX */}
+        {/* Pageviews + referrers, no cookie banner needed. */}
+        <Analytics />
+
+        {/* GA4 — set NEXT_PUBLIC_GA4_ID in Vercel to switch this on. */}
         {ga4Id && ga4Id !== 'G-XXXXXXXXXX' && (
           <>
             <Script

@@ -9,6 +9,9 @@ import FadeInUp from '@/components/animations/FadeInUp'
  * furniture.
  */
 export default function Testimonials() {
+  // Renders nothing rather than an empty heading if the quotes list is bare.
+  if (TESTIMONIALS.length === 0) return null
+
   return (
     <section className="bg-surface py-32 px-6 md:px-8">
       <div className="max-w-[1100px] mx-auto">

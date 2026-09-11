@@ -134,9 +134,7 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
-            <Link href="/blog" className="hover:text-white transition-colors">
-              Blog
-            </Link>
+            {/* Blog link is out until the placeholder posts are replaced with real ones. */}
           </div>
         </div>
       </div>

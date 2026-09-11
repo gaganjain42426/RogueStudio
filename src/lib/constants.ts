@@ -20,32 +20,14 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Contact', href: '/contact' },
 ]
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 'ananya',
-    quote:
-      'Rogue Studio completely transformed our visual presence. Our conversion rate increased by 40% after the rebrand.',
-    author: 'Ananya Sharma',
-    role: 'Founder',
-    company: 'Jaipur Artisans',
-  },
-  {
-    id: 'kabir',
-    quote:
-      "They don't just follow trends, they set them. Best creative investment we've made in years.",
-    author: 'Kabir Singh',
-    role: 'Marketing Director',
-    company: 'LuxStay',
-  },
-  {
-    id: 'meera',
-    quote:
-      'The storytelling in their video content is unmatched. Rogue really knows how to build emotional connections.',
-    author: 'Meera Verma',
-    role: 'CEO',
-    company: 'Wellness Hub',
-  },
-]
+/**
+ * Real client quotes only — same policy as the portfolio metrics.
+ *
+ * Emptied deliberately: the previous three entries were template placeholders
+ * (Jaipur Artisans / LuxStay / Wellness Hub) for companies that are not clients.
+ * Add real quotes here, then restore <Testimonials /> in app/page.tsx.
+ */
+export const TESTIMONIALS: Testimonial[] = []
 
 export const PRICING_PLANS: PricingPlan[] = [
   {

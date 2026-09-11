@@ -8,7 +8,6 @@ import ReelsCarousel from '@/components/sections/ReelsCarousel'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
 import Studio from '@/components/sections/Studio'
-import Testimonials from '@/components/sections/Testimonials'
 import Pricing from '@/components/sections/Pricing'
 import FinalCTA from '@/components/sections/FinalCTA'
 
@@ -50,7 +49,13 @@ export default async function HomePage() {
       <Services />
       <Process />
       <Studio />
-      <Testimonials />
+      {/*
+        Testimonials are off until we have real client quotes. The three that
+        shipped here were template placeholders naming companies that appear
+        nowhere in the portfolio — on a page headed "Proof over promises", that
+        is the one claim a sceptical visitor would check first.
+        Re-enable: restore <Testimonials /> and fill TESTIMONIALS in lib/constants.
+      */}
       <Pricing />
       <FinalCTA />
     </>

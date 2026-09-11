@@ -75,11 +75,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: 'Head of Strategy',
     bio: 'The brain behind every content plan — she turns brand goals into strategies that actually convert.',
   },
-  {
-    name: 'Nikhil Singh',
-    role: 'Lead Cinematographer',
-    bio: 'Frames every shoot with intention — reels, brand films, and campaigns that stop the scroll.',
-  },
 ]
 
 export const SERVICES_LIST = [

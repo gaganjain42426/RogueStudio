@@ -140,7 +140,9 @@ export default function AboutPage() {
                 they pull in per project.
               </p>
             </AnimatedItem>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-on-tertiary-fixed/15 border border-on-tertiary-fixed/15">
+            {/* Column count tracks the roster — a trailing empty cell would show
+                as a grey block, since the hairlines are the container showing through. */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-on-tertiary-fixed/15 border border-on-tertiary-fixed/15">
               {TEAM_MEMBERS.map((member, i) => (
                 <AnimatedCard key={member.name} delay={i * 0.08}>
                   <div className="bg-tertiary-fixed p-10 h-full">

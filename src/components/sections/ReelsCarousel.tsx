@@ -52,14 +52,10 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
     }
   }, [reels.length, userPaused])
 
-  const handleMouseEnter = () => {
-    isPaused.current = true
-    if (resumeTimer.current) clearTimeout(resumeTimer.current)
-  }
-
-  const handleMouseLeave = () => {
-    isPaused.current = false
-  }
+  // No hover pause by design — the rail keeps moving under the cursor. Stopping
+  // it on hover made the section feel stalled whenever the pointer crossed it.
+  // Keyboard and pointer users who want it still can use the pause button, which
+  // is also what satisfies WCAG 2.2.2 for this auto-moving content.
 
   const handleTouchStart = () => {
     isPaused.current = true
@@ -123,8 +119,6 @@ export default function ReelsCarousel({ reels }: { reels: BunnyReel[] }) {
       {/* Carousel track */}
       <div
         ref={trackRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         className="flex overflow-x-hidden"

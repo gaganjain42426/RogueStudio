@@ -125,7 +125,18 @@ export default function PortfolioExperience({ clients }: { clients: ResolvedClie
             >
               Also in production
             </p>
-            <div className="mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+            {/* Column count tracks the roster: the hairlines are the container
+                showing through a gap-px grid, so trailing empty cells would
+                render as grey blocks rather than as nothing. */}
+            <div
+              className={`mx-auto mt-12 grid grid-cols-1 gap-px border border-white/10 bg-white/10 ${
+                credits.length === 1
+                  ? 'max-w-sm'
+                  : credits.length === 2
+                    ? 'sm:grid-cols-2'
+                    : 'sm:grid-cols-3'
+              }`}
+            >
               {credits.map((c) => (
                 <a
                   key={c.id}

@@ -4,12 +4,13 @@ import path from 'node:path'
 import { buildMetadata } from '@/lib/metadata'
 import { SITE_URL } from '@/lib/constants'
 import { PORTFOLIO_CLIENTS, type ResolvedClient } from '@/data/portfolio'
+import { getBunnyReels, reelBelongsTo } from '@/lib/bunny'
 import PortfolioExperience from './PortfolioExperience'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Portfolio',
   description:
-    'Real Rogue Studio clients, real results — case studies and reels for Sarvatra Energy, Naman Vaastu, Janta Bar, Noble Vibes Clinic, Vimla International and more, from Jaipur, India.',
+    'Real Rogue Studio clients, real results — case studies and reels for Sarvatra Energy, Naman Vaastu & Designs, Avera Clothing, Kairos Atelier, Nikhil Shah and more, from Jaipur, India.',
   path: '/portfolio',
   keywords: [
     'creative agency portfolio Jaipur',
@@ -30,17 +31,30 @@ function reelIsAvailable(src: string): boolean {
   }
 }
 
-/** Resolve every client's reels once, at render time. */
-const resolvedClients: ResolvedClient[] = PORTFOLIO_CLIENTS.map((c) => {
-  const reels = c.reels.map((src) => ({ src, available: reelIsAvailable(src) }))
-  return {
-    ...c,
-    reels,
-    liveReelCount: reels.filter((r) => r.available).length,
-  }
-})
+/**
+ * Resolve every client's media: their local reels, plus any Bunny Stream uploads
+ * whose filename matches the client's `bunnyMatch`. Adding a video in Bunny is
+ * therefore all it takes for it to show up here.
+ */
+async function resolveClients(): Promise<ResolvedClient[]> {
+  const bunnyReels = await getBunnyReels()
 
-export default function PortfolioPage() {
+  return PORTFOLIO_CLIENTS.map((c) => {
+    const fromBunny = c.bunnyMatch
+      ? bunnyReels.filter((r) => reelBelongsTo(r, c.bunnyMatch!)).map((r) => r.fullSrc)
+      : []
+
+    // Local files first — those clients have hand-picked, ordered selections.
+    const sources = [...c.reels, ...fromBunny]
+    const reels = sources.map((src) => ({ src, available: reelIsAvailable(src) }))
+
+    return { ...c, reels, liveReelCount: reels.filter((r) => r.available).length }
+  })
+}
+
+export default async function PortfolioPage() {
+  const resolvedClients = await resolveClients()
+
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',

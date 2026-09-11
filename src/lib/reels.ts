@@ -17,7 +17,9 @@
 const BUNNY_URL = /^https:\/\/([^/]+\.b-cdn\.net)\/([a-f0-9-]+)\//i
 
 export const reelPreview = (src: string): string => {
-  if (BUNNY_URL.test(src)) return src
+  // Bunny reels are stored at full quality so the lightbox has something worth
+  // playing; step them down to the 240p rendition for the muted background loop.
+  if (BUNNY_URL.test(src)) return src.replace(/play_\d+p\.mp4$/i, 'play_240p.mp4')
   return src.replace('/reels/', '/reels/preview/')
 }
 

@@ -18,10 +18,17 @@ export interface BunnyReel {
   poster: string
   client: string
   category: string
+  /**
+   * The upload filename Bunny kept as the video title. Uploads are named after
+   * the client's Instagram handle, so the portfolio matches videos to clients by
+   * this even when the Description field was never filled in.
+   */
+  title: string
 }
 
 interface BunnyVideoApiItem {
   guid: string
+  title: string | null
   description: string | null
   status: number
   encodeProgress: number
@@ -72,8 +79,25 @@ export async function getBunnyReels(): Promise<BunnyReel[]> {
         poster: `https://${cdnHost}/${v.guid}/thumbnail.jpg`,
         client: clientRaw ? normalizeClient(clientRaw) : 'Rogue Studio',
         category: categoryRaw || 'Client Work',
+        title: v.title?.trim() ?? '',
       }
     })
+}
+
+/**
+ * Does this Bunny video belong to `match`?
+ *
+ * Matches on the title (the upload filename, e.g. "averaclothing.in_1789051035…")
+ * and on the Description, so a video works whether it was tagged by hand in the
+ * Bunny dashboard or just uploaded with its original filename. Separators are
+ * normalised away because handles vary in punctuation (@sira.collection._).
+ */
+const normalizeKey = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
+
+export function reelBelongsTo(reel: BunnyReel, match: string): boolean {
+  const key = normalizeKey(match)
+  if (!key) return false
+  return normalizeKey(reel.title).startsWith(key) || normalizeKey(reel.client) === key
 }
 
 /** Fisher-Yates shuffle — returns a new array, doesn't mutate the input. */

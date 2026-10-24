@@ -145,8 +145,8 @@ export default function PortfolioExperience({ clients }: { clients: ResolvedClie
                   rel={c.instagram ? 'noopener noreferrer' : undefined}
                   className="group flex items-center gap-4 bg-[#0D0D0D] p-7 transition-colors hover:bg-white/[0.03]"
                 >
-                  <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-white/90 p-1">
-                    <Image src={c.logo} alt={`${c.name} logo`} width={48} height={48} className="h-full w-full object-contain" />
+                  <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/90">
+                    <Image src={c.logo} alt={`${c.name} logo`} width={48} height={48} className="h-full w-full object-cover" />
                   </span>
                   <span>
                     <span className="block font-black text-white" style={{ fontFamily: 'var(--font-headline)' }}>

@@ -73,13 +73,13 @@ export default function FeaturedWork() {
                   aria-hidden="true"
                 />
                 <div className="flex items-center justify-between">
-                  <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-white/90 p-1.5">
+                  <div className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white/90">
                     <Image
                       src={client.logo}
                       alt={`${client.name} logo`}
                       width={56}
                       height={56}
-                      className="h-full w-full object-contain"
+                      className="h-full w-full object-cover"
                     />
                   </div>
                   <Icon
